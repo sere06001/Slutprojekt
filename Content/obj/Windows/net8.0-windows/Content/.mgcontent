@@ -4,7 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/orb-blue.png</File>
+    <File>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ball.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

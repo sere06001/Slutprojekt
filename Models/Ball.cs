@@ -4,7 +4,7 @@ namespace Slutprojekt;
 public class Ball
 {
     private static readonly Random random = new();
-    private Texture2D texture = Globals.Content.Load<Texture2D>("orb-blue");
+    private Texture2D texture = Globals.Content.Load<Texture2D>("ball");
     public Vector2 Origin { get; private set;}
     public Vector2 Position { get; set; }
     public Vector2 Direction { get; set; }
