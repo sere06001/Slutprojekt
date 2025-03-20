@@ -1,23 +1,24 @@
+using System.CodeDom;
+
 namespace Slutprojekt;
 public class Ball
 {
     private static readonly Random random = new();
     private readonly Texture2D texture = Globals.Content.Load<Texture2D>("orb-blue");
     public Vector2 Origin { get; private set;}
-    public Vector2 Position { get; set; } = RandomPosition();
+    public Vector2 Position { get; set; } = StartPosition();
     public Vector2 Direction { get; set; } = RandomDirection();
-    public int Speed { get; set; } = 200;
+    private int Speed { get; set; } = 200;
     public Color Color { get; set; } = Color.White;
     public Ball()
     {
         Origin = new(texture.Width / 2, texture.Height / 2);
     }
 
-    private static Vector2 RandomPosition()
+    private static Vector2 StartPosition()
     {
-        const int padding = 50;
-        var x = random.Next(padding, Globals.Bounds.X - padding);
-        var y = random.Next(padding, Globals.Bounds.Y - padding);
+        var x = Globals.Bounds.X/2;
+        var y = 10; //Base off ball texture
         return new(x, y);
     }
 

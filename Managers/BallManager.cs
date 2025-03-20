@@ -6,7 +6,6 @@ public class BallManager
     public BallManager()
     {
         balls.Add(new());
-        balls.Add(new());
     }
 
     private void CheckCollisions()
