@@ -5,7 +5,10 @@ public class BallManager
 
     public BallManager()
     {
-        balls.Add(new());
+        for (int i = 0; i < 10; i++)
+        {
+            balls.Add(new());
+        }
     }
 
     private void CheckCollisions()
@@ -17,7 +20,6 @@ public class BallManager
                 if ((balls[i].Position - balls[j].Position).Length() < (balls[i].Origin.X + balls[j].Origin.X))
                 {
                     ResolveCollision(balls[i], balls[j]);
-                    break;
                 }
             }
         }
