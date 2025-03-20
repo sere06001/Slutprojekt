@@ -1,3 +1,3 @@
 1. Make balls collide with each other
-2. Make level parts, circle, snake etc.
+2. Make level parts, circle, snake etc. Reds have 1/5 chance of spawning. Purple 1/10. Green 1/20 (MAX 1 per level part)
 3. Make level generator combine level parts to make a level.
