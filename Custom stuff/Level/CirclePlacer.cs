@@ -16,6 +16,7 @@ public class CirclePlacer
             "red" => new RedCircle(ballManager) { Position = position },
             "blue" => new BlueCircle(ballManager) { Position = position },
             "green" => new GreenCircle(ballManager) { Position = position },
+            "purple" => new PurpleCircle(ballManager) { Position = position },
             _ => throw new ArgumentException($"Unsupported circle color: {color}")
         };
         

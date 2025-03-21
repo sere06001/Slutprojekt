@@ -26,3 +26,11 @@ C:\GA-Monogame\GA_2DSpel\Slutprojekt\obj\Debug\net8.0-windows\Slutprojekt.pdb
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\obj\Debug\net8.0-windows\Slutprojekt.genruntimeconfig.cache
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\obj\Debug\net8.0-windows\ref\Slutprojekt.dll
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ball.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballblue.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballbluehit.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballgreen.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballgreenhit.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballpurple.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballpurplehit.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballred.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\ballredhit.xnb

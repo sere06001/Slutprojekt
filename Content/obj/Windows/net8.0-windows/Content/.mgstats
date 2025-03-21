@@ -1,1 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballblue.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballblue.xnb","TextureProcessor","Texture2DContent",1327,1685,0,0445724
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballbluehit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballbluehit.xnb","TextureProcessor","Texture2DContent",1365,1685,0,0339332
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreen.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreen.xnb","TextureProcessor","Texture2DContent",1349,1685,0,0185689
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreenhit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreenhit.xnb","TextureProcessor","Texture2DContent",1371,1685,0,0376881
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurple.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballpurple.xnb","TextureProcessor","Texture2DContent",1395,1685,0,026647
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurplehit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballpurplehit.xnb","TextureProcessor","Texture2DContent",1377,1685,0,0455382
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballred.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballred.xnb","TextureProcessor","Texture2DContent",1375,1685,0,3777078
+"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballredhit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballredhit.xnb","TextureProcessor","Texture2DContent",1365,1685,0,0142088

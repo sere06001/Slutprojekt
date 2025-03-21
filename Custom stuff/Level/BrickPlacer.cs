@@ -16,6 +16,7 @@ public class BrickPlacer
             "red" => new RedBrick(ballManager) { Position = position },
             "blue" => new BlueBrick(ballManager) { Position = position },
             "green" => new GreenBrick(ballManager) { Position = position },
+            "purple" => new PurpleBrick(ballManager) { Position = position },
             _ => throw new ArgumentException($"Unsupported brick color: {color}")
         };
         

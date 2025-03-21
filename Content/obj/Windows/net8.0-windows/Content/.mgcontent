@@ -4,9 +4,25 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ball.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ball.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballred.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballredhit.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballblue.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballbluehit.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreen.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreenhit.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurple.png</File>
+    <File>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurplehit.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

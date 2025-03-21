@@ -30,6 +30,7 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         Globals.SpriteBatch = _spriteBatch;
+        Globals.LoadContent();
     }
 
     protected override void Update(GameTime gameTime)
