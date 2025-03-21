@@ -11,14 +11,19 @@ public class CirclePlacer
 
     public void PlaceCircle(Vector2 position)
     {
-        int roll = Globals.Random.Next(1, 21); // Roll 1-20
+        int greenCount = circles.Count(c => c is GreenCircle);
+        int purpleCount = circles.Count(c => c is PurpleCircle);
+
+        int roll = Globals.Random.Next(1, 21); //Roll 1-20
         string color = roll switch
         {
-            <= 4 => "blue",    // 4/20 = 1/5 chance
-            <= 6 => "purple",  // 2/20 = 1/10 chance
-            <= 7 => "green",   // 1/20 chance
-            _ => "red"         // 13/20 chance (remainder)
+            <= 4 => "blue",                         //4/20
+            <= 6 when purpleCount < 3 => "purple",  //2/20 chance, only if less than 3 purple circles
+            <= 7 when greenCount < 2 => "green",    //1/20 chance, only if less than 2 green circles
+            _ => "red"                              //Remainder
         };
+
+        if (color == null) color = "red";
 
         BaseCircle circle = color switch
         {
@@ -28,7 +33,7 @@ public class CirclePlacer
             "purple" => new PurpleCircle(ballManager) { Position = position },
             _ => throw new ArgumentException($"Unsupported circle color: {color}")
         };
-        
+
         circles.Add(circle);
     }
 

@@ -6,7 +6,7 @@ public class GameManager
 
     public GameManager()
     {
-        currentLevel = new LevelCircle(ballManager, 100f, 16); //Just for testing
+        currentLevel = new LevelCircle(ballManager, 500f, 50); //Just for testing
     }
 
     public void Update()

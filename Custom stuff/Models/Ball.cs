@@ -8,7 +8,7 @@ public class Ball
     public Vector2 Position { get; set; }
     public Vector2 Direction { get; set; }
     public Vector2 Velocity { get; set; }
-    private int Speed { get; set; } = 200; //Initial speed in pixels per second
+    private int Speed { get; set; } = 200; //Initial speed in pixels per second, change this when cannon is added
     public Color Color { get; set; } = Color.White;
     private readonly float gravity = 9.82f * 100; //Scaled up for pixels
     public readonly float Restitution = 0.8f; //Energy loss on bounce
@@ -28,7 +28,7 @@ public class Ball
         return new(x, y);
     }
 
-    private Vector2 RandomDirection()
+    private Vector2 RandomDirection() //Make it follow mouse instead
     {
         var angle = Globals.Random.NextDouble() * 2 * Math.PI;
         return new((float)Math.Sin(angle), -(float)Math.Cos(angle));
