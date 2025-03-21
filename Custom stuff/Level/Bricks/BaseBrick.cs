@@ -24,10 +24,6 @@ public abstract class BaseBrick
                 ResolveBallCollision(ball);
                 Hit = true;
             }
-            else
-            {
-                Hit = false;
-            }
         }
     }
 

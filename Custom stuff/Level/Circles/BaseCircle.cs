@@ -23,10 +23,6 @@ public abstract class BaseCircle
                 ResolveBallCollision(ball);
                 Hit = true;
             }
-            else
-            {
-                Hit = false;
-            }
         }
     }
 
