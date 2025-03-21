@@ -10,8 +10,4 @@ public class BlueBrick : BaseBrick
         TextureHit = Globals.BallBlueHit;
         TextureNotHit = Globals.BallBlue;
     }
-    public override void Draw()
-    {
-        Globals.SpriteBatch.Draw(TextureCurrent, Position, Color.White);
-    }
 }

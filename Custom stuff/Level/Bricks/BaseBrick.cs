@@ -86,5 +86,8 @@ public abstract class BaseBrick
         }
     }
 
-    public abstract void Draw();
+    public void Draw()
+    {
+        Globals.SpriteBatch.Draw(TextureCurrent, Position, Color.White);
+    }
 }
