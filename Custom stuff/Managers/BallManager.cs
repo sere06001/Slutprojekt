@@ -2,15 +2,6 @@ namespace Slutprojekt;
 public class BallManager
 {
     public readonly List<Ball> balls = [];
-
-    public BallManager()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            balls.Add(new());
-        }
-    }
-
     private void CheckCollisions()
     {
         // Ball-to-ball collisions only
