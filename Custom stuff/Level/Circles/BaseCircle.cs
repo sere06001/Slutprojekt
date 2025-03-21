@@ -1,17 +1,17 @@
 namespace Slutprojekt;
 public abstract class BaseCircle
 {
-    protected Texture2D ballRed = Globals.Content.Load<Texture2D>("ballred.png");
-    protected Texture2D ballRedHit = Globals.Content.Load<Texture2D>("ballredhit.png");
-    protected Texture2D ballBlue = Globals.Content.Load<Texture2D>("ballblue.png");
-    protected Texture2D ballBlueHit = Globals.Content.Load<Texture2D>("ballbluehit.png");
-    protected Texture2D ballGreen = Globals.Content.Load<Texture2D>("ballgreen.png");
-    protected Texture2D ballGreenHit = Globals.Content.Load<Texture2D>("ballgreenhit.png");
-    protected Texture2D ballPurple = Globals.Content.Load<Texture2D>("ballpurple.png");
-    protected Texture2D ballPurpleHit = Globals.Content.Load<Texture2D>("ballpurplehit.png");
-    protected Texture2D textureCurrent { get; set; }
-    protected Texture2D textureHit { get; set; }
-    protected Texture2D textureNotHit { get; set; }
+        protected Texture2D BallRed { get; } = Globals.Content.Load<Texture2D>("ballred.png");
+    protected Texture2D BallRedHit { get; } = Globals.Content.Load<Texture2D>("ballredhit.png");
+    protected Texture2D BallBlue { get; } = Globals.Content.Load<Texture2D>("ballblue.png");
+    protected Texture2D BallBlueHit { get; } = Globals.Content.Load<Texture2D>("ballbluehit.png");
+    protected Texture2D BallGreen { get; } = Globals.Content.Load<Texture2D>("ballgreen.png");
+    protected Texture2D BallGreenHit { get; } =Globals.Content.Load<Texture2D>("ballgreenhit.png");
+    protected Texture2D BallPurple { get; } = Globals.Content.Load<Texture2D>("ballpurple.png");
+    protected Texture2D BallPurpleHit { get; } = Globals.Content.Load<Texture2D>("ballpurplehit.png");
+    protected Texture2D TextureCurrent { get; set; }
+    protected Texture2D TextureHit { get; set; }
+    protected Texture2D TextureNotHit { get; set; }
     protected bool Hit { get; set; }
     protected virtual Vector2 Position { get; set; }
     protected BallManager ballManager { get; set; }
@@ -26,6 +26,11 @@ public abstract class BaseCircle
             if (ball.Position == Position)
             {
                 Hit = true;
+                break;
+            }
+            else
+            {
+                Hit = false;
             }
         }
     }
@@ -34,7 +39,11 @@ public abstract class BaseCircle
         CheckHit();
         if (Hit)
         {
-            textureCurrent = textureHit;
+            TextureCurrent = TextureHit;
+        }
+        else
+        {
+            TextureCurrent = TextureNotHit;
         }
     }
     public abstract void Draw();
