@@ -4,6 +4,8 @@ public class RedBrick : BaseBrick
 {
     public RedBrick(BallManager ballmng) : base(ballmng)
     {
+        ScoreOnHit = 100;
+
         ballManager = ballmng;
 
         TextureCurrent = Globals.BallRed;

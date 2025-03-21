@@ -1,6 +1,9 @@
 namespace Slutprojekt;
 public abstract class BaseBrick
 {
+    public virtual int ScoreOnHit { get; protected set; }
+    public virtual int ScoreMultiplier { get; protected set; } = 1;
+    public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
