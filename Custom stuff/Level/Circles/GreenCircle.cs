@@ -1,14 +1,14 @@
 namespace Slutprojekt;
-public class RedCircle : BaseCircle
+public class GreenCircle : BaseCircle
 {
     protected override Vector2 Position { get; set; } = new(0,0);
-    public RedCircle(BallManager ballmng) : base(ballmng)
+    public GreenCircle(BallManager ballmng) : base(ballmng)
     {
         ballManager = ballmng;
 
-        TextureCurrent = Globals.BallRed;
-        TextureHit = Globals.BallRedHit;
-        TextureNotHit = Globals.BallRed;
+        TextureCurrent = Globals.BallGreen;
+        TextureHit = Globals.BallGreenHit;
+        TextureNotHit = Globals.BallGreen;
     }
     public override void Draw()
     {
