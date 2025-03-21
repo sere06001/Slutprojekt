@@ -9,9 +9,18 @@ public class BrickPlacer
         this.ballManager = ballManager;
     }
 
-    public void PlaceBrick(string color, Vector2 position)
+    public void PlaceBrick(Vector2 position)
     {
-        BaseBrick brick = color.ToLower() switch
+        int roll = Globals.Random.Next(1, 21); // Roll 1-20
+        string color = roll switch
+        {
+            <= 4 => "blue",    // 4/20 = 1/5 chance
+            <= 6 => "purple",  // 2/20 = 1/10 chance
+            <= 7 => "green",   // 1/20 chance
+            _ => "red"         // 13/20 chance (remainder)
+        };
+
+        BaseBrick brick = color switch
         {
             "red" => new RedBrick(ballManager) { Position = position },
             "blue" => new BlueBrick(ballManager) { Position = position },

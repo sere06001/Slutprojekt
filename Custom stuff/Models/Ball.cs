@@ -3,7 +3,6 @@ using System.CodeDom;
 namespace Slutprojekt;
 public class Ball
 {
-    private static readonly Random random = new();
     private Texture2D texture = Globals.Content.Load<Texture2D>("ball");
     public Vector2 Origin { get; private set; }
     public Vector2 Position { get; set; }
@@ -24,14 +23,14 @@ public class Ball
 
     private Vector2 StartPosition()
     {
-        var x = random.Next(Globals.Bounds.X); //Bounds.X/2;
+        var x = Globals.Random.Next(Globals.Bounds.X); //Bounds.X/2;
         var y = texture.Height / 2;
         return new(x, y);
     }
 
     private Vector2 RandomDirection()
     {
-        var angle = random.NextDouble() * 2 * Math.PI;
+        var angle = Globals.Random.NextDouble() * 2 * Math.PI;
         return new((float)Math.Sin(angle), -(float)Math.Cos(angle));
     }
     private void HandleCollision()
