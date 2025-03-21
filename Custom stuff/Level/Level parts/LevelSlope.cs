@@ -6,8 +6,4 @@ public class LevelSlope : LevelBase
     {
         
     }
-    public override void Draw()
-    {
-
-    }
 }

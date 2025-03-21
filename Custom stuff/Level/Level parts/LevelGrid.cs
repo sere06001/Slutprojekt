@@ -6,8 +6,4 @@ public class LevelGrid : LevelBase
     {
         
     }
-    public override void Draw()
-    {
-
-    }
 }

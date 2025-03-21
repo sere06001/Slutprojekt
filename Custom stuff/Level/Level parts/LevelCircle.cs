@@ -26,10 +26,4 @@ public class LevelCircle : LevelBase
             circlePlacer.PlaceCircle(new Vector2(x, y));
         }
     }
-
-    public override void Draw()
-    {
-        circlePlacer.Draw();
-        brickPlacer.Draw();
-    }
 }

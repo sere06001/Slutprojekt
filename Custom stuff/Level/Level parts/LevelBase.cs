@@ -19,5 +19,9 @@ public abstract class LevelBase
         brickPlacer.Update();
     }
 
-    public abstract void Draw();
+    public void Draw()
+    {
+        circlePlacer.Draw();
+        brickPlacer.Draw();
+    }
 }
