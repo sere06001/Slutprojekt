@@ -1,2 +1,2 @@
-1. Make level parts, circle, snake etc. Reds have 1/5 chance of spawning. Purple 1/10. Green 1/20 (MAX 1 per level part)
+1. Give xp if circle/brick is hit.
 2. Make level generator combine level parts to make a level.
