@@ -12,7 +12,7 @@ public class Ball
     private int Speed { get; set; } = 200; //Initial speed in pixels per second
     public Color Color { get; set; } = Color.White;
     private readonly float gravity = 9.82f * 100; //Scaled up for pixels
-    private readonly float bounceDamping = 0.8f; //Energy loss on bounce
+    public readonly float Restitution = 0.8f; //Energy loss on bounce
 
     public Ball()
     {
@@ -24,7 +24,7 @@ public class Ball
 
     private Vector2 StartPosition()
     {
-        var x = Globals.Bounds.X / 2;
+        var x = random.Next(Globals.Bounds.X); //Bounds.X/2;
         var y = texture.Height / 2;
         return new(x, y);
     }
@@ -38,7 +38,7 @@ public class Ball
     {
         if (Position.X < Origin.X || Position.X > Globals.Bounds.X - Origin.X)
         {
-            Velocity = new(-Velocity.X * bounceDamping, Velocity.Y);
+            Velocity = new(-Velocity.X * Restitution, Velocity.Y);
             Position = new(
                 MathHelper.Clamp(Position.X, Origin.X, Globals.Bounds.X - Origin.X),
                 Position.Y
@@ -47,7 +47,7 @@ public class Ball
 
         if (Position.Y < Origin.Y || Position.Y > Globals.Bounds.Y - Origin.Y)
         {
-            Velocity = new(Velocity.X * bounceDamping, -Velocity.Y * bounceDamping);
+            Velocity = new(Velocity.X * Restitution, -Velocity.Y * Restitution);
             Position = new(
                 Position.X,
                 MathHelper.Clamp(Position.Y, Origin.Y, Globals.Bounds.Y - Origin.Y)

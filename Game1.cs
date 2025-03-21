@@ -15,6 +15,9 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        _graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+        _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+        _graphics.ApplyChanges();
         Globals.Bounds = new(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
         Globals.Content = Content;
 
