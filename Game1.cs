@@ -20,6 +20,7 @@ public class Game1 : Game
         _graphics.ApplyChanges();
         Globals.Bounds = new(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
         Globals.Content = Content;
+        Globals.LoadContent();
 
         gameManager = new();
 
@@ -30,7 +31,6 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         Globals.SpriteBatch = _spriteBatch;
-        Globals.LoadContent();
     }
 
     protected override void Update(GameTime gameTime)

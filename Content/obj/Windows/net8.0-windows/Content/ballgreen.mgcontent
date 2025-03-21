@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreen.png</SourceFile>
-  <SourceTime>2025-03-20T15:48:31.609378+01:00</SourceTime>
-  <DestFile>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreen.xnb</DestFile>
-  <DestTime>2025-03-21T11:19:17.1403411+01:00</DestTime>
+  <SourceFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreen.png</SourceFile>
+  <SourceTime>2025-03-20T22:16:39.8922621+01:00</SourceTime>
+  <DestFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballgreen.xnb</DestFile>
+  <DestTime>2025-03-21T14:20:55.314388+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

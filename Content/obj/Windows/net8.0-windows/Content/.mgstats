@@ -1,10 +1,10 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ball.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",746,985,0,3842798
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballblue.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballblue.xnb","TextureProcessor","Texture2DContent",1327,1685,0,030526
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballbluehit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballbluehit.xnb","TextureProcessor","Texture2DContent",1365,1685,0,0141097
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreen.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreen.xnb","TextureProcessor","Texture2DContent",1349,1685,0,0158543
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreenhit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreenhit.xnb","TextureProcessor","Texture2DContent",1371,1685,0,0188262
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurple.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballpurple.xnb","TextureProcessor","Texture2DContent",1395,1685,0,0298355
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurplehit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballpurplehit.xnb","TextureProcessor","Texture2DContent",1377,1685,0,0170254
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballred.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballred.xnb","TextureProcessor","Texture2DContent",1375,1685,0,0102679
-"c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballredhit.png","c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballredhit.xnb","TextureProcessor","Texture2DContent",1365,1685,0,0117703
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ball.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",746,985,0,1177761
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballblue.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballblue.xnb","TextureProcessor","Texture2DContent",1327,1685,0,0019957
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballbluehit.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballbluehit.xnb","TextureProcessor","Texture2DContent",1365,1685,0,0029275
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreen.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballgreen.xnb","TextureProcessor","Texture2DContent",1349,1685,0,0019852
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreenhit.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballgreenhit.xnb","TextureProcessor","Texture2DContent",1371,1685,0,0022246
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballpurple.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballpurple.xnb","TextureProcessor","Texture2DContent",1395,1685,0,0017278
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballpurplehit.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballpurplehit.xnb","TextureProcessor","Texture2DContent",1377,1685,0,0029972
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballred.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballred.xnb","TextureProcessor","Texture2DContent",1375,1685,0,0035064
+"C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballredhit.png","C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballredhit.xnb","TextureProcessor","Texture2DContent",1365,1685,0,0021754
