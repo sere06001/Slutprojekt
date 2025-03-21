@@ -53,7 +53,6 @@ public class Ball
             );
         }
     }
-
     private void UpdatePosition()
     {
         Velocity += new Vector2(0, gravity) * Globals.TotalSeconds;

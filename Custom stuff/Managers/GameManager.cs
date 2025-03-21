@@ -11,8 +11,19 @@ public class GameManager
 
     public void Update()
     {
+        // Update existing balls and the current level
         ballManager.Update();
         currentLevel.Update();
+    
+        // Check for left mouse button click
+        if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+        {
+            // Get the mouse position
+            Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
+    
+            // Spawn a new ball at the mouse position
+            ballManager.SpawnBall(mousePosition);
+        }
     }
 
     public void Draw()

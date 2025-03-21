@@ -46,6 +46,15 @@ public class BallManager
         b1.Position -= separation;
         b2.Position += separation;
     }
+    public void SpawnBall(Vector2 position)
+    {
+        Ball newBall = new Ball
+        {
+            Position = position,
+            Velocity = Vector2.Zero,
+        };
+        balls.Add(newBall);
+    }
 
     public void Update()
     {
