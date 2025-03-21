@@ -9,8 +9,4 @@ public class RedCircle : BaseCircle
         TextureHit = Globals.BallRedHit;
         TextureNotHit = Globals.BallRed;
     }
-    public override void Draw()
-    {
-        Globals.SpriteBatch.Draw(TextureCurrent, Position, Color.White);
-    }
 }

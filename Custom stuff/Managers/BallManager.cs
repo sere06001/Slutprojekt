@@ -4,7 +4,6 @@ public class BallManager
     public readonly List<Ball> balls = [];
     private void CheckCollisions()
     {
-        // Ball-to-ball collisions only
         for (int i = 0; i < balls.Count - 1; i++)
         {
             for (int j = i + 1; j < balls.Count; j++)

@@ -7,6 +7,7 @@ public abstract class BaseCircle
     protected Texture2D TextureNotHit { get; set; }
     protected bool Hit { get; set; }
     public virtual Vector2 Position { get; set; }
+    public Vector2 Origin => new Vector2(TextureCurrent.Width / 4, TextureCurrent.Height / 4);
     protected BallManager ballManager { get; set; }
 
     public BaseCircle(BallManager ballmngr)
@@ -18,7 +19,7 @@ public abstract class BaseCircle
     {
         foreach (Ball ball in ballManager.balls)
         {
-            if ((ball.Position - Position).Length() < (ball.Origin.X + Radius))
+            if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
                 ResolveBallCollision(ball);
                 Hit = true;
@@ -28,15 +29,12 @@ public abstract class BaseCircle
 
     private void ResolveBallCollision(Ball ball)
     {
-        // Calculate normal from circle center to ball
-        Vector2 normal = Vector2.Normalize(ball.Position - Position);
-        
-        // Reflect ball velocity
+        Vector2 normal = Vector2.Normalize(ball.Position - (Position + Origin));
+
         ball.Velocity = Vector2.Reflect(ball.Velocity, normal) * ball.Restitution;
         ball.Direction = Vector2.Normalize(ball.Velocity);
-        
-        // Move ball out of collision
-        float overlap = (ball.Origin.X + Radius) - Vector2.Distance(ball.Position, Position);
+
+        float overlap = ball.Origin.X + Radius - Vector2.Distance(ball.Position, Position + Origin);
         ball.Position += normal * overlap;
     }
 
@@ -53,5 +51,8 @@ public abstract class BaseCircle
         }
     }
 
-    public abstract void Draw();
+    public void Draw()
+    {
+        Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, 0f, Origin, 1f, SpriteEffects.None, 0f);
+    }
 }

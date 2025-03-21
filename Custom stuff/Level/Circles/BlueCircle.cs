@@ -11,8 +11,4 @@ public class BlueCircle : BaseCircle
         TextureHit = Globals.BallBlueHit;
         TextureNotHit = Globals.BallBlue;
     }
-    public override void Draw()
-    {
-        Globals.SpriteBatch.Draw(TextureCurrent, Position, Color.White);
-    }
 }
