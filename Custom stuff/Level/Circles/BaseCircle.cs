@@ -1,6 +1,9 @@
 namespace Slutprojekt;
 public abstract class BaseCircle
 {
+    public virtual int ScoreOnHit { get; protected set; }
+    public virtual int ScoreMultiplier { get; protected set; } = 1;
+    public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
