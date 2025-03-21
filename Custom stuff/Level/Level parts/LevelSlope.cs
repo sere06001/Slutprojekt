@@ -1,13 +1,13 @@
 namespace Slutprojekt;
-public class LevelSnake : LevelBase
+public class LevelSlope : LevelBase
 {
     protected override Vector2 Position { get; set; }
-    public void SnakePlacer(int length)
+    public LevelSlope (BallManager ballmanager) : base(ballmanager)
     {
-
+        
     }
     public override void Draw()
     {
-        
+
     }
 }

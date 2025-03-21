@@ -1,7 +1,6 @@
 namespace Slutprojekt;
 public class GreenCircle : BaseCircle
 {
-    protected override Vector2 Position { get; set; } = new(0,0);
     public GreenCircle(BallManager ballmng) : base(ballmng)
     {
         ballManager = ballmng;

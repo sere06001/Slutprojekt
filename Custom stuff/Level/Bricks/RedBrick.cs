@@ -2,7 +2,6 @@
 namespace Slutprojekt;
 public class RedBrick : BaseBrick
 {
-    protected override Vector2 Position { get; set; } = new(0,0);
     public RedBrick(BallManager ballmng) : base(ballmng)
     {
         ballManager = ballmng;

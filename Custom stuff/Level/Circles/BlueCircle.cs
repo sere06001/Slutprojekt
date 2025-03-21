@@ -1,7 +1,8 @@
+using SharpDX.MediaFoundation;
+
 namespace Slutprojekt;
 public class BlueCircle : BaseCircle
 {
-    protected override Vector2 Position { get; set; } = new(0,0);
     public BlueCircle(BallManager ballmng) : base(ballmng)
     {
         ballManager = ballmng;

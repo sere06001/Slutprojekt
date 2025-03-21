@@ -2,7 +2,6 @@
 namespace Slutprojekt;
 public class GreenBrick : BaseBrick
 {
-    protected override Vector2 Position { get; set; } = new(0,0);
     public GreenBrick(BallManager ballmng) : base(ballmng)
     {
         ballManager = ballmng;
