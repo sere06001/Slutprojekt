@@ -1,10 +1,10 @@
 namespace Slutprojekt;
-public abstract class LevelSnake : LevelBase
+public class LevelSnake : LevelBase
 {
     protected override Vector2 Position { get; set; }
     public void SnakePlacer()
     {
-        
+
     }
     public override void Draw()
     {

@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class GameManager
 {
-    private BallManager ballManager = new();
+    public BallManager ballManager = new();
 
     public GameManager()
     {

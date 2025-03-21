@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class BallManager
 {
-    private readonly List<Ball> balls = [];
+    public readonly List<Ball> balls = [];
 
     public BallManager()
     {
