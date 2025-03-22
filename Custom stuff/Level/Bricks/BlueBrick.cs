@@ -2,7 +2,7 @@
 namespace Slutprojekt;
 public class BlueBrick : BaseBrick
 {
-    public BlueBrick(BallManager ballmng) : base(ballmng)
+    public BlueBrick(BallManager ballmng, float rotation) : base(ballmng, rotation)
     {
         ScoreOnHit = 200;
 

@@ -9,7 +9,7 @@ public class BrickPlacer
         this.ballManager = ballManager;
     }
 
-    public void PlaceBrick(Vector2 position)
+    public void PlaceBrick(Vector2 position, float rotation)
     {
         int greenCount = bricks.Count(b => b is GreenBrick);
         int purpleCount = bricks.Count(b => b is PurpleBrick);
@@ -27,10 +27,10 @@ public class BrickPlacer
 
         BaseBrick brick = color switch
         {
-            "red" => new RedBrick(ballManager) { Position = position },
-            "blue" => new BlueBrick(ballManager) { Position = position },
-            "green" => new GreenBrick(ballManager) { Position = position },
-            "purple" => new PurpleBrick(ballManager) { Position = position },
+            "red" => new RedBrick(ballManager, rotation) { Position = position},
+            "blue" => new BlueBrick(ballManager, rotation) { Position = position },
+            "green" => new GreenBrick(ballManager, rotation) { Position = position },
+            "purple" => new PurpleBrick(ballManager, rotation) { Position = position },
             _ => throw new ArgumentException($"Unsupported brick color: {color}")
         };
 

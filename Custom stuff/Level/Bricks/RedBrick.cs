@@ -2,7 +2,7 @@
 namespace Slutprojekt;
 public class RedBrick : BaseBrick
 {
-    public RedBrick(BallManager ballmng) : base(ballmng)
+    public RedBrick(BallManager ballmng, float rotation) : base(ballmng, rotation)
     {
         ScoreOnHit = 100;
 

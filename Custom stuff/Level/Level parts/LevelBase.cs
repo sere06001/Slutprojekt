@@ -16,7 +16,7 @@ public abstract class LevelBase
     {
         if (usebricks)
         {
-            brickPlacer.PlaceBrick(new Vector2(x, y));
+            brickPlacer.PlaceBrick(new Vector2(x, y), 0);
         }
         else
         {

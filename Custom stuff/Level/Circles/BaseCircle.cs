@@ -10,6 +10,7 @@ public abstract class BaseCircle
     protected Texture2D TextureNotHit { get; set; }
     protected bool Hit { get; set; }
     public virtual Vector2 Position { get; set; }
+    public virtual float Rotation { get; set; }
     public Vector2 Origin => new Vector2(TextureCurrent.Width / 4, TextureCurrent.Height / 4);
     protected BallManager ballManager { get; set; }
 

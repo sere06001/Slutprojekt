@@ -25,4 +25,17 @@ public class LevelCircle : LevelBase
             UseBrickOrCircle(x, y, usebricks);
         }
     }
+    public override void UseBrickOrCircle(float x, float y, bool usebricks)
+    {
+        if (usebricks)
+        {
+            float angle = MathF.Atan2(Position.Y - y, Position.X - x);
+            float rotation = angle + MathHelper.PiOver2;
+            brickPlacer.PlaceBrick(new Vector2(x, y), rotation);
+        }
+        else
+        {
+            circlePlacer.PlaceCircle(new Vector2(x, y));
+        }
+    }
 }

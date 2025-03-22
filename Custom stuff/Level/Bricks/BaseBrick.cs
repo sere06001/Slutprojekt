@@ -11,11 +11,13 @@ public abstract class BaseBrick
     protected Texture2D TextureNotHit { get; set; }
     protected bool Hit { get; set; }
     public virtual Vector2 Position { get; set; }
+    public virtual float Rotation { get; set; }
     protected BallManager ballManager { get; set; }
 
-    public BaseBrick(BallManager ballmngr)
+    public BaseBrick(BallManager ballmngr, float rotation)
     {
         ballManager = ballmngr;
+        Rotation = rotation;
     }
 
     public void CheckCollisions()
@@ -102,6 +104,6 @@ public abstract class BaseBrick
 
     public void Draw()
     {
-        Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, 0f, new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
+        Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, Rotation, new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
     }
 }
