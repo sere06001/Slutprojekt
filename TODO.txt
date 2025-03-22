@@ -1,2 +1,3 @@
-1. Give xp if circle/brick is hit.
-2. Make level generator combine level parts to make a level.
+1. Fix rotated brick hitboxes, when a brick is rotated the hitbox is not rotated with it but stays in place.
+2. Give xp if circle/brick is hit.
+3. Make level generator combine level parts to make a level.
