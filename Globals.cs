@@ -10,6 +10,15 @@ public static class Globals
     public static Texture2D BallPurple { get; private set; }
     public static Texture2D BallPurpleHit { get; private set; }
 
+    public static Texture2D BrickRed { get; private set; }
+    public static Texture2D BrickRedHit { get; private set; }
+    public static Texture2D BrickBlue { get; private set; }
+    public static Texture2D BrickBlueHit { get; private set; }
+    public static Texture2D BrickGreen { get; private set; }
+    public static Texture2D BrickGreenHit { get; private set; }
+    public static Texture2D BrickPurple { get; private set; }
+    public static Texture2D BrickPurpleHit { get; private set; }
+
     public static float TotalSeconds { get; set; }
     public static ContentManager Content { get; set; }
     public static SpriteBatch SpriteBatch { get; set; }
@@ -26,6 +35,15 @@ public static class Globals
         BallGreenHit = Content.Load<Texture2D>("ballgreenhit");
         BallPurple = Content.Load<Texture2D>("ballpurple");
         BallPurpleHit = Content.Load<Texture2D>("ballpurplehit");
+
+        BrickRed = Content.Load<Texture2D>("brickred");
+        BrickRedHit = Content.Load<Texture2D>("brickredhit");
+        BrickBlue = Content.Load<Texture2D>("brickblue");
+        BrickBlueHit = Content.Load<Texture2D>("brickbluehit");
+        BrickGreen = Content.Load<Texture2D>("brickgreen");
+        BrickGreenHit = Content.Load<Texture2D>("brickgreenhit");
+        BrickPurple = Content.Load<Texture2D>("brickpurple");
+        BrickPurpleHit = Content.Load<Texture2D>("brickpurplehit");
     }
 
     public static void Update(GameTime gt)

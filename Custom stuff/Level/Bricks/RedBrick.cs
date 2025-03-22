@@ -8,8 +8,8 @@ public class RedBrick : BaseBrick
 
         ballManager = ballmng;
 
-        TextureCurrent = Globals.BallRed;
-        TextureHit = Globals.BallRedHit;
-        TextureNotHit = Globals.BallRed;
+        TextureCurrent = Globals.BrickRed;
+        TextureHit = Globals.BrickRedHit;
+        TextureNotHit = Globals.BrickRed;
     }
 }

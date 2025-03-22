@@ -3,7 +3,7 @@ public abstract class BaseBrick
 {
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
-    public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
+    public virtual int ScoreMultiplierDuration { get; protected set; } // In amount of balls shot
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
@@ -33,17 +33,15 @@ public abstract class BaseBrick
     private bool CheckBallCollision(Ball ball)
     {
         Rectangle brickBounds = new Rectangle(
-            (int)(Position.X - Width/2),
-            (int)(Position.Y - Height/2),
+            (int)(Position.X - Width / 2),
+            (int)(Position.Y - Height / 2),
             Width,
             Height
         );
 
-        // Find closest point on rectangle to circle
         float closestX = MathHelper.Clamp(ball.Position.X, brickBounds.Left, brickBounds.Right);
         float closestY = MathHelper.Clamp(ball.Position.Y, brickBounds.Top, brickBounds.Bottom);
 
-        // Calculate distance between circle center and closest point
         float distanceX = ball.Position.X - closestX;
         float distanceY = ball.Position.Y - closestY;
         float distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
@@ -54,43 +52,56 @@ public abstract class BaseBrick
     private void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = CalculateCollisionNormal(ball);
-        
-        // Reflect ball velocity
+
         ball.Velocity = Vector2.Reflect(ball.Velocity, normal) * ball.Restitution;
         ball.Direction = Vector2.Normalize(ball.Velocity);
-        
-        // Move ball out of collision
-        float overlap = ball.Origin.X - Vector2.Distance(ball.Position, Position);
+
+        Vector2 closestPoint = GetClosestPointOnBrick(ball);
+        float overlap = ball.Origin.X - Vector2.Distance(ball.Position, closestPoint);
         ball.Position += normal * overlap;
     }
 
     private Vector2 CalculateCollisionNormal(Ball ball)
     {
-        Vector2 difference = ball.Position - Position;
-        
-        // Determine which side of the brick was hit
-        if (Math.Abs(difference.X) > Math.Abs(difference.Y))
-        {
-            return new Vector2(Math.Sign(difference.X), 0);
-        }
-        return new Vector2(0, Math.Sign(difference.Y));
+        Rectangle brickBounds = new Rectangle(
+            (int)(Position.X - Width / 2),
+            (int)(Position.Y - Height / 2),
+            Width,
+            Height
+        );
+
+        float closestX = MathHelper.Clamp(ball.Position.X, brickBounds.Left, brickBounds.Right);
+        float closestY = MathHelper.Clamp(ball.Position.Y, brickBounds.Top, brickBounds.Bottom);
+
+        Vector2 closestPoint = new Vector2(closestX, closestY);
+        Vector2 normal = Vector2.Normalize(ball.Position - closestPoint);
+
+        return normal;
+    }
+
+    private Vector2 GetClosestPointOnBrick(Ball ball)
+    {
+        Rectangle brickBounds = new Rectangle(
+            (int)(Position.X - Width / 2),
+            (int)(Position.Y - Height / 2),
+            Width,
+            Height
+        );
+
+        float closestX = MathHelper.Clamp(ball.Position.X, brickBounds.Left, brickBounds.Right);
+        float closestY = MathHelper.Clamp(ball.Position.Y, brickBounds.Top, brickBounds.Bottom);
+
+        return new Vector2(closestX, closestY);
     }
 
     public void Update()
     {
         CheckCollisions();
-        if (Hit)
-        {
-            TextureCurrent = TextureHit;
-        }
-        else
-        {
-            TextureCurrent = TextureNotHit;
-        }
+        TextureCurrent = Hit ? TextureHit : TextureNotHit;
     }
 
     public void Draw()
     {
-        Globals.SpriteBatch.Draw(TextureCurrent, Position, Color.White);
+        Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, 0f, new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
     }
 }

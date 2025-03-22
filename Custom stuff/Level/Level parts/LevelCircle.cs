@@ -5,16 +5,16 @@ public class LevelCircle : LevelBase
     private readonly float radius;
     private readonly int circleCount;
 
-    public LevelCircle(BallManager ballmanager, float radius, int circleCount, float centerX, float centerY) 
-        : base(ballmanager)
+    public LevelCircle(BallManager ballmanager, float radius, int circleCount, float centerX, float centerY, bool useBricks) 
+        : base(ballmanager, useBricks)
     {
         this.radius = radius;
         this.circleCount = circleCount;
         Position = new Vector2(centerX, centerY);
-        CreateCirclePattern();
+        CreateCirclePattern(useBricks);
     }
 
-    private void CreateCirclePattern()
+    private void CreateCirclePattern(bool usebricks)
     {
         for (int i = 0; i < circleCount; i++)
         {
@@ -22,8 +22,7 @@ public class LevelCircle : LevelBase
             
             float x = Position.X + radius * (float)Math.Cos(angle);
             float y = Position.Y + radius * (float)Math.Sin(angle);
-            
-            circlePlacer.PlaceCircle(new Vector2(x, y));
+            UseBrickOrCircle(x, y, usebricks);
         }
     }
 }

@@ -70,3 +70,11 @@ C:\Users\Kreedy\Documents\GitHub\Slutprojekt\obj\Debug\net8.0-windows\refint\Slu
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\obj\Debug\net8.0-windows\Slutprojekt.pdb
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\obj\Debug\net8.0-windows\Slutprojekt.genruntimeconfig.cache
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\obj\Debug\net8.0-windows\ref\Slutprojekt.dll
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickblue.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickbluehit.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickgreen.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickgreenhit.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurple.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurplehit.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickred.xnb
+C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickredhit.xnb

@@ -10,8 +10,8 @@ public class PurpleBrick : BaseBrick
 
         ballManager = ballmng;
 
-        TextureCurrent = Globals.BallPurple;
-        TextureHit = Globals.BallPurpleHit;
-        TextureNotHit = Globals.BallPurple;
+        TextureCurrent = Globals.BrickPurple;
+        TextureHit = Globals.BrickPurpleHit;
+        TextureNotHit = Globals.BrickPurple;
     }
 }

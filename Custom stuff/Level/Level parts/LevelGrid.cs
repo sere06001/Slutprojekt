@@ -6,8 +6,8 @@ public class LevelGrid : LevelBase
     private readonly int columns;
     private readonly float spacing;
 
-    public LevelGrid(BallManager ballManager, int rows, int columns, float spacing, float centerX, float centerY)
-        : base(ballManager)
+    public LevelGrid(BallManager ballManager, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks)
+        : base(ballManager, useBricks)
     {
         this.rows = rows;
         this.columns = columns;
@@ -15,10 +15,10 @@ public class LevelGrid : LevelBase
 
         Position = new Vector2(centerX, centerY);
 
-        CreateGridPattern();
+        CreateGridPattern(useBricks);
     }
 
-    private void CreateGridPattern()
+    private void CreateGridPattern(bool usebricks)
     {
         for (int row = 0; row < rows; row++)
         {
@@ -27,8 +27,7 @@ public class LevelGrid : LevelBase
                 float x = Position.X - (columns - 1) * spacing / 2 + col * spacing;
                 float y = Position.Y - (rows - 1) * spacing / 2 + row * spacing;
 
-                // Place a circle at the calculated position
-                circlePlacer.PlaceCircle(new Vector2(x, y));
+                UseBrickOrCircle(x, y, usebricks);
             }
         }
     }

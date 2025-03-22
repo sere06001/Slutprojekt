@@ -8,8 +8,8 @@ public class GreenBrick : BaseBrick
 
         ballManager = ballmng;
 
-        TextureCurrent = Globals.BallGreen;
-        TextureHit = Globals.BallGreenHit;
-        TextureNotHit = Globals.BallGreen;
+        TextureCurrent = Globals.BrickGreen;
+        TextureHit = Globals.BrickGreenHit;
+        TextureNotHit = Globals.BrickGreen;
     }
 }
