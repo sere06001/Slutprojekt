@@ -2,8 +2,34 @@ namespace Slutprojekt;
 public class LevelGrid : LevelBase
 {
     protected override Vector2 Position { get; set; }
-    public LevelGrid (BallManager ballmanager) : base(ballmanager)
+    private readonly int rows;
+    private readonly int columns;
+    private readonly float spacing;
+
+    public LevelGrid(BallManager ballManager, int rows, int columns, float spacing, float centerX, float centerY)
+        : base(ballManager)
     {
-        
+        this.rows = rows;
+        this.columns = columns;
+        this.spacing = spacing;
+
+        Position = new Vector2(centerX, centerY);
+
+        CreateGridPattern();
+    }
+
+    private void CreateGridPattern()
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < columns; col++)
+            {
+                float x = Position.X - (columns - 1) * spacing / 2 + col * spacing;
+                float y = Position.Y - (rows - 1) * spacing / 2 + row * spacing;
+
+                // Place a circle at the calculated position
+                circlePlacer.PlaceCircle(new Vector2(x, y));
+            }
+        }
     }
 }
