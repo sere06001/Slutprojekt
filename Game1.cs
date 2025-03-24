@@ -19,6 +19,7 @@ public class Game1 : Game
         _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
         _graphics.IsFullScreen = true;
         _graphics.ApplyChanges();
+
         Globals.Bounds = new(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
         Globals.Content = Content;
         Globals.LoadContent();
@@ -47,7 +48,7 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
 
         _spriteBatch.Begin();
         gameManager.Draw();

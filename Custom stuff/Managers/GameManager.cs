@@ -7,7 +7,7 @@ public class GameManager
     public GameManager()
     {
         //currentLevel = new LevelCircle(ballManager, 500f, 50, Globals.Bounds.X/2, Globals.Bounds.Y/2, true); //Just for testing
-        currentLevel = new LevelGrid(ballManager, 5, 5, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, true, -45); //Just for testing
+        currentLevel = new LevelGrid(ballManager, 5, 5, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, false); //Just for testing
     }
 
     public void Update()

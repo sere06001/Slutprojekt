@@ -86,3 +86,4 @@ C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurpl
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurplehit.xnb
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickred.xnb
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickredhit.xnb
+c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\font.xnb

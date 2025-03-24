@@ -19,6 +19,8 @@ public static class Globals
     public static Texture2D BrickPurple { get; private set; }
     public static Texture2D BrickPurpleHit { get; private set; }
 
+
+    public static SpriteFont Font { get; set; }
     public static float TotalSeconds { get; set; }
     public static ContentManager Content { get; set; }
     public static SpriteBatch SpriteBatch { get; set; }
@@ -44,6 +46,8 @@ public static class Globals
         BrickGreenHit = Content.Load<Texture2D>("brickgreenhit");
         BrickPurple = Content.Load<Texture2D>("brickpurple");
         BrickPurpleHit = Content.Load<Texture2D>("brickpurplehit");
+
+        Font = Content.Load<SpriteFont>("font");
     }
 
     public static void Update(GameTime gt)

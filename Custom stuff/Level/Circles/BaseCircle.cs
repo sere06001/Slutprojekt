@@ -4,6 +4,9 @@ public abstract class BaseCircle
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
+    private float scoreDisplayTimer = 0f;
+    private const float SCORE_DISPLAY_DURATION = 3f;
+    private bool showScore = false;
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
@@ -40,6 +43,20 @@ public abstract class BaseCircle
 
         float overlap = ball.Origin.X + Radius - Vector2.Distance(ball.Position, Position + Origin);
         ball.Position += normal * overlap;
+        
+        showScore = true;
+        scoreDisplayTimer = SCORE_DISPLAY_DURATION;
+    }
+    public void DrawScore()
+    {
+        if (showScore && scoreDisplayTimer > 0)
+        {
+            string score = ScoreOnHit.ToString();
+            
+            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2 -10); // Offset 50 pixels down from circle center
+            Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0); // Center text horizontally
+            Globals.SpriteBatch.DrawString(Globals.Font, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
+        }
     }
 
     public void Update()
@@ -53,10 +70,23 @@ public abstract class BaseCircle
         {
             TextureCurrent = TextureNotHit;
         }
+
+        if (showScore)
+        {
+            scoreDisplayTimer -= Globals.TotalSeconds;
+            if (scoreDisplayTimer <= 0)
+            {
+                showScore = false;
+            }
+        }
     }
 
     public void Draw()
     {
         Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, 0f, Origin, 1f, SpriteEffects.None, 0f);
+        if (showScore)
+        {
+            DrawScore();
+        }
     }
 }
