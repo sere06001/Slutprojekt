@@ -78,3 +78,11 @@ C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\br
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurplehit.xnb
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickred.xnb
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\brickredhit.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickblue.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickbluehit.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickgreen.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickgreenhit.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurple.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickpurplehit.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickred.xnb
+C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickredhit.xnb

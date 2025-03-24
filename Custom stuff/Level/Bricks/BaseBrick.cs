@@ -34,6 +34,8 @@ public abstract class BaseBrick
 
     private bool CheckBallCollision(Ball ball)
     {
+        Vector2 rotatedBallPos = RotatePoint(ball.Position, Position, -Rotation);
+
         Rectangle brickBounds = new Rectangle(
             (int)(Position.X - Width / 2),
             (int)(Position.Y - Height / 2),
@@ -41,16 +43,35 @@ public abstract class BaseBrick
             Height
         );
 
-        float closestX = MathHelper.Clamp(ball.Position.X, brickBounds.Left, brickBounds.Right);
-        float closestY = MathHelper.Clamp(ball.Position.Y, brickBounds.Top, brickBounds.Bottom);
+        float closestX = MathHelper.Clamp(rotatedBallPos.X, brickBounds.Left, brickBounds.Right);
+        float closestY = MathHelper.Clamp(rotatedBallPos.Y, brickBounds.Top, brickBounds.Bottom);
 
-        float distanceX = ball.Position.X - closestX;
-        float distanceY = ball.Position.Y - closestY;
+        float distanceX = rotatedBallPos.X - closestX;
+        float distanceY = rotatedBallPos.Y - closestY;
         float distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
 
         return distanceSquared < (ball.Origin.X * ball.Origin.X);
     }
 
+    private Vector2 CalculateCollisionNormal(Ball ball)
+    {
+        Vector2 rotatedBallPos = RotatePoint(ball.Position, Position, -Rotation);
+
+        Rectangle brickBounds = new Rectangle(
+            (int)(Position.X - Width / 2),
+            (int)(Position.Y - Height / 2),
+            Width,
+            Height
+        );
+
+        float closestX = MathHelper.Clamp(rotatedBallPos.X, brickBounds.Left, brickBounds.Right);
+        float closestY = MathHelper.Clamp(rotatedBallPos.Y, brickBounds.Top, brickBounds.Bottom);
+
+        Vector2 closestPoint = new Vector2(closestX, closestY);
+        Vector2 normal = Vector2.Normalize(rotatedBallPos - closestPoint);
+        
+        return RotateVector(normal, Rotation);
+    }
     private void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = CalculateCollisionNormal(ball);
@@ -63,26 +84,10 @@ public abstract class BaseBrick
         ball.Position += normal * overlap;
     }
 
-    private Vector2 CalculateCollisionNormal(Ball ball)
-    {
-        Rectangle brickBounds = new Rectangle(
-            (int)(Position.X - Width / 2),
-            (int)(Position.Y - Height / 2),
-            Width,
-            Height
-        );
-
-        float closestX = MathHelper.Clamp(ball.Position.X, brickBounds.Left, brickBounds.Right);
-        float closestY = MathHelper.Clamp(ball.Position.Y, brickBounds.Top, brickBounds.Bottom);
-
-        Vector2 closestPoint = new Vector2(closestX, closestY);
-        Vector2 normal = Vector2.Normalize(ball.Position - closestPoint);
-
-        return normal;
-    }
-
     private Vector2 GetClosestPointOnBrick(Ball ball)
     {
+        Vector2 rotatedBallPos = RotatePoint(ball.Position, Position, -Rotation);
+
         Rectangle brickBounds = new Rectangle(
             (int)(Position.X - Width / 2),
             (int)(Position.Y - Height / 2),
@@ -90,10 +95,30 @@ public abstract class BaseBrick
             Height
         );
 
-        float closestX = MathHelper.Clamp(ball.Position.X, brickBounds.Left, brickBounds.Right);
-        float closestY = MathHelper.Clamp(ball.Position.Y, brickBounds.Top, brickBounds.Bottom);
+        float closestX = MathHelper.Clamp(rotatedBallPos.X, brickBounds.Left, brickBounds.Right);
+        float closestY = MathHelper.Clamp(rotatedBallPos.Y, brickBounds.Top, brickBounds.Bottom);
 
-        return new Vector2(closestX, closestY);
+        Vector2 closestPoint = new Vector2(closestX, closestY);
+        // Rotate the point back to world space
+        return RotatePoint(closestPoint, Position, Rotation);
+    }
+
+    private Vector2 RotatePoint(Vector2 point, Vector2 origin, float angle)
+    {
+        float translatedX = point.X - origin.X;
+        float translatedY = point.Y - origin.Y;
+
+        float rotatedX = translatedX * MathF.Cos(angle) - translatedY * MathF.Sin(angle);
+        float rotatedY = translatedX * MathF.Sin(angle) + translatedY * MathF.Cos(angle);
+
+        return new Vector2(rotatedX + origin.X, rotatedY + origin.Y);
+    }
+
+    private Vector2 RotateVector(Vector2 vector, float angle)
+    {
+        float rotatedX = vector.X * MathF.Cos(angle) - vector.Y * MathF.Sin(angle);
+        float rotatedY = vector.X * MathF.Sin(angle) + vector.Y * MathF.Cos(angle);
+        return new Vector2(rotatedX, rotatedY);
     }
 
     public void Update()
