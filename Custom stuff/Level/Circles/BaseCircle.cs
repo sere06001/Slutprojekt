@@ -53,8 +53,8 @@ public abstract class BaseCircle
         {
             string score = ScoreOnHit.ToString();
             
-            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2 -10); // Offset 50 pixels down from circle center
-            Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0); // Center text horizontally
+            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2 -10);
+            Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0);
             Globals.SpriteBatch.DrawString(Globals.Font, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }
     }
