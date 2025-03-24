@@ -7,6 +7,7 @@ public abstract class BaseBrick
     private float scoreDisplayTimer = 0f;
     private const float SCORE_DISPLAY_DURATION = 3f;
     private bool showScore = false;
+    private bool hasShownScore = false;
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
