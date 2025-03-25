@@ -17,10 +17,10 @@ public class CirclePlacer
         int roll = Globals.Random.Next(1, 21); //Roll 1-20
         string color = roll switch
         {
-            <= 4 => "blue",                         // 4/20
-            <= 6 when purpleCount < 3 => "purple",  // 2/20 chance, only if less than 3 purple circles
-            <= 7 when greenCount < 2 => "green",    // 1/20 chance, only if less than 2 green circles
-            _ => "red"                              // Remainder
+            <= 4 => "blue",                         //4/20
+            <= 6 when purpleCount < 3 => "purple",  //2/20 chance, only if less than 3 purple circles
+            <= 7 when greenCount < 2 => "green",    //1/20 chance, only if less than 2 green circles
+            _ => "red"                              //Remainder
         };
 
         if (color == null) color = "red";
