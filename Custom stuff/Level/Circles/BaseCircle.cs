@@ -33,9 +33,11 @@ public abstract class BaseCircle
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
                 ResolveBallCollision(ball);
-                Hit = true;
-
-                secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                if (!Hit)
+                {
+                    Hit = true;
+                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                }
             }
         }
     }
@@ -50,8 +52,11 @@ public abstract class BaseCircle
         float overlap = ball.Origin.X + Radius - Vector2.Distance(ball.Position, Position + Origin);
         ball.Position += normal * overlap;
 
-        showScore = true;
-        scoreDisplayTimer = ScoreDisplayDurationSeconds;
+        if (!Hit)
+        {
+            showScore = true;
+            scoreDisplayTimer = ScoreDisplayDurationSeconds;
+        }
     }
 
     public void DrawScore()
@@ -79,19 +84,19 @@ public abstract class BaseCircle
                 IsMarkedForRemoval = true;
                 return;
             }
+
+            if (showScore)
+            {
+                scoreDisplayTimer -= Globals.TotalSeconds;
+                if (scoreDisplayTimer <= 0)
+                {
+                    showScore = false;
+                    hasShownScore = true;
+                }
+            }
         }
 
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
-
-        if (showScore && !hasShownScore)
-        {
-            scoreDisplayTimer -= Globals.TotalSeconds;
-            if (scoreDisplayTimer <= 0)
-            {
-                showScore = false;
-                hasShownScore = true;
-            }
-        }
     }
 
     public void Draw()

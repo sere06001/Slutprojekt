@@ -34,9 +34,13 @@ public abstract class BaseBrick
             if (CheckBallCollision(ball))
             {
                 ResolveBallCollision(ball);
-                Hit = true;
-
-                secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                if (!Hit)
+                {
+                    Hit = true;
+                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                    showScore = true;
+                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
+                }
             }
         }
     }
@@ -92,9 +96,6 @@ public abstract class BaseBrick
         Vector2 closestPoint = GetClosestPointOnBrick(ball);
         float overlap = ball.Origin.X - Vector2.Distance(ball.Position, closestPoint);
         ball.Position += normal * overlap;
-
-        showScore = true;
-        scoreDisplayTimer = ScoreDisplayDurationSeconds;
     }
 
     private Vector2 GetClosestPointOnBrick(Ball ball)
@@ -141,25 +142,24 @@ public abstract class BaseBrick
         if (Hit)
         {
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
-
             if (secondsBeforeRemovalTimer <= 0)
             {
                 IsMarkedForRemoval = true;
                 return;
             }
+
+            if (showScore)
+            {
+                scoreDisplayTimer -= Globals.TotalSeconds;
+                if (scoreDisplayTimer <= 0)
+                {
+                    showScore = false;
+                    hasShownScore = true;
+                }
+            }
         }
 
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
-
-        if (showScore && !hasShownScore)
-        {
-            scoreDisplayTimer -= Globals.TotalSeconds;
-            if (scoreDisplayTimer <= 0)
-            {
-                showScore = false;
-                hasShownScore = true;
-            }
-        }
     }
 
     public void Draw()
