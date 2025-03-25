@@ -5,7 +5,6 @@ public class PurpleCircle : BaseCircle
     {
         ScoreOnHit = 1000;
         ScoreMultiplier = 2;
-        ScoreMultiplierDuration = 3;
 
         ballManager = ballmng;
 

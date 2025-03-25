@@ -6,7 +6,6 @@ public class PurpleBrick : BaseBrick
     {
         ScoreOnHit = 1000;
         ScoreMultiplier = 2;
-        ScoreMultiplierDuration = 3;
 
         ballManager = ballmng;
 

@@ -3,11 +3,12 @@ public abstract class BaseCircle
 {
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
-    public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
     private float scoreDisplayTimer = 0f;
     private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
     private bool hasShownScore = false;
+    private float secondsBeforeRemovalTimer = 0f;
+    private float secondsBeforeRemoval = 5f;
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
@@ -17,6 +18,8 @@ public abstract class BaseCircle
     public virtual float Rotation { get; set; }
     public Vector2 Origin => new Vector2(TextureCurrent.Width / 4, TextureCurrent.Height / 4);
     protected BallManager ballManager { get; set; }
+
+    public bool IsMarkedForRemoval { get; private set; } = false;
 
     public BaseCircle(BallManager ballmngr)
     {
@@ -31,6 +34,8 @@ public abstract class BaseCircle
             {
                 ResolveBallCollision(ball);
                 Hit = true;
+
+                secondsBeforeRemovalTimer = secondsBeforeRemoval;
             }
         }
     }
@@ -44,17 +49,18 @@ public abstract class BaseCircle
 
         float overlap = ball.Origin.X + Radius - Vector2.Distance(ball.Position, Position + Origin);
         ball.Position += normal * overlap;
-        
+
         showScore = true;
         scoreDisplayTimer = ScoreDisplayDurationSeconds;
     }
+
     public void DrawScore()
     {
         if (showScore && scoreDisplayTimer > 0)
         {
             string score = ScoreOnHit.ToString();
-            
-            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2 -10);
+
+            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2 - 10);
             Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0);
             Globals.SpriteBatch.DrawString(Globals.Font, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }
@@ -63,6 +69,17 @@ public abstract class BaseCircle
     public void Update()
     {
         CheckCollisions();
+
+        if (Hit)
+        {
+            secondsBeforeRemovalTimer -= Globals.TotalSeconds;
+
+            if (secondsBeforeRemovalTimer <= 0)
+            {
+                IsMarkedForRemoval = true;
+                return;
+            }
+        }
 
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
 
@@ -79,7 +96,13 @@ public abstract class BaseCircle
 
     public void Draw()
     {
+        if (IsMarkedForRemoval)
+        {
+            return;
+        }
+
         Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, 0f, Origin, 1f, SpriteEffects.None, 0f);
+
         if (showScore && !hasShownScore)
         {
             DrawScore();

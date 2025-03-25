@@ -3,11 +3,12 @@ public abstract class BaseBrick
 {
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
-    public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
     private float scoreDisplayTimer = 0f;
     private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
     private bool hasShownScore = false;
+    private float secondsBeforeRemovalTimer = 0f;
+    private float secondsBeforeRemoval = 5f;
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
@@ -17,6 +18,8 @@ public abstract class BaseBrick
     public virtual Vector2 Position { get; set; }
     public virtual float Rotation { get; set; }
     protected BallManager ballManager { get; set; }
+
+    public bool IsMarkedForRemoval { get; private set; } = false;
 
     public BaseBrick(BallManager ballmngr, float rotation)
     {
@@ -32,6 +35,8 @@ public abstract class BaseBrick
             {
                 ResolveBallCollision(ball);
                 Hit = true;
+
+                secondsBeforeRemovalTimer = secondsBeforeRemoval;
             }
         }
     }
@@ -73,9 +78,10 @@ public abstract class BaseBrick
 
         Vector2 closestPoint = new Vector2(closestX, closestY);
         Vector2 normal = Vector2.Normalize(rotatedBallPos - closestPoint);
-        
+
         return RotateVector(normal, Rotation);
     }
+
     private void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = CalculateCollisionNormal(ball);
@@ -106,7 +112,7 @@ public abstract class BaseBrick
         float closestY = MathHelper.Clamp(rotatedBallPos.Y, brickBounds.Top, brickBounds.Bottom);
 
         Vector2 closestPoint = new Vector2(closestX, closestY);
-        // Rotate the point back to world space
+
         return RotatePoint(closestPoint, Position, Rotation);
     }
 
@@ -127,21 +133,22 @@ public abstract class BaseBrick
         float rotatedY = vector.X * MathF.Sin(angle) + vector.Y * MathF.Cos(angle);
         return new Vector2(rotatedX, rotatedY);
     }
-    public void DrawScore()
-    {
-        if (showScore && scoreDisplayTimer > 0)
-        {
-            string score = ScoreOnHit.ToString();
-            
-            Vector2 pos = Position + new Vector2(0, -TextureHit.Height * 2 -10);
-            Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0);
-            Globals.SpriteBatch.DrawString(Globals.Font, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
-        }
-    }
 
     public void Update()
     {
         CheckCollisions();
+
+        if (Hit)
+        {
+            secondsBeforeRemovalTimer -= Globals.TotalSeconds;
+
+            if (secondsBeforeRemovalTimer <= 0)
+            {
+                IsMarkedForRemoval = true;
+                return;
+            }
+        }
+
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
 
         if (showScore && !hasShownScore)
@@ -157,10 +164,28 @@ public abstract class BaseBrick
 
     public void Draw()
     {
+        if (IsMarkedForRemoval)
+        {
+            return;
+        }
+
         Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, Rotation, new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
+
         if (showScore && !hasShownScore)
         {
             DrawScore();
+        }
+    }
+
+    public void DrawScore()
+    {
+        if (showScore && scoreDisplayTimer > 0)
+        {
+            string score = ScoreOnHit.ToString();
+
+            Vector2 pos = Position + new Vector2(0, -TextureHit.Height * 2 - 10);
+            Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0);
+            Globals.SpriteBatch.DrawString(Globals.Font, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }
     }
 }
