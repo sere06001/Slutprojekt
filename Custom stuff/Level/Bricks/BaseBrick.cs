@@ -3,9 +3,9 @@ public abstract class BaseBrick
 {
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
-    public virtual int ScoreMultiplierDuration { get; protected set; } // In amount of balls shot
+    public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
     private float scoreDisplayTimer = 0f;
-    private const float SCORE_DISPLAY_DURATION = 3f;
+    private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
     private bool hasShownScore = false;
     public int Width => TextureCurrent.Width;
@@ -88,7 +88,7 @@ public abstract class BaseBrick
         ball.Position += normal * overlap;
 
         showScore = true;
-        scoreDisplayTimer = SCORE_DISPLAY_DURATION;
+        scoreDisplayTimer = ScoreDisplayDurationSeconds;
     }
 
     private Vector2 GetClosestPointOnBrick(Ball ball)
@@ -144,12 +144,13 @@ public abstract class BaseBrick
         CheckCollisions();
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
 
-        if (showScore)
+        if (showScore && !hasShownScore)
         {
             scoreDisplayTimer -= Globals.TotalSeconds;
             if (scoreDisplayTimer <= 0)
             {
                 showScore = false;
+                hasShownScore = true;
             }
         }
     }
@@ -157,7 +158,7 @@ public abstract class BaseBrick
     public void Draw()
     {
         Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, Rotation, new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
-        if (showScore)
+        if (showScore && !hasShownScore)
         {
             DrawScore();
         }

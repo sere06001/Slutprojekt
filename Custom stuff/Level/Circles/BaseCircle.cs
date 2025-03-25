@@ -5,8 +5,9 @@ public abstract class BaseCircle
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     public virtual int ScoreMultiplierDuration { get; protected set; } //In amount of balls shot
     private float scoreDisplayTimer = 0f;
-    private const float SCORE_DISPLAY_DURATION = 3f;
+    private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
+    private bool hasShownScore = false;
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
@@ -45,7 +46,7 @@ public abstract class BaseCircle
         ball.Position += normal * overlap;
         
         showScore = true;
-        scoreDisplayTimer = SCORE_DISPLAY_DURATION;
+        scoreDisplayTimer = ScoreDisplayDurationSeconds;
     }
     public void DrawScore()
     {
@@ -62,21 +63,16 @@ public abstract class BaseCircle
     public void Update()
     {
         CheckCollisions();
-        if (Hit)
-        {
-            TextureCurrent = TextureHit;
-        }
-        else
-        {
-            TextureCurrent = TextureNotHit;
-        }
 
-        if (showScore)
+        TextureCurrent = Hit ? TextureHit : TextureNotHit;
+
+        if (showScore && !hasShownScore)
         {
             scoreDisplayTimer -= Globals.TotalSeconds;
             if (scoreDisplayTimer <= 0)
             {
                 showScore = false;
+                hasShownScore = true;
             }
         }
     }
@@ -84,7 +80,7 @@ public abstract class BaseCircle
     public void Draw()
     {
         Globals.SpriteBatch.Draw(TextureCurrent, Position, null, Color.White, 0f, Origin, 1f, SpriteEffects.None, 0f);
-        if (showScore)
+        if (showScore && !hasShownScore)
         {
             DrawScore();
         }
