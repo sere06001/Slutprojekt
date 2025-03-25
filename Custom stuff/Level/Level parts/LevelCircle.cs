@@ -6,7 +6,7 @@ public class LevelCircle : LevelBase
     private int circleCount;
 
     public LevelCircle(BallManager ballmanager, float radius, int circleCount, float centerX, float centerY, bool useBricks) 
-        : base(ballmanager, useBricks)
+        : base(ballmanager)
     {
         this.radius = radius;
         this.circleCount = circleCount;

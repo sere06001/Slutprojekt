@@ -6,7 +6,7 @@ public abstract class LevelBase
     protected  BallManager ballManager;
     protected virtual Vector2 Position { get; set; }
 
-    protected LevelBase(BallManager ballManager, bool useBricks)
+    protected LevelBase(BallManager ballManager)
     {
         this.ballManager = ballManager;
         circlePlacer = new CirclePlacer(ballManager);
