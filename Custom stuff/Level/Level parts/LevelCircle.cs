@@ -2,8 +2,8 @@ namespace Slutprojekt;
 public class LevelCircle : LevelBase
 {
     protected override Vector2 Position { get; set; }
-    private readonly float radius;
-    private readonly int circleCount;
+    private float radius;
+    private int circleCount;
 
     public LevelCircle(BallManager ballmanager, float radius, int circleCount, float centerX, float centerY, bool useBricks) 
         : base(ballmanager, useBricks)

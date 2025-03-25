@@ -8,8 +8,8 @@ public class Ball
     public Vector2 Velocity { get; set; }
     private int Speed { get; set; } = 200; //Initial speed in pixels per second, change this when cannon is added
     public Color Color { get; set; } = Color.White;
-    private readonly float gravity = 9.82f * 100; //Scaled up for pixels
-    public readonly float Restitution = 0.8f; //Energy loss on bounce
+    private float gravity = 9.82f * 100; //Scaled up for pixels
+    public float Restitution = 0.8f; //Energy loss on bounce
 
     public Ball()
     {

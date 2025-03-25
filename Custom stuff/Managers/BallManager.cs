@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class BallManager
 {
-    public readonly List<Ball> balls = [];
+    public List<Ball> balls = [];
     private void CheckCollisions()
     {
         for (int i = 0; i < balls.Count - 1; i++)

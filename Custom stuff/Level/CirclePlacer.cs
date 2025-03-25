@@ -1,8 +1,8 @@
 namespace Slutprojekt;
 public class CirclePlacer
 {
-    private readonly List<BaseCircle> circles = [];
-    private readonly BallManager ballManager;
+    private List<BaseCircle> circles = [];
+    private BallManager ballManager;
 
     public CirclePlacer(BallManager ballManager)
     {

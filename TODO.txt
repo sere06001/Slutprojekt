@@ -1,3 +1,2 @@
-Fix texture showing score after being hit
 1. Give xp if circle/brick is hit.
 2. Make level generator combine level parts to make a level.

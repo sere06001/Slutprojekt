@@ -1,9 +1,9 @@
 namespace Slutprojekt;
 public abstract class LevelBase
 {
-    protected readonly CirclePlacer circlePlacer;
-    protected readonly BrickPlacer brickPlacer;
-    protected readonly BallManager ballManager;
+    protected  CirclePlacer circlePlacer;
+    protected  BrickPlacer brickPlacer;
+    protected  BallManager ballManager;
     protected virtual Vector2 Position { get; set; }
 
     protected LevelBase(BallManager ballManager, bool useBricks)

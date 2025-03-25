@@ -1,8 +1,8 @@
 namespace Slutprojekt;
 public class BrickPlacer
 {
-    private readonly List<BaseBrick> bricks = new();
-    private readonly BallManager ballManager;
+    private List<BaseBrick> bricks = new();
+    private BallManager ballManager;
 
     public BrickPlacer(BallManager ballManager)
     {

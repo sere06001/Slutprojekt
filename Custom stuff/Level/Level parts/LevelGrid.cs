@@ -2,10 +2,10 @@ namespace Slutprojekt;
 public class LevelGrid : LevelBase
 {
     protected override Vector2 Position { get; set; }
-    private readonly int rows;
-    private readonly int columns;
-    private readonly float spacing;
-    private readonly float rotation; // Rotation of the entire grid (stored in radians)
+    private int rows;
+    private int columns;
+    private float spacing;
+    private float rotation; //Rotation of the entire grid (stored in radians)
 
     public LevelGrid(BallManager ballManager, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks, float rotationDegrees = 0f)
         : base(ballManager, useBricks)
