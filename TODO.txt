@@ -1,4 +1,4 @@
-Try to improve brick hitbox
-
 1. Give xp if circle/brick is hit.
 2. Make level generator combine level parts to make a level.
+
+X. Try to improve brick hitbox
