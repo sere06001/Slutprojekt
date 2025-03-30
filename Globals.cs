@@ -19,6 +19,8 @@ public static class Globals
     public static Texture2D BrickPurple { get; private set; }
     public static Texture2D BrickPurpleHit { get; private set; }
 
+    public static Texture2D Pixel { get; set; }
+
 
     public static SpriteFont Font { get; set; }
     public static float TotalSeconds { get; set; }

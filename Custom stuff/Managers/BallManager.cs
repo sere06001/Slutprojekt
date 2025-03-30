@@ -2,6 +2,27 @@ namespace Slutprojekt;
 public class BallManager
 {
     public List<Ball> balls = [];
+    private void DebugUI()
+    {
+        Vector2 pos = new(200, 200);
+        Globals.SpriteBatch.DrawString(Globals.Font, $"Ball list count: {balls.Count}", pos, Color.White);
+    }
+    private void DrawKillZone()
+    {
+        Rectangle killBox = new Rectangle(
+            0,
+            (int)(Globals.Bounds.Y * 0.9f),
+            Globals.Bounds.X,
+            (int)(Globals.Bounds.Y * 0.1f)
+        );
+        Color killZoneColor = new Color(Color.Red, 0.3f);
+        Globals.SpriteBatch.Draw(Globals.Pixel, killBox, killZoneColor);
+    }
+    private void RemoveBallAtBottom()
+    {
+        float restrictionCoords = Globals.Bounds.Y * 0.9f;
+        balls.RemoveAll(ball => ball.Position.Y + ball.texture.Height > restrictionCoords);
+    }
     private void CheckCollisions()
     {
         for (int i = 0; i < balls.Count - 1; i++)
@@ -48,7 +69,8 @@ public class BallManager
 
     public void Update()
     {
-        foreach (var ball in balls)
+        RemoveBallAtBottom();
+        foreach (Ball ball in balls)
         {
             ball.Update();
         }
@@ -57,9 +79,11 @@ public class BallManager
 
     public void Draw()
     {
-        foreach (var ball in balls)
+        DrawKillZone();
+        foreach (Ball ball in balls)
         {
             ball.Draw();
         }
+        DebugUI();
     }
 }

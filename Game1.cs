@@ -5,6 +5,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private GameManager gameManager;
+    public Texture2D pixel;
 
     public Game1()
     {
@@ -33,6 +34,10 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         Globals.SpriteBatch = _spriteBatch;
+        pixel = new Texture2D(GraphicsDevice,1,1);
+        Color[] colorData = { Color.White };
+        pixel.SetData(colorData);
+        Globals.Pixel = pixel;
     }
 
     protected override void Update(GameTime gameTime)
