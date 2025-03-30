@@ -7,14 +7,14 @@ public abstract class BaseBrick
     private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
     private bool hasShownScore = false;
-    private float secondsBeforeRemovalTimer = 0f;
+    public float secondsBeforeRemovalTimer = 0f;
     private float secondsBeforeRemoval = 5f;
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
     protected Texture2D TextureNotHit { get; set; }
-    protected bool Hit { get; set; }
+    public bool Hit { get; protected set; }
     public virtual Vector2 Position { get; set; }
     public virtual float Rotation { get; set; }
     protected BallManager ballManager { get; set; }

@@ -6,4 +6,8 @@ public class DuplicateBallPowerup : BasePowerup
         string description = "";
         return description;
     }
+    public override void UsePowerup()
+    {
+        ballManager.balls.Add(new());
+    }
 }

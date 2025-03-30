@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace Slutprojekt;
 public abstract class BaseCharacter
 {
@@ -7,6 +5,10 @@ public abstract class BaseCharacter
     protected virtual Texture Texture { get; set; }
     protected virtual Vector2 Position { get; set; }
     public abstract string Description();
+    public virtual void Update()
+    {
+        Powerup.Update();
+    }
     public virtual void Draw()
     {
 
