@@ -12,4 +12,5 @@ public class GreenBrick : BaseBrick
         TextureHit = Globals.BrickGreenHit;
         TextureNotHit = Globals.BrickGreen;
     }
+    
 }
