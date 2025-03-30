@@ -3,6 +3,7 @@ public class GameManager
 {
     public BallManager ballManager = new();
     private LevelBase currentLevel;
+    private MouseState previousMouseState;
 
     public GameManager()
     {
@@ -17,12 +18,16 @@ public class GameManager
         ballManager.Update();
         currentLevel.Update(); //Also for testing, change to LevelGenerator.Update() which will handle the main level system to keep GameManager clean
     
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed) //Temporary ball spawner for testing, make it spawn 1 ball per click for more fine tuned testing
+        MouseState currentMouseState = Mouse.GetState();
+        
+        if (currentMouseState.LeftButton == ButtonState.Pressed && //Spawns 1 ball on click
+            previousMouseState.LeftButton == ButtonState.Released)
         {
-            Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
-    
+            Vector2 mousePosition = currentMouseState.Position.ToVector2();
             ballManager.SpawnBall(mousePosition);
         }
+
+        previousMouseState = currentMouseState;
     }
 
     public void Draw()
