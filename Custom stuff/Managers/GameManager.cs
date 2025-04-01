@@ -18,7 +18,7 @@ public class GameManager
     {
         ballManager.Update();
         currentLevel.Update(); //Also for testing, change to LevelGenerator.Update() which will handle the main level system to keep GameManager clean
-        if (currentLevel.brickPlacer.bricks.Count <= 0)
+        if (currentLevel.brickPlacer.bricks.Count <= 0) //Just for testing
         {
             currentLevel = new LevelGrid(ballManager, 1, 15, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, true, 45);
         }
