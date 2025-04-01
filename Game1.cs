@@ -26,6 +26,7 @@ public class Game1 : Game
         Globals.LoadContent();
 
         gameManager = new();
+        gameManager.Init();
 
         base.Initialize();
     }

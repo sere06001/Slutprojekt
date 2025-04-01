@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ennpdap/UfU=",
+  "dgSpecHash": "sjdVvPvXD68=",
   "success": true,
-  "projectFilePath": "C:\\GA-Monogame\\GA_2DSpel\\Slutprojekt\\Slutprojekt.csproj",
+  "projectFilePath": "c:\\GA-Monogame\\GA_2DSpel\\Slutprojekt\\Slutprojekt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sere06001\\.nuget\\packages\\microsoft.netcore.app\\2.1.30\\microsoft.netcore.app.2.1.30.nupkg.sha512",
     "C:\\Users\\sere06001\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.30\\microsoft.netcore.dotnetapphost.2.1.30.nupkg.sha512",
