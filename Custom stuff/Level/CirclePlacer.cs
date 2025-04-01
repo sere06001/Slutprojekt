@@ -8,6 +8,7 @@ public class CirclePlacer
     {
         this.ballManager = ballManager;
     }
+    public List<BaseCircle> GetCircles() => circles;
 
     public void PlaceCircle(Vector2 position)
     {
@@ -54,6 +55,4 @@ public class CirclePlacer
             circle.Draw();
         }
     }
-
-    public List<BaseCircle> GetCircles() => circles;
 }

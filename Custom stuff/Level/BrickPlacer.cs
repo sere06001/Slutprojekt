@@ -8,6 +8,7 @@ public class BrickPlacer
     {
         this.ballManager = ballManager;
     }
+    public List<BaseBrick> GetBricks() => bricks;
 
     public void PlaceBrick(Vector2 position, float rotation)
     {
@@ -54,6 +55,4 @@ public class BrickPlacer
             brick.Draw();
         }
     }
-
-    public List<BaseBrick> GetBricks() => bricks;
 }
