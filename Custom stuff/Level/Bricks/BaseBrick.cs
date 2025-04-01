@@ -89,10 +89,16 @@ public abstract class BaseBrick
     private void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = CalculateCollisionNormal(ball);
-
-        ball.Velocity = Vector2.Reflect(ball.Velocity, normal) * ball.Restitution;
+        Vector2 tangent = new Vector2(-normal.Y, normal.X);
+    
+        float normalVelocity = Vector2.Dot(ball.Velocity, normal);
+        float tangentVelocity = Vector2.Dot(ball.Velocity, tangent);
+    
+        float newNormalVelocity = -normalVelocity * ball.Restitution;
+        
+        ball.Velocity = (normal * newNormalVelocity) + (tangent * tangentVelocity);
         ball.Direction = Vector2.Normalize(ball.Velocity);
-
+    
         Vector2 closestPoint = GetClosestPointOnBrick(ball);
         float overlap = ball.Origin.X - Vector2.Distance(ball.Position, closestPoint);
         ball.Position += normal * overlap;
