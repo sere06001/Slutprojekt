@@ -1,6 +1,7 @@
 namespace Slutprojekt;
 public abstract class BaseCircle
 {
+    public Player player;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private float scoreDisplayTimer = 0f;
@@ -21,9 +22,10 @@ public abstract class BaseCircle
 
     public bool IsMarkedForRemoval { get; private set; } = false;
 
-    public BaseCircle(BallManager ballmngr)
+    public BaseCircle(BallManager ballmngr, Player plyr)
     {
         ballManager = ballmngr;
+        player = plyr;
     }
 
     public void CheckCollisions()

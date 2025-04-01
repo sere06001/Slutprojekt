@@ -1,12 +1,14 @@
 namespace Slutprojekt;
 public class BrickPlacer
 {
+    public Player player;
     public List<BaseBrick> bricks = new(); //private
     private BallManager ballManager;
 
-    public BrickPlacer(BallManager ballManager)
+    public BrickPlacer(BallManager ballManager, Player plyr)
     {
         this.ballManager = ballManager;
+        player = plyr;
     }
     public List<BaseBrick> GetBricks() => bricks;
 
@@ -28,10 +30,10 @@ public class BrickPlacer
 
         BaseBrick brick = color switch
         {
-            "red" => new RedBrick(ballManager, rotation) { Position = position },
-            "blue" => new BlueBrick(ballManager, rotation) { Position = position },
-            "green" => new GreenBrick(ballManager, rotation) { Position = position },
-            "purple" => new PurpleBrick(ballManager, rotation) { Position = position },
+            "red" => new RedBrick(ballManager, player, rotation) { Position = position },
+            "blue" => new BlueBrick(ballManager, player, rotation) { Position = position },
+            "green" => new GreenBrick(ballManager, player, rotation) { Position = position },
+            "purple" => new PurpleBrick(ballManager, player, rotation) { Position = position },
             _ => throw new ArgumentException($"Unsupported brick color: {color}")
         };
 

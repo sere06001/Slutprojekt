@@ -1,6 +1,7 @@
 namespace Slutprojekt;
 public abstract class BaseBrick
 {
+    public Player player;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private float scoreDisplayTimer = 0f;
@@ -21,9 +22,10 @@ public abstract class BaseBrick
 
     public bool IsMarkedForRemoval { get; private set; } = false;
 
-    public BaseBrick(BallManager ballmngr, float rotation)
+    public BaseBrick(BallManager ballmngr, Player plyr, float rotation)
     {
         ballManager = ballmngr;
+        player = plyr;
         Rotation = rotation;
     }
 
@@ -90,15 +92,15 @@ public abstract class BaseBrick
     {
         Vector2 normal = CalculateCollisionNormal(ball);
         Vector2 tangent = new Vector2(-normal.Y, normal.X);
-    
+
         float normalVelocity = Vector2.Dot(ball.Velocity, normal);
         float tangentVelocity = Vector2.Dot(ball.Velocity, tangent);
-    
+
         float newNormalVelocity = -normalVelocity * ball.Restitution;
-        
+
         ball.Velocity = (normal * newNormalVelocity) + (tangent * tangentVelocity);
         ball.Direction = Vector2.Normalize(ball.Velocity);
-    
+
         Vector2 closestPoint = GetClosestPointOnBrick(ball);
         float overlap = ball.Origin.X - Vector2.Distance(ball.Position, closestPoint);
         ball.Position += normal * overlap;
@@ -147,6 +149,7 @@ public abstract class BaseBrick
 
         if (Hit)
         {
+            player.AddScore(ScoreOnHit);
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
             if (secondsBeforeRemovalTimer <= 0)
             {

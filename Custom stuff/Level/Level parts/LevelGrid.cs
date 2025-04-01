@@ -7,12 +7,14 @@ public class LevelGrid : LevelBase
     private float spacing;
     private float rotation; //Rotation of the entire grid (stored in radians)
 
-    public LevelGrid(BallManager ballManager, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks, float rotationDegrees = 0f)
-        : base(ballManager)
+    public LevelGrid(BallManager ballManager, Player plyr, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks, float rotationDegrees = 0f)
+        : base(ballManager, plyr)
     {
         this.rows = rows;
         this.columns = columns;
         this.spacing = spacing;
+
+        player = plyr;
 
         rotation = rotationDegrees * (MathF.PI / 180f);
 

@@ -6,10 +6,6 @@ public class UI
     {
         player = plyr;
     }
-    public void Update()
-    {
-
-    }
     public void Draw()
     {
 

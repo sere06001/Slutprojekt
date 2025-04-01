@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class GreenCircle : BaseCircle
 {
-    public GreenCircle(BallManager ballmng) : base(ballmng)
+    public GreenCircle(BallManager ballmng, Player player) : base(ballmng, player)
     {
         ScoreOnHit = 500;
 

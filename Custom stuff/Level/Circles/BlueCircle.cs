@@ -3,7 +3,7 @@ using SharpDX.MediaFoundation;
 namespace Slutprojekt;
 public class BlueCircle : BaseCircle
 {
-    public BlueCircle(BallManager ballmng) : base(ballmng)
+    public BlueCircle(BallManager ballmng, Player player) : base(ballmng, player)
     {
         ScoreOnHit = 200;
         

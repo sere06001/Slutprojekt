@@ -2,7 +2,7 @@
 namespace Slutprojekt;
 public class PurpleBrick : BaseBrick
 {
-    public PurpleBrick(BallManager ballmng, float rotation) : base(ballmng, rotation)
+    public PurpleBrick(BallManager ballmng, Player player, float rotation) : base(ballmng, player, rotation)
     {
         ScoreOnHit = 1000;
         ScoreMultiplier = 2;

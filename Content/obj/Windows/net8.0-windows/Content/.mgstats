@@ -1,1 +1,19 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ball.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",1126,1685,0,0336267
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballblue.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballblue.xnb","TextureProcessor","Texture2DContent",1318,1685,0,0042654
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballbluehit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballbluehit.xnb","TextureProcessor","Texture2DContent",1295,1685,0,0102722
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreen.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreen.xnb","TextureProcessor","Texture2DContent",1274,1685,0,0021883
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballgreenhit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballgreenhit.xnb","TextureProcessor","Texture2DContent",1278,1685,0,003173
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurple.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballpurple.xnb","TextureProcessor","Texture2DContent",1332,1685,0,0046979
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballpurplehit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballpurplehit.xnb","TextureProcessor","Texture2DContent",1295,1685,0,006808
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballred.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballred.xnb","TextureProcessor","Texture2DContent",1316,1685,0,0033112
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/ballredhit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/ballredhit.xnb","TextureProcessor","Texture2DContent",1285,1685,0,0109639
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickblue.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickblue.xnb","TextureProcessor","Texture2DContent",1150,2645,0,0070099
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickbluehit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickbluehit.xnb","TextureProcessor","Texture2DContent",1058,2645,0,0062858
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickgreen.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickgreen.xnb","TextureProcessor","Texture2DContent",913,2645,0,0069302
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickgreenhit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickgreenhit.xnb","TextureProcessor","Texture2DContent",1395,2645,0,0033378
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickpurple.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickpurple.xnb","TextureProcessor","Texture2DContent",1288,2645,0,0087125
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickpurplehit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickpurplehit.xnb","TextureProcessor","Texture2DContent",1301,2645,0,0035834
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickred.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickred.xnb","TextureProcessor","Texture2DContent",1153,2645,0,0033369
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickredhit.png","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickredhit.xnb","TextureProcessor","Texture2DContent",1347,2645,0,0045542
+"C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/font.spritefont","C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/font.xnb","FontDescriptionProcessor","SpriteFontContent",530,70691,0,3175183

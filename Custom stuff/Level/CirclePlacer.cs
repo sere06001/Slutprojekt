@@ -1,12 +1,14 @@
 namespace Slutprojekt;
 public class CirclePlacer
 {
+    public Player player;
     private List<BaseCircle> circles = new List<BaseCircle>();
     private BallManager ballManager;
 
-    public CirclePlacer(BallManager ballManager)
+    public CirclePlacer(BallManager ballManager, Player plyr)
     {
         this.ballManager = ballManager;
+        player = plyr;
     }
     public List<BaseCircle> GetCircles() => circles;
 
@@ -28,10 +30,10 @@ public class CirclePlacer
 
         BaseCircle circle = color switch
         {
-            "red" => new RedCircle(ballManager) { Position = position },
-            "blue" => new BlueCircle(ballManager) { Position = position },
-            "green" => new GreenCircle(ballManager) { Position = position },
-            "purple" => new PurpleCircle(ballManager) { Position = position },
+            "red" => new RedCircle(ballManager, player) { Position = position },
+            "blue" => new BlueCircle(ballManager, player) { Position = position },
+            "green" => new GreenCircle(ballManager, player) { Position = position },
+            "purple" => new PurpleCircle(ballManager, player) { Position = position },
             _ => throw new ArgumentException($"Unsupported circle color: {color}")
         };
 

@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class PurpleCircle : BaseCircle
 {
-    public PurpleCircle(BallManager ballmng) : base(ballmng)
+    public PurpleCircle(BallManager ballmng, Player player) : base(ballmng, player)
     {
         ScoreOnHit = 1000;
         ScoreMultiplier = 2;
