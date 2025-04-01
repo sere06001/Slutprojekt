@@ -1,8 +1,8 @@
 namespace Slutprojekt;
 public abstract class LevelBase
 {
-    public  CirclePlacer circlePlacer;
-    public  BrickPlacer brickPlacer;
+    public  CirclePlacer circlePlacer; //protected
+    public  BrickPlacer brickPlacer; //protected
     protected  BallManager ballManager;
     protected virtual Vector2 Position { get; set; }
 

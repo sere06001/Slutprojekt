@@ -2,3 +2,4 @@
 2. Make level generator combine level parts to make a level.
 
 X. Try to improve brick hitbox
+X. Change these back to private and protected from this commit 47e7257
