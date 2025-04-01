@@ -38,6 +38,7 @@ public abstract class BaseCircle
                 if (!Hit)
                 {
                     Hit = true;
+                    player.AddScore(ScoreOnHit);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                 }
             }

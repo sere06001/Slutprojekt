@@ -38,6 +38,7 @@ public abstract class BaseBrick
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
+                    player.AddScore(ScoreOnHit);
                     Hit = true;
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                     showScore = true;
@@ -149,7 +150,6 @@ public abstract class BaseBrick
 
         if (Hit)
         {
-            player.AddScore(ScoreOnHit);
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
             if (secondsBeforeRemovalTimer <= 0)
             {
