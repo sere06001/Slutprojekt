@@ -5,16 +5,18 @@ public class GameManager
     public Player player;
     public UI UI;
     private LevelBase currentLevel;
+    public LevelGenerator levelGenerator;
     private MouseState previousMouseState;
     private int degree = 45;
 
     public GameManager()
     {
         player = new(ballManager);
+        levelGenerator = new(ballManager, player);
         //Change to LevelGenerator.Update() later, currentLevel is just for testing purposes
 
-        //currentLevel = new LevelCircle(ballManager, 100f, 10, Globals.Bounds.X/2, Globals.Bounds.Y/2, false); //Just for testing
-        currentLevel = new LevelGrid(ballManager, player, 1, 15, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, true, degree, degree); //Just for testing
+        currentLevel = new LevelCircle(ballManager, player, 100f, 10, Globals.Bounds.X/2, Globals.Bounds.Y/2, false); //Just for testing
+        //currentLevel = new LevelGrid(ballManager, player, 1, 15, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, true, degree, degree); //Just for testing
         //currentLevel = new LevelGrid(ballManager, 20, 20, Globals.BallBlue.Width*2.5f, Globals.Bounds.X/2, Globals.Bounds.Y/2, false, 0);
 
         UI = new();
