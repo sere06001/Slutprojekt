@@ -20,7 +20,7 @@ public abstract class LevelBase
     {
         if (usebricks)
         {
-            brickPlacer.PlaceBrick(new Vector2(x, y), 0);
+            brickPlacer.PlaceBrick(new Vector2(x, y));
         }
         else
         {

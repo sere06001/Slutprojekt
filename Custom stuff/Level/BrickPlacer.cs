@@ -12,7 +12,7 @@ public class BrickPlacer
     }
     public List<BaseBrick> GetBricks() => bricks;
 
-    public void PlaceBrick(Vector2 position, float rotation)
+    public void PlaceBrick(Vector2 position, float rotation = 0)
     {
         int greenCount = bricks.Count(b => b is GreenBrick);
         int purpleCount = bricks.Count(b => b is PurpleBrick);
