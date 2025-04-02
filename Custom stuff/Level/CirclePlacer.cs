@@ -2,7 +2,7 @@ namespace Slutprojekt;
 public class CirclePlacer
 {
     public Player player;
-    private List<BaseCircle> circles = new List<BaseCircle>();
+    private List<BaseCircle> circles = new();
     private BallManager ballManager;
 
     public CirclePlacer(BallManager ballManager, Player plyr)

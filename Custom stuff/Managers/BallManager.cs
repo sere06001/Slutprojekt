@@ -59,9 +59,10 @@ public class BallManager
     }
     public void SpawnBall(Vector2 position)
     {
+        Vector2 pos = new(position.X, position.Y-Globals.BallTexture.Height);
         Ball newBall = new Ball
         {
-            Position = position,
+            Position = pos,
             Velocity = Vector2.Zero,
         };
         balls.Add(newBall);

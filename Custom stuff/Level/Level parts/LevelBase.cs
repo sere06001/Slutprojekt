@@ -6,11 +6,13 @@ public abstract class LevelBase
     public  BrickPlacer brickPlacer; //protected
     protected  BallManager ballManager;
     protected virtual Vector2 Position { get; set; }
+    public virtual bool UseBricks { get; set; }
 
-    protected LevelBase(BallManager ballManager, Player plyr)
+    protected LevelBase(BallManager ballManager, Player plyr, bool useBricks)
     {
         this.ballManager = ballManager;
         player = plyr;
+        UseBricks = useBricks;
         circlePlacer = new CirclePlacer(ballManager, player);
         brickPlacer = new BrickPlacer(ballManager, player);
     }

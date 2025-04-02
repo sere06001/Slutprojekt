@@ -21,6 +21,7 @@ public static class Globals
 
     public static Texture2D Pixel { get; set; }
 
+    public static Texture2D BallTexture { get; set; }
 
     public static SpriteFont Font { get; set; }
     public static float TotalSeconds { get; set; }
@@ -48,6 +49,8 @@ public static class Globals
         BrickGreenHit = Content.Load<Texture2D>("brickgreenhit");
         BrickPurple = Content.Load<Texture2D>("brickpurple");
         BrickPurpleHit = Content.Load<Texture2D>("brickpurplehit");
+
+        BallTexture = Content.Load<Texture2D>("ball");
 
         Font = Content.Load<SpriteFont>("font");
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/brickpurple.png</SourceFile>
-  <SourceTime>2025-03-24T11:04:30.1506159+01:00</SourceTime>
-  <DestFile>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/brickpurple.xnb</DestFile>
-  <DestTime>2025-04-01T12:59:52.728421+02:00</DestTime>
+  <SourceFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickpurple.png</SourceFile>
+  <SourceTime>2025-03-22T01:13:18.7162918+01:00</SourceTime>
+  <DestFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/brickpurple.xnb</DestFile>
+  <DestTime>2025-04-02T20:03:57.4354161+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
