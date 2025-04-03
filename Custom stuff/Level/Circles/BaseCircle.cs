@@ -4,6 +4,8 @@ public abstract class BaseCircle
     public Player player;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
+    private string scoreToDisplay;
+    private bool getScoreToDisplay = true;
     private bool HasIncreasedMult { get; set; }
     private float scoreDisplayTimer = 0f;
     private float ScoreDisplayDurationSeconds = 1.5f;
@@ -67,12 +69,9 @@ public abstract class BaseCircle
     {
         if (showScore && scoreDisplayTimer > 0)
         {
-            int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
-            string score = scoreMultiplied.ToString();
-
             Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2);
-            Vector2 textOrigin = new Vector2(Globals.ScoreOnHitFont.MeasureString(score).X / 2, 0);
-            Globals.SpriteBatch.DrawString(Globals.ScoreOnHitFont, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
+            Vector2 textOrigin = new Vector2(Globals.ScoreOnHitFont.MeasureString(scoreToDisplay).X / 2, 0);
+            Globals.SpriteBatch.DrawString(Globals.ScoreOnHitFont, scoreToDisplay, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }
     }
 
@@ -82,6 +81,13 @@ public abstract class BaseCircle
 
         if (Hit)
         {
+            if (getScoreToDisplay)
+            {
+                int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
+                scoreToDisplay = scoreMultiplied.ToString();
+                getScoreToDisplay = false;
+            }
+
             if (this is PurpleCircle && !HasIncreasedMult)
             {
                 player.IncreaseScoreMultiplier(ScoreMultiplier);
