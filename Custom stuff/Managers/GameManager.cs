@@ -6,7 +6,6 @@ public class GameManager
     public UI UI;
     public LevelGenerator levelGenerator;
     private MouseState previousMouseState;
-    private int degree = 45;
 
     public GameManager()
     {
@@ -19,6 +18,7 @@ public class GameManager
     public void Init()
     {
         UI.Init(player);
+        levelGenerator.Init();
     }
 
     public void Update()
