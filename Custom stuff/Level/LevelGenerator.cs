@@ -7,7 +7,7 @@ public class LevelGenerator
     public BallManager ballManager;
     private LevelCircle levelCircle;
     private LevelCircle levelCircle2;
-    private LevelGrid levelGrid;
+    private LevelCircle levelCircle3;
     public LevelGenerator(BallManager ballmngr, Player plyr)
     {
         ballManager = ballmngr;
@@ -16,8 +16,8 @@ public class LevelGenerator
     public void Face()
     {
         levelCircle = new(ballManager, player, 100f, 10, 500, 500, false);
-        levelCircle2 = new(ballManager, player, 100f, 10, 500, 500, false);
-        levelGrid = new(ballManager, player, 1, 10, 100, 250, 250, true);
+        levelCircle2 = new(ballManager, player, 100f, 10, 1000, 500, false);
+        levelCircle3 = new(ballManager, player, 100f, 10, 1000, 800, true);
     }
     public void Init()
     {
@@ -27,12 +27,12 @@ public class LevelGenerator
     {
         levelCircle.Update();
         levelCircle2.Update();
-        levelGrid.Update();
+        levelCircle3.Update();
     }
     public void Draw()
     {
         levelCircle.Draw();
         levelCircle2.Draw();
-        levelGrid.Draw();
+        levelCircle3.Draw();
     }
 }
