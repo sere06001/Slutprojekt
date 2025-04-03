@@ -4,6 +4,7 @@ public class Player
     public BaseCharacter Character { get; set; }
     public BallManager ballManager { get; set; }
     public int Score { get; private set; }
+    public int ScoreMultiplier { get; private set; }
     public Player(BallManager bllmng)
     {
         ballManager = bllmng;
@@ -11,6 +12,10 @@ public class Player
     public void AddScore(int score)
     {
         Score += score;
+    }
+    public void IncreaseScoreMultiplier(int scoreMultiplier)
+    {
+        ScoreMultiplier *= scoreMultiplier;
     }
     public virtual void Update()
     {
