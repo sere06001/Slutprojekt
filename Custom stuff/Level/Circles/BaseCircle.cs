@@ -5,11 +5,11 @@ public abstract class BaseCircle
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private float scoreDisplayTimer = 0f;
-    private float ScoreDisplayDurationSeconds = 2.5f;
+    private float ScoreDisplayDurationSeconds = 1.5f;
     private bool showScore = false;
     private bool hasShownScore = false;
     private float secondsBeforeRemovalTimer = 0f;
-    private float secondsBeforeRemoval = 5f;
+    private float secondsBeforeRemoval = 10f;
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
@@ -68,9 +68,9 @@ public abstract class BaseCircle
         {
             string score = ScoreOnHit.ToString();
 
-            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2 - 10);
-            Vector2 textOrigin = new Vector2(Globals.Font.MeasureString(score).X / 2, 0);
-            Globals.SpriteBatch.DrawString(Globals.Font, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
+            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2);
+            Vector2 textOrigin = new Vector2(Globals.ScoreOnHitFont.MeasureString(score).X / 2, 0);
+            Globals.SpriteBatch.DrawString(Globals.ScoreOnHitFont, score, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }
     }
 
@@ -82,7 +82,7 @@ public abstract class BaseCircle
         {
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
 
-            if (secondsBeforeRemovalTimer <= 0)
+            if (secondsBeforeRemovalTimer <= 0 || ballManager.balls.Count <= 0)
             {
                 IsMarkedForRemoval = true;
                 return;

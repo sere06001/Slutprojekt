@@ -28,6 +28,7 @@ public static class Globals
     public static Texture2D BallTexture { get; set; }
 
     public static SpriteFont Font { get; set; }
+    public static SpriteFont ScoreOnHitFont { get; set; }
     public static float TotalSeconds { get; set; }
     public static ContentManager Content { get; set; }
     public static SpriteBatch SpriteBatch { get; set; }
@@ -57,6 +58,7 @@ public static class Globals
         BallTexture = Content.Load<Texture2D>("ball");
 
         Font = Content.Load<SpriteFont>("font");
+        ScoreOnHitFont = Content.Load<SpriteFont>("scoreOnHitFont");
     }
 
     public static void Update(GameTime gt)

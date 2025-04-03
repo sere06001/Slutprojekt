@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/font.spritefont</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/scoreOnHitFont.spritefont</File>
     <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ball.png</File>
     <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballred.png</File>
     <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballredhit.png</File>
@@ -24,6 +25,7 @@
     <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickpurplehit.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

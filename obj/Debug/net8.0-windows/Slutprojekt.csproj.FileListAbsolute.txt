@@ -88,3 +88,4 @@ C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickred.x
 C:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\brickredhit.xnb
 c:\GA-Monogame\GA_2DSpel\Slutprojekt\bin\Debug\net8.0-windows\Content\font.xnb
 C:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\font.xnb
+c:\Users\Kreedy\Documents\GitHub\Slutprojekt\bin\Debug\net8.0-windows\Content\scoreOnHitFont.xnb
