@@ -4,6 +4,7 @@ public abstract class BaseBrick
     public Player player;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
+    private bool HasIncreasedMult { get; set; }
     private float scoreDisplayTimer = 0f;
     private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
@@ -150,7 +151,14 @@ public abstract class BaseBrick
 
         if (Hit)
         {
+            if (this is PurpleBrick && !HasIncreasedMult)
+            {
+                player.IncreaseScoreMultiplier(ScoreMultiplier);
+                HasIncreasedMult = true;
+            }
+
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
+
             if (secondsBeforeRemovalTimer <= 0 || ballManager.balls.Count <= 0)
             {
                 IsMarkedForRemoval = true;
