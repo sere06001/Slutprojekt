@@ -4,7 +4,7 @@ public class GreenBrick : BaseBrick
 {
     public GreenBrick(BallManager ballmng, Player player, float rotation) : base(ballmng, player, rotation)
     {
-        ScoreOnHit = 500;
+        ScoreOnHit = 10;
 
         ballManager = ballmng;
 

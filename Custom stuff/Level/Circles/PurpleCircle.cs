@@ -3,7 +3,7 @@ public class PurpleCircle : BaseCircle
 {
     public PurpleCircle(BallManager ballmng, Player player) : base(ballmng, player)
     {
-        ScoreOnHit = 1000;
+        ScoreOnHit = 500;
         ScoreMultiplier = 2;
 
         ballManager = ballmng;

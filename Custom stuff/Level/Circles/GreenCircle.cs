@@ -3,7 +3,7 @@ public class GreenCircle : BaseCircle
 {
     public GreenCircle(BallManager ballmng, Player player) : base(ballmng, player)
     {
-        ScoreOnHit = 500;
+        ScoreOnHit = 10;
 
         ballManager = ballmng;
 

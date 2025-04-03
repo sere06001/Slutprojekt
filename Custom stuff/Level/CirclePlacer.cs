@@ -5,28 +5,32 @@ public class CirclePlacer
     private List<BaseCircle> circles = new();
     private BallManager ballManager;
 
+    private static int totalGreenObjects = 0;
+    private static int totalPurpleObjects = 0;
+    private const int maxGreenObjects = 2;
+    private const int maxPurpleObjects = 3;
+
     public CirclePlacer(BallManager ballManager, Player plyr)
     {
         this.ballManager = ballManager;
         player = plyr;
     }
+
     public List<BaseCircle> GetCircles() => circles;
 
     public void PlaceCircle(Vector2 position)
     {
-        int greenCount = circles.Count(c => c is GreenCircle);
-        int purpleCount = circles.Count(c => c is PurpleCircle);
-
-        int roll = Globals.Random.Next(1, 21); //Roll 1-20
+        int roll = Globals.Random.Next(1, 101);
         string color = roll switch
         {
-            <= 4 => "blue",                         //4/20
-            <= 6 when purpleCount < 3 => "purple",  //2/20 chance, only if less than 3 purple circles
-            <= 7 when greenCount < 2 => "green",    //1/20 chance, only if less than 2 green circles
-            _ => "red"                              //Remainder
+            <= Globals.chanceForRed => "red",
+            <= Globals.chanceForPurple when totalPurpleObjects < maxPurpleObjects => "purple",
+            <= Globals.chanceForGreen when totalGreenObjects < maxGreenObjects => "green",
+            _ => "blue"
         };
 
-        if (color == null) color = "red";
+        if (color == "green") totalGreenObjects++;
+        if (color == "purple") totalPurpleObjects++;
 
         BaseCircle circle = color switch
         {
@@ -47,7 +51,16 @@ public class CirclePlacer
             circle.Update();
         }
 
-        circles.RemoveAll(circle => circle.IsMarkedForRemoval);
+        circles.RemoveAll(circle =>
+        {
+            bool toRemove = circle.IsMarkedForRemoval;
+            if (toRemove)
+            {
+                if (circle is GreenCircle) totalGreenObjects--;
+                if (circle is PurpleCircle) totalPurpleObjects--;
+            }
+            return toRemove;
+        });
     }
 
     public void Draw()

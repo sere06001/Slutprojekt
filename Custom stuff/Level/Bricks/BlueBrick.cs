@@ -4,7 +4,7 @@ public class BlueBrick : BaseBrick
 {
     public BlueBrick(BallManager ballmng, Player player, float rotation) : base(ballmng, player, rotation)
     {
-        ScoreOnHit = 200;
+        ScoreOnHit = 10;
 
         ballManager = ballmng;
 
