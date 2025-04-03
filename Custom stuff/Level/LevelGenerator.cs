@@ -12,7 +12,7 @@ public class LevelGenerator
     }
     public void Init()
     {
-        levelCombiner.Face();
+        levelCombiner.UnevenCircleGrid();
     }
     public void Update()
     {
