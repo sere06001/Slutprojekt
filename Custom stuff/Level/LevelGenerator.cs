@@ -1,38 +1,28 @@
-using SharpDX.XAudio2;
-
 namespace Slutprojekt;
 public class LevelGenerator
 {
     public Player player;
     public BallManager ballManager;
+    private LevelCombiner levelCombiner;
     private LevelCircle levelCircle;
     private LevelCircle levelCircle2;
     private LevelCircle levelCircle3;
-    public LevelGenerator(BallManager ballmngr, Player plyr)
+    public LevelGenerator(BallManager ballmngr, Player plyr, LevelCombiner lvlcombiner)
     {
         ballManager = ballmngr;
         player = plyr;
-    }
-    public void Face()
-    {
-        levelCircle = new(ballManager, player, 100f, 10, 500, 500, false);
-        levelCircle2 = new(ballManager, player, 100f, 10, 1000, 500, false);
-        levelCircle3 = new(ballManager, player, 100f, 10, 1000, 800, true);
+        levelCombiner = lvlcombiner;
     }
     public void Init()
     {
-        Face();
+        levelCombiner.Face();
     }
     public void Update()
     {
-        levelCircle.Update();
-        levelCircle2.Update();
-        levelCircle3.Update();
+        levelCombiner.Update();
     }
     public void Draw()
     {
-        levelCircle.Draw();
-        levelCircle2.Draw();
-        levelCircle3.Draw();
+        levelCombiner.Draw();
     }
 }

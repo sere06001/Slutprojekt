@@ -5,12 +5,14 @@ public class GameManager
     public Player player;
     public UI UI;
     public LevelGenerator levelGenerator;
+    public LevelCombiner levelCombiner;
     private MouseState previousMouseState;
 
     public GameManager()
     {
         player = new(ballManager);
-        levelGenerator = new(ballManager, player);
+        levelCombiner = new(ballManager, player);
+        levelGenerator = new(ballManager, player, levelCombiner);
         //Change to LevelGenerator.Update() later, currentLevel is just for testing purposes
 
         UI = new();
