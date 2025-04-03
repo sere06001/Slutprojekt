@@ -39,7 +39,7 @@ public abstract class BaseBrick
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
-                    player.AddScore(ScoreOnHit);
+                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     Hit = true;
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                     showScore = true;
@@ -198,7 +198,8 @@ public abstract class BaseBrick
     {
         if (showScore && scoreDisplayTimer > 0)
         {
-            string score = ScoreOnHit.ToString();
+            int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
+            string score = scoreMultiplied.ToString();
 
             Vector2 pos = Position + new Vector2(0, -TextureHit.Height * 2);
             Vector2 textOrigin = new Vector2(Globals.ScoreOnHitFont.MeasureString(score).X / 2, 0);

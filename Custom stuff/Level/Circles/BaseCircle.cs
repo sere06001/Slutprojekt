@@ -39,7 +39,7 @@ public abstract class BaseCircle
                 if (!Hit)
                 {
                     Hit = true;
-                    player.AddScore(ScoreOnHit);
+                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                 }
             }
@@ -67,7 +67,8 @@ public abstract class BaseCircle
     {
         if (showScore && scoreDisplayTimer > 0)
         {
-            string score = ScoreOnHit.ToString();
+            int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
+            string score = scoreMultiplied.ToString();
 
             Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2);
             Vector2 textOrigin = new Vector2(Globals.ScoreOnHitFont.MeasureString(score).X / 2, 0);
