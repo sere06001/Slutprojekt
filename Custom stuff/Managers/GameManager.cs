@@ -4,7 +4,6 @@ public class GameManager
     public BallManager ballManager = new();
     public Player player;
     public UI UI;
-    private LevelBase currentLevel;
     public LevelGenerator levelGenerator;
     private MouseState previousMouseState;
     private int degree = 45;
@@ -14,10 +13,6 @@ public class GameManager
         player = new(ballManager);
         levelGenerator = new(ballManager, player);
         //Change to LevelGenerator.Update() later, currentLevel is just for testing purposes
-
-        currentLevel = new LevelCircle(ballManager, player, 100f, 10, Globals.Bounds.X/2, Globals.Bounds.Y/2, false); //Just for testing
-        //currentLevel = new LevelGrid(ballManager, player, 1, 15, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, true, degree, degree); //Just for testing
-        //currentLevel = new LevelGrid(ballManager, 20, 20, Globals.BallBlue.Width*2.5f, Globals.Bounds.X/2, Globals.Bounds.Y/2, false, 0);
 
         UI = new();
     }
@@ -29,23 +24,8 @@ public class GameManager
     public void Update()
     {
         ballManager.Update();
-        currentLevel.Update(); //Also for testing, change to LevelGenerator.Update() which will handle the main level system to keep GameManager clean
-        if (currentLevel.UseBricks)
-        {
-            if (currentLevel.brickPlacer.GetBricks().Count <= 0) //Just for testing
-            {
-                currentLevel = new LevelGrid(ballManager, player, 1, 15, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, true, degree, degree);
-            }
-        }
-        else
-        {
-            if (currentLevel.circlePlacer.GetCircles().Count <= 0) //Just for testing
-            {
-                currentLevel = new LevelGrid(ballManager, player, 1, 15, Globals.BrickBlue.Width, Globals.Bounds.X/2, Globals.Bounds.Y/2, false, degree);
-            }
-        }
+        levelGenerator.Update();
 
-    
         MouseState currentMouseState = Mouse.GetState();
         
         if (currentMouseState.LeftButton == ButtonState.Pressed && //Spawns 1 ball on click
@@ -62,6 +42,6 @@ public class GameManager
     {
         ballManager.Draw();
         UI.Draw();
-        currentLevel.Draw();
+        levelGenerator.Draw();
     }
 }
