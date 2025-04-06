@@ -5,7 +5,7 @@ public class LevelGrid : LevelBase
     private int rows;
     private int columns;
     private float spacing;
-    private float rotation; //Rotation of the entire grid (stored in radians)
+    private float rotation; //Rotation of the entire grid (stored in radians) //IF MAKING ROTATED GRID WITH BRICKS FACE SHINY SIDE DOWN
     private float rotationBricks; //Rotation of the bricks (stored in radians)
 
     public LevelGrid(BallManager ballManager, Player plyr, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks, float rotationDegrees = 0f, float rotationBricksDegrees = 0)
