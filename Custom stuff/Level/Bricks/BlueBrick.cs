@@ -1,4 +1,3 @@
-
 namespace Slutprojekt;
 public class BlueBrick : BaseBrick
 {

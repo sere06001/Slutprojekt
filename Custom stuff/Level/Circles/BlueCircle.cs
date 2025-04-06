@@ -1,5 +1,3 @@
-using SharpDX.MediaFoundation;
-
 namespace Slutprojekt;
 public class BlueCircle : BaseCircle
 {
