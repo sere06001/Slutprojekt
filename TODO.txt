@@ -1,4 +1,4 @@
-Make it so if 10 balls/bricks are hit consecutively give 2x score multiplier untill ball dies, cannot get more than 2x multiplier from multiple purples; hitting more than 1 will not change the score multiplier more than hitting 1
+Cannot get more than 2x multiplier from multiple purples; hitting more than 1 will not change the score multiplier more than hitting 1
 
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
