@@ -2,5 +2,7 @@ Cannot get more than 2x multiplier from multiple purples; hitting more than 1 wi
 
 Make LevelBaseMoving for moving levels
 
+Spawn with 10 balls, if shoot into void without doing anything do a 50/50 for free ball
+
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
