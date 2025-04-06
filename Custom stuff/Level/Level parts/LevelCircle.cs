@@ -10,7 +10,6 @@ public class LevelCircle : LevelBase
     {
         this.radius = radius;
         this.circleCount = circleCount;
-        player = plyr;
         Position = new Vector2(centerX, centerY);
         CreateCirclePattern(useBricks);
     }

@@ -15,8 +15,6 @@ public class LevelGrid : LevelBase
         this.columns = columns;
         this.spacing = spacing;
 
-        player = plyr;
-
         rotation = rotationDegrees * (MathF.PI / 180f);
         rotationBricks = rotationBricksDegrees * (MathF.PI/180f);
 
