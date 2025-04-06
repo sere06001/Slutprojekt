@@ -2,6 +2,3 @@ Cannot get more than 2x multiplier from multiple purples; hitting more than 1 wi
 
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
-
-X. Try to improve brick hitbox
-X. Change these back to private and protected from this commit 47e7257
