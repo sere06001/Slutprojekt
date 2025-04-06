@@ -26,6 +26,7 @@ public class GameManager
     public void Update()
     {
         ballManager.Update();
+        player.Update();
         if (ballManager.balls.Count <= 0)
         {
             player.ResetScoreMultiplier();

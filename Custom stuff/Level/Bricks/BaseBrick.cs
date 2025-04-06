@@ -2,6 +2,7 @@ namespace Slutprojekt;
 public abstract class BaseBrick
 {
     public Player player;
+    private bool HasContributedTo10HitStreak { get; set; } = false;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private string scoreToDisplay;
@@ -153,6 +154,11 @@ public abstract class BaseBrick
 
         if (Hit)
         {
+            if (!HasContributedTo10HitStreak)
+            {
+                player.IncreaseHitStreak(1);
+                HasContributedTo10HitStreak = true;
+            }
             if (getScoreToDisplay)
             {
                 int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
