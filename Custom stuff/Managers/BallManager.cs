@@ -1,7 +1,8 @@
 namespace Slutprojekt;
 public class BallManager
 {
-    public List<Ball> balls = [];
+    public int StartingBallCount { get; private set; } = 10;
+    public List<Ball> balls = []; //Currently active balls
     private void DebugUI()
     {
         Vector2 pos = new(200, 200);

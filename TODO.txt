@@ -1,5 +1,3 @@
-
-
 Make LevelBaseMoving for moving levels
 
 Spawn with 10 balls, if shoot into void without doing anything do a 50/50 for free ball
