@@ -7,7 +7,6 @@ public abstract class BaseBrick
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private string scoreToDisplay;
     private bool getScoreToDisplay = true;
-    private bool HasIncreasedMult { get; set; }
     private float scoreDisplayTimer = 0f;
     private float ScoreDisplayDurationSeconds = 2.5f;
     private bool showScore = false;
@@ -166,10 +165,10 @@ public abstract class BaseBrick
                 getScoreToDisplay = false;
             }
 
-            if (this is PurpleBrick && !HasIncreasedMult)
+            if (this is PurpleBrick && !player.HasIncreasedMultFromPurple)
             {
                 player.IncreaseScoreMultiplier(ScoreMultiplier);
-                HasIncreasedMult = true;
+                player.MultFromPurpleCheck();
             }
 
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;

@@ -7,7 +7,6 @@ public abstract class BaseCircle
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private string scoreToDisplay;
     private bool getScoreToDisplay = true;
-    private bool HasIncreasedMult { get; set; }
     private float scoreDisplayTimer = 0f;
     private float ScoreDisplayDurationSeconds = 1.5f;
     private bool showScore = false;
@@ -94,10 +93,10 @@ public abstract class BaseCircle
                 getScoreToDisplay = false;
             }
 
-            if (this is PurpleCircle && !HasIncreasedMult)
+            if (this is PurpleCircle && !player.HasIncreasedMultFromPurple)
             {
                 player.IncreaseScoreMultiplier(ScoreMultiplier);
-                HasIncreasedMult = true;
+                player.MultFromPurpleCheck();
             }
 
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
