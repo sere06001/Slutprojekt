@@ -9,7 +9,9 @@ public class BallManager
     private void DebugUI()
     {
         Vector2 pos = new(200, 200);
-        Globals.SpriteBatch.DrawString(Globals.Font, $"Ball list count: {balls.Count}", pos, Color.White);
+        Globals.SpriteBatch.DrawString(Globals.Font, $"Active balls: {balls.Count}", pos, Color.White);
+        pos = new(200, 250);
+        Globals.SpriteBatch.DrawString(Globals.Font, $"Starting balls: {BallsLeft}", pos, Color.White);
     }
     private void DrawKillZone()
     {
@@ -21,6 +23,13 @@ public class BallManager
         );
         Color killZoneColor = new Color(Color.Red, 0.3f);
         Globals.SpriteBatch.Draw(Globals.Pixel, killBox, killZoneColor);
+    }
+    public void AddBall5050()
+    {
+        if (Globals.Random.Next(2) == 0)
+        {
+            BallsLeft++;
+        }
     }
     private void RemoveBallAtBottom()
     {
