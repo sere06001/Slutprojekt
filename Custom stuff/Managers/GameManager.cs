@@ -35,7 +35,8 @@ public class GameManager
 
         MouseState currentMouseState = Mouse.GetState();
         
-        if (currentMouseState.LeftButton == ButtonState.Pressed && //Spawns 1 ball on click
+        if (ballManager.BallsLeft > 0 &&
+            currentMouseState.LeftButton == ButtonState.Pressed &&
             previousMouseState.LeftButton == ButtonState.Released)
         {
             Vector2 mousePosition = currentMouseState.Position.ToVector2();

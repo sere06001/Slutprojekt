@@ -1,7 +1,10 @@
+using System.Windows.Forms;
+
 namespace Slutprojekt;
 public class BallManager
 {
-    public int StartingBallCount { get; private set; } = 10;
+    public const int startingBallCount = 10;
+    public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private void DebugUI()
     {
@@ -67,6 +70,7 @@ public class BallManager
             Velocity = Vector2.Zero,
         };
         balls.Add(newBall);
+        BallsLeft--;
     }
 
     public void Update()
