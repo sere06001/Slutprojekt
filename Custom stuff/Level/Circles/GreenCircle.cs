@@ -13,14 +13,14 @@ public class GreenCircle : BaseCircle
     }
     protected override void CheckCollisions()
     {
-        foreach (Ball ball in ballManager.balls)
+        foreach (Ball ball in ballManager.balls) 
         {
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
-                    player.Powerup.PowerupAbility(ball.Position);
+                    player.Powerup.PowerupAbility(ball.Position); //DuplicateBallPowerup is crashing game because it is modifying ballManager.balls while iterating over it
                     Hit = true;
                     ball.HasHit(player);
                     player.AddCircleAndBricksHitCount();

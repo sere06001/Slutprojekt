@@ -45,6 +45,8 @@ public abstract class BaseCircle
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                    showScore = true;
+                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
             }
         }
@@ -59,12 +61,6 @@ public abstract class BaseCircle
 
         float overlap = ball.Origin.X + Radius - Vector2.Distance(ball.Position, Position + Origin);
         ball.Position += normal * overlap;
-
-        if (!Hit)
-        {
-            showScore = true;
-            scoreDisplayTimer = ScoreDisplayDurationSeconds;
-        }
     }
 
     public void DrawScore()
