@@ -1,6 +1,6 @@
 Make LevelBaseMoving for moving levels
 
-Make it so if a ball has NOT hit any bricks/circles and die THEN do AddBall5050()
+Remove 10 hit streak increasing score mult
 
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
