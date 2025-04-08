@@ -4,6 +4,8 @@ public class LevelCombiner
     public Player player;
     public BallManager ballManager;
     private List<LevelGrid> levelGrids = new List<LevelGrid>();
+    //private List<RedBrick> redBricks = new List<RedBrick>(); When all red bricks/circles have been Hit || IsMarkedForDeletion, initiate winning stuff
+    //private List<RedCircle> redCircles = new List<RedCircle>();
 
     public LevelCombiner(BallManager ballmngr, Player plyr)
     {
