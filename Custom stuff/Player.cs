@@ -47,6 +47,22 @@ public class Player
     }
     public virtual void Update()
     {
+        if (ScoreLevel >= 20000)
+        {
+            ScoreMultiplier = 2;
+        }
+        if (ScoreLevel >= 30000)
+        {
+            ScoreMultiplier = 3;
+        }
+        if (ScoreLevel >= 50000)
+        {
+            ScoreMultiplier = 5;
+        }
+        if (ScoreLevel >= 100000)
+        {
+            ScoreMultiplier = 10;
+        }
         //Character.Update();
     }
 }
