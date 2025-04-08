@@ -8,16 +8,16 @@ public class UI
     }
     public void DebugUI()
     {
-        Vector2 scorePos = new(Globals.Bounds.X-200, 0);
+        Vector2 scorePos = new(Globals.Bounds.X-400, 0);
         Globals.SpriteBatch.DrawString(Globals.Font, "Score from hits: "+player.ScoreFromHits.ToString(), scorePos, Color.White);
 
-        Vector2 FinalscorePos = new(Globals.Bounds.X-200, 25);
+        Vector2 FinalscorePos = new(Globals.Bounds.X-400, 25);
         Globals.SpriteBatch.DrawString(Globals.Font, "Score level: "+player.ScoreLevel.ToString(), FinalscorePos, Color.White);
 
-        Vector2 scoreMultPos = new(Globals.Bounds.X-200, 75);
+        Vector2 scoreMultPos = new(Globals.Bounds.X-400, 75);
         Globals.SpriteBatch.DrawString(Globals.Font, "Score mult: "+player.ScoreMultiplier.ToString(), scoreMultPos, Color.White);
 
-        Vector2 redHits = new(Globals.Bounds.X-200, 100);
+        Vector2 redHits = new(Globals.Bounds.X-400, 100);
         Globals.SpriteBatch.DrawString(Globals.Font, "RedHits: "+player.RedsHit.ToString(), redHits, Color.White);
     }
     public void Draw()
