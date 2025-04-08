@@ -21,9 +21,10 @@ public class Ball
         Direction = RandomDirection();
         Velocity = Direction * Speed;
     }
-    public void HasHit()
+    public void HasHit(Player player)
     {
         HasHitBrickOrCircle = true;
+        player.AddCircleAndBricksHitCount();
     }
 
     private Vector2 StartPosition()

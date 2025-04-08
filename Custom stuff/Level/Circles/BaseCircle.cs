@@ -40,7 +40,8 @@ public abstract class BaseCircle
                 if (!Hit)
                 {
                     Hit = true;
-                    ball.HasHit();
+                    ball.HasHit(player);
+                    player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                 }

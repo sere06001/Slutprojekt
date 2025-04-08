@@ -25,8 +25,8 @@ public class GameManager
 
     public void Update()
     {
-        ballManager.Update();
         player.Update();
+        ballManager.Update(player);
         levelGenerator.Update();
 
         MouseState currentMouseState = Mouse.GetState();

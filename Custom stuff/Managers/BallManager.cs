@@ -88,7 +88,7 @@ public class BallManager
         BallsLeft--;
     }
 
-    public void Update()
+    public void Update(Player player)
     {
         RemoveBallAtBottom();
         foreach (Ball ball in balls)
@@ -96,6 +96,12 @@ public class BallManager
             ball.Update();
         }
         CheckCollisions();
+        if (balls.Count == 0)
+        {
+            player.UpdateFinalScore();
+            player.ResetScore();
+            player.ResetCircleAndBricksHitCount();
+        }
     }
 
     public void Draw()
