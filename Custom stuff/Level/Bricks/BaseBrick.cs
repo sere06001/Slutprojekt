@@ -24,7 +24,6 @@ public abstract class BaseBrick
 
     public bool IsMarkedForRemoval { get; private set; } = false;
     protected bool hasContributedToPowerup = false;
-    private bool hasAddedRed = false;
 
     public BaseBrick(BallManager ballmngr, Player plyr, float rotation)
     {
