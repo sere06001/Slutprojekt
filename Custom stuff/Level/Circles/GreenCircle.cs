@@ -23,11 +23,12 @@ public class GreenCircle : BaseCircle
                 {
                     ballPosList.Add(ball);
                     Hit = true;
-                    ball.HasHit(player);
+                    ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                 }
+                ball.HasHit();
             }
         }
         foreach (Ball ball in ballPosList)

@@ -22,7 +22,7 @@ public class GreenBrick : BaseBrick
                 if (!Hit)
                 {
                     ballPosList.Add(ball);
-                    ball.HasHit(player);
+                    ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     Hit = true;
@@ -30,6 +30,7 @@ public class GreenBrick : BaseBrick
                     showScore = true;
                     scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
+                ball.HasHit();
             }
         }
         foreach (Ball ball in ballPosList)

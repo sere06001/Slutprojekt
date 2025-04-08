@@ -1,6 +1,6 @@
 Max 25 reds per combined level
 
-Make new ball spawn on ball that hit green brick/circle with DuplicateBallPowerup
+Make it so duplicate balls dont count towards 5050
 
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();

@@ -13,20 +13,24 @@ public class Ball
     public Color Color { get; set; } = Color.White;
     private float gravity = 9.82f * 100; //Scaled up for pixels
     public float Restitution = 0.85f; //Energy loss on bounce
+    public bool IsDuplicate { get; private set; } = false;
 
-    public Ball(Vector2? position = null)
+    public Ball(Vector2? position = null, bool isDuplicate = false)
     {
         Origin = new(texture.Width / 2, texture.Height / 2);
         Position = position ?? StartPosition();
         Direction = RandomDirection();
         Velocity = Direction * Speed;
+        IsDuplicate = isDuplicate;
     }
-    public void HasHit(Player player)
+    public void IncreaseHitCount(Player player)
     {
-        HasHitBrickOrCircle = true;
         player.AddCircleAndBricksHitCount();
     }
-
+    public void HasHit()
+    {
+        HasHitBrickOrCircle = true;
+    }
     private Vector2 StartPosition()
     {
         var x = Globals.Random.Next(Globals.Bounds.X); //Bounds.X/2;

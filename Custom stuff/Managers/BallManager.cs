@@ -1,5 +1,3 @@
-using System.Windows.Forms;
-
 namespace Slutprojekt;
 public class BallManager
 {
@@ -35,7 +33,8 @@ public class BallManager
     {
         foreach (Ball ball in balls)
         {
-            if (!ball.HasHitBrickOrCircle && ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower)
+            if (!ball.HasHitBrickOrCircle && !ball.IsDuplicate
+                && ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower)
             {
                 AddBall5050();
             }

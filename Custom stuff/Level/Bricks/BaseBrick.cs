@@ -41,7 +41,7 @@ public abstract class BaseBrick
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
-                    ball.HasHit(player);
+                    ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     Hit = true;
@@ -49,6 +49,7 @@ public abstract class BaseBrick
                     showScore = true;
                     scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
+                ball.HasHit();
             }
         }
     }
