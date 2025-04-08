@@ -17,11 +17,11 @@ public class LevelCombiner
     {
         levelGrids.Clear();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 8; i++)
         {
             int varyingOffset = (i % 2 == 0) ? 10 : -10;
 
-            levelGrids.Add(new LevelGrid(ballManager, player, 1, 25, 
+            levelGrids.Add(new LevelGrid(ballManager, player, 1, 12, 
                 Globals.BallBlue.Width * 2f + 4, 
                 Globals.Bounds.X / 2 + varyingOffset, 
                 Globals.Bounds.Y * 0.3f + 50*i, false));
