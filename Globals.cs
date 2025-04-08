@@ -5,6 +5,11 @@ public static class Globals
     public const int chanceForRed = 30;
     public const int chanceForPurple = 31;
     public const int chanceForGreen = 32;
+
+    public const int maxReds = 25;
+    public const int maxGreenObjects = 2;
+    public const int maxPurpleObjects = 3;
+
     public static Texture2D BallRed { get; private set; }
     public static Texture2D BallRedHit { get; private set; }
     public static Texture2D BallBlue { get; private set; }

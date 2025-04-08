@@ -8,8 +8,6 @@ public class BrickPlacer
 
     private static int totalGreenObjects = 0;
     private static int totalPurpleObjects = 0;
-    private const int maxGreenObjects = 2;
-    private const int maxPurpleObjects = 3;
 
     public BrickPlacer(BallManager ballManager, Player plyr)
     {
@@ -30,8 +28,8 @@ public class BrickPlacer
         string color = roll switch
         {
             <= Globals.chanceForRed => "red",
-            <= Globals.chanceForPurple when totalPurpleObjects < maxPurpleObjects => "purple",
-            <= Globals.chanceForGreen when totalGreenObjects < maxGreenObjects => "green",
+            <= Globals.chanceForPurple when totalPurpleObjects < Globals.maxPurpleObjects => "purple",
+            <= Globals.chanceForGreen when totalGreenObjects < Globals.maxGreenObjects => "green",
             _ => "blue"
         };
 
