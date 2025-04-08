@@ -1,7 +1,10 @@
+using System.Configuration.Assemblies;
+
 namespace Slutprojekt;
 public class Ball
 {
     public Texture2D texture = Globals.BallTexture;
+    public bool HasHitBrickOrCircle { get; private set; } = false;
     public Vector2 Origin { get; private set; }
     public Vector2 Position { get; set; }
     public Vector2 Direction { get; set; }
@@ -17,6 +20,10 @@ public class Ball
         Position = StartPosition();
         Direction = RandomDirection();
         Velocity = Direction * Speed;
+    }
+    public void HasHit()
+    {
+        HasHitBrickOrCircle = true;
     }
 
     private Vector2 StartPosition()

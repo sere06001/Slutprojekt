@@ -34,6 +34,13 @@ public class BallManager
     private void RemoveBallAtBottom()
     {
         float restrictionCoords = Globals.Bounds.Y * 0.9f;
+        foreach (Ball ball in balls)
+        {
+            if (!ball.HasHitBrickOrCircle && ball.Position.Y + ball.texture.Height > restrictionCoords)
+            {
+                AddBall5050();
+            }
+        }
         balls.RemoveAll(ball => ball.Position.Y + ball.texture.Height > restrictionCoords);
     }
     private void CheckCollisions()

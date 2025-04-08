@@ -41,6 +41,7 @@ public abstract class BaseBrick
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
+                    ball.HasHit();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     Hit = true;
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;

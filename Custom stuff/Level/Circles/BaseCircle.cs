@@ -41,6 +41,7 @@ public abstract class BaseCircle
                 if (!Hit)
                 {
                     Hit = true;
+                    ball.HasHit();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                 }
