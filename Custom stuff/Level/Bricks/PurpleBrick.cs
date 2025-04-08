@@ -4,7 +4,7 @@ public class PurpleBrick : BaseBrick
     public PurpleBrick(BallManager ballmng, Player player, float rotation) : base(ballmng, player, rotation)
     {
         ScoreOnHit = 500;
-        ScoreMultiplier = 2;
+        //ScoreMultiplier = 2;
 
         ballManager = ballmng;
 
