@@ -7,12 +7,15 @@ public abstract class LevelBase
     protected BallManager ballManager;
     protected virtual Vector2 Position { get; set; }
     public virtual bool UseBricks { get; set; }
+    public virtual bool ShouldMove { get; set; }
 
-    protected LevelBase(BallManager ballManager, Player plyr, bool useBricks)
+    protected LevelBase(BallManager ballManager, Player plyr, float centerX, float centerY, bool useBricks, bool move)
     {
         this.ballManager = ballManager;
         player = plyr;
         UseBricks = useBricks;
+        ShouldMove = move;
+        Position = new Vector2(centerX, centerY);
         circlePlacer = new CirclePlacer(ballManager, player);
         brickPlacer = new BrickPlacer(ballManager, player);
     }

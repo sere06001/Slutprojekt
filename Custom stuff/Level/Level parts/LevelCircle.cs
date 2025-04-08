@@ -5,12 +5,11 @@ public class LevelCircle : LevelBase
     private float radius;
     private int circleCount;
 
-    public LevelCircle(BallManager ballmanager, Player plyr, float radius, int circleCount, float centerX, float centerY, bool useBricks) 
-        : base(ballmanager, plyr, useBricks)
+    public LevelCircle(BallManager ballmanager, Player plyr, float radius, int circleCount, float centerX, float centerY, bool useBricks, bool move) 
+        : base(ballmanager, plyr, centerX, centerY, useBricks, move)
     {
         this.radius = radius;
         this.circleCount = circleCount;
-        Position = new Vector2(centerX, centerY);
         CreateCirclePattern(useBricks);
     }
 

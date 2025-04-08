@@ -8,8 +8,8 @@ public class LevelGrid : LevelBase
     private float rotation; //Rotation of the entire grid (stored in radians) //IF MAKING ROTATED GRID WITH BRICKS FACE SHINY SIDE DOWN
     private float rotationBricks; //Rotation of the bricks (stored in radians)
 
-    public LevelGrid(BallManager ballManager, Player plyr, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks, float rotationDegrees = 0f, float rotationBricksDegrees = 0)
-        : base(ballManager, plyr, useBricks)
+    public LevelGrid(BallManager ballManager, Player plyr, int rows, int columns, float spacing, float centerX, float centerY, bool useBricks, bool move, float rotationDegrees = 0f, float rotationBricksDegrees = 0)
+        : base(ballManager, plyr, centerX, centerY, useBricks, move)
     {
         this.rows = rows;
         this.columns = columns;

@@ -24,7 +24,7 @@ public class LevelCombiner
             levelGrids.Add(new LevelGrid(ballManager, player, 1, 12, 
                 Globals.BallBlue.Width * 2f + 4, 
                 Globals.Bounds.X / 2 + varyingOffset, 
-                Globals.Bounds.Y * 0.3f + 40*i, false));
+                Globals.Bounds.Y * 0.3f + 40*i, false, false));
         }
     }
 
