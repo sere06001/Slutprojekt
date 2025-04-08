@@ -13,6 +13,7 @@ public class GreenCircle : BaseCircle
     }
     protected override void CheckCollisions()
     {
+        List<Ball> ballPosList = new List<Ball>();
         foreach (Ball ball in ballManager.balls) 
         {
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
@@ -20,7 +21,7 @@ public class GreenCircle : BaseCircle
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
-                    player.Powerup.PowerupAbility(ball.Position); //DuplicateBallPowerup is crashing game because it is modifying ballManager.balls while iterating over it
+                    ballPosList.Add(ball);
                     Hit = true;
                     ball.HasHit(player);
                     player.AddCircleAndBricksHitCount();
@@ -28,6 +29,10 @@ public class GreenCircle : BaseCircle
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
                 }
             }
+        }
+        foreach (Ball ball in ballPosList)
+        {
+            player.Powerup.PowerupAbility(ball.Position);
         }
     }
     public override void Update()

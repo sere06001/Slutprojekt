@@ -13,6 +13,7 @@ public class GreenBrick : BaseBrick
     }
     protected override void CheckCollisions()
     {
+        List<Ball> ballPosList = new List<Ball>();
         foreach (Ball ball in ballManager.balls)
         {
             if (CheckBallCollision(ball))
@@ -20,7 +21,7 @@ public class GreenBrick : BaseBrick
                 ResolveBallCollision(ball);
                 if (!Hit)
                 {
-                    player.Powerup.PowerupAbility(ball.Position);
+                    ballPosList.Add(ball);
                     ball.HasHit(player);
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
@@ -30,6 +31,10 @@ public class GreenBrick : BaseBrick
                     scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
             }
+        }
+        foreach (Ball ball in ballPosList)
+        {
+            player.Powerup.PowerupAbility(ball.Position);
         }
     }
     public override void Update()
