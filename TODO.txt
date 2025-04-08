@@ -1,5 +1,7 @@
 Max 25 reds per combined level
 
+Make new ball spawn on ball that hit green brick/circle with DuplicateBallPowerup
+
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
 3. Add level winning conditions LevelCombiner.cs
