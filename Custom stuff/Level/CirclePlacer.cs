@@ -20,6 +20,11 @@ public class CirclePlacer
 
     public void PlaceCircle(Vector2 position)
     {
+        int spacing = 50;
+        if (position.Y > Globals.RestrictionCoordsLower - spacing)
+        {
+            position.Y = Globals.RestrictionCoordsLower - spacing;
+        }
         int roll = Globals.Random.Next(1, 101);
         string color = roll switch
         {

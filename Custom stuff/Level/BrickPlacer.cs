@@ -21,6 +21,11 @@ public class BrickPlacer
 
     public void PlaceBrick(Vector2 position, float rotation = 0)
     {
+        int spacing = 50;
+        if (position.Y > Globals.RestrictionCoordsLower - spacing)
+        {
+            position.Y = Globals.RestrictionCoordsLower - spacing;
+        }
         int roll = Globals.Random.Next(1, Globals.upperBoundForBricksNCircles);
         string color = roll switch
         {
