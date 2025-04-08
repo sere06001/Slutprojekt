@@ -6,6 +6,7 @@ public class BallManager
     public const int startingBallCount = 10;
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
+    float restrictionCoords = Globals.Bounds.Y - 25;
     private void DebugUI()
     {
         Vector2 pos = new(200, 200);
@@ -17,9 +18,9 @@ public class BallManager
     {
         Rectangle killBox = new Rectangle(
             0,
-            (int)(Globals.Bounds.Y * 0.9f),
+            (int)restrictionCoords,
             Globals.Bounds.X,
-            (int)(Globals.Bounds.Y * 0.1f)
+            (int)(Globals.Bounds.Y - restrictionCoords)
         );
         Color killZoneColor = new Color(Color.Red, 0.3f);
         Globals.SpriteBatch.Draw(Globals.Pixel, killBox, killZoneColor);
@@ -33,7 +34,6 @@ public class BallManager
     }
     private void RemoveBallAtBottom()
     {
-        float restrictionCoords = Globals.Bounds.Y * 0.9f;
         foreach (Ball ball in balls)
         {
             if (!ball.HasHitBrickOrCircle && ball.Position.Y + ball.texture.Height > restrictionCoords)
