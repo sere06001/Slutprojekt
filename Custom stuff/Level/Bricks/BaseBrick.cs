@@ -6,12 +6,12 @@ public abstract class BaseBrick
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private string scoreToDisplay;
     private bool getScoreToDisplay = true;
-    private float scoreDisplayTimer = 0f;
-    private float ScoreDisplayDurationSeconds = 2.5f;
-    private bool showScore = false;
-    private bool hasShownScore = false;
-    public float secondsBeforeRemovalTimer = 1.5f;
-    private float secondsBeforeRemoval = 10f;
+    protected float scoreDisplayTimer = 0f;
+    protected float ScoreDisplayDurationSeconds = 2.5f;
+    protected bool showScore = false;
+    protected bool hasShownScore = false;
+    protected float secondsBeforeRemovalTimer = 1.5f;
+    protected float secondsBeforeRemoval = 10f;
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
@@ -32,7 +32,7 @@ public abstract class BaseBrick
         Rotation = rotation;
     }
 
-    public void CheckCollisions()
+    protected virtual void CheckCollisions()
     {
         foreach (Ball ball in ballManager.balls)
         {
@@ -53,7 +53,7 @@ public abstract class BaseBrick
         }
     }
 
-    private bool CheckBallCollision(Ball ball)
+    protected bool CheckBallCollision(Ball ball)
     {
         Vector2 rotatedBallPos = RotatePoint(ball.Position, Position, -Rotation);
 
@@ -94,7 +94,7 @@ public abstract class BaseBrick
         return RotateVector(normal, Rotation);
     }
 
-    private void ResolveBallCollision(Ball ball)
+    protected void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = CalculateCollisionNormal(ball);
         Vector2 tangent = new Vector2(-normal.Y, normal.X);

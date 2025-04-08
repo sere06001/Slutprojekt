@@ -10,8 +10,8 @@ public abstract class BaseCircle
     private float ScoreDisplayDurationSeconds = 1.5f;
     private bool showScore = false;
     private bool hasShownScore = false;
-    private float secondsBeforeRemovalTimer = 0f;
-    private float secondsBeforeRemoval = 10f;
+    protected float secondsBeforeRemovalTimer = 0f;
+    protected float secondsBeforeRemoval = 10f;
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
@@ -31,7 +31,7 @@ public abstract class BaseCircle
         player = plyr;
     }
 
-    public void CheckCollisions()
+    protected virtual void CheckCollisions()
     {
         foreach (Ball ball in ballManager.balls)
         {
@@ -50,7 +50,7 @@ public abstract class BaseCircle
         }
     }
 
-    private void ResolveBallCollision(Ball ball)
+    protected void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = Vector2.Normalize(ball.Position - (Position + Origin));
 

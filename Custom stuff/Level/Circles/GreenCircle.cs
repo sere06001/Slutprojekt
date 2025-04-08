@@ -11,16 +11,27 @@ public class GreenCircle : BaseCircle
         TextureHit = Globals.BallGreenHit;
         TextureNotHit = Globals.BallGreen;
     }
+    protected override void CheckCollisions()
+    {
+        foreach (Ball ball in ballManager.balls)
+        {
+            if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
+            {
+                ResolveBallCollision(ball);
+                if (!Hit)
+                {
+                    player.Powerup.PowerupAbility(ball.Position);
+                    Hit = true;
+                    ball.HasHit(player);
+                    player.AddCircleAndBricksHitCount();
+                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
+                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                }
+            }
+        }
+    }
     public override void Update()
     {
         base.Update();
-        if (Hit)
-        {
-            if (!hasContributedToPowerup)
-            {
-               player.Powerup.PowerupAbility();
-               hasContributedToPowerup = true;
-            }
-        }
     }
 }

@@ -11,16 +11,29 @@ public class GreenBrick : BaseBrick
         TextureHit = Globals.BrickGreenHit;
         TextureNotHit = Globals.BrickGreen;
     }
+    protected override void CheckCollisions()
+    {
+        foreach (Ball ball in ballManager.balls)
+        {
+            if (CheckBallCollision(ball))
+            {
+                ResolveBallCollision(ball);
+                if (!Hit)
+                {
+                    player.Powerup.PowerupAbility(ball.Position);
+                    ball.HasHit(player);
+                    player.AddCircleAndBricksHitCount();
+                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
+                    Hit = true;
+                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                    showScore = true;
+                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
+                }
+            }
+        }
+    }
     public override void Update()
     {
         base.Update();
-        if (Hit)
-        {
-            if (!hasContributedToPowerup)
-            {
-               player.Powerup.PowerupAbility();
-               hasContributedToPowerup = true;
-            }
-        }
     }
 }
