@@ -6,21 +6,20 @@ public class BallManager
     public const int startingBallCount = 10;
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
-    float restrictionCoords = Globals.Bounds.Y - 25;
     private void DebugUI()
     {
-        Vector2 pos = new(200, 200);
+        Vector2 pos = new(200, 25);
         Globals.SpriteBatch.DrawString(Globals.Font, $"Active balls: {balls.Count}", pos, Color.White);
-        pos = new(200, 250);
+        pos = new(200, 75);
         Globals.SpriteBatch.DrawString(Globals.Font, $"Starting balls: {BallsLeft}", pos, Color.White);
     }
     private void DrawKillZone()
     {
         Rectangle killBox = new Rectangle(
             0,
-            (int)restrictionCoords,
+            (int)Globals.RestrictionCoordsLower,
             Globals.Bounds.X,
-            (int)(Globals.Bounds.Y - restrictionCoords)
+            (int)(Globals.Bounds.Y - Globals.RestrictionCoordsLower)
         );
         Color killZoneColor = new Color(Color.Red, 0.3f);
         Globals.SpriteBatch.Draw(Globals.Pixel, killBox, killZoneColor);
@@ -36,12 +35,12 @@ public class BallManager
     {
         foreach (Ball ball in balls)
         {
-            if (!ball.HasHitBrickOrCircle && ball.Position.Y + ball.texture.Height > restrictionCoords)
+            if (!ball.HasHitBrickOrCircle && ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower)
             {
                 AddBall5050();
             }
         }
-        balls.RemoveAll(ball => ball.Position.Y + ball.texture.Height > restrictionCoords);
+        balls.RemoveAll(ball => ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower);
     }
     private void CheckCollisions()
     {

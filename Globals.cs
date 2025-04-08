@@ -34,6 +34,7 @@ public static class Globals
     public static SpriteBatch SpriteBatch { get; set; }
     public static Point Bounds { get; set; }
     public static Random Random = new();
+    public static float RestrictionCoordsLower;
 
     public static void LoadContent()
     {
@@ -59,6 +60,7 @@ public static class Globals
 
         Font = Content.Load<SpriteFont>("font");
         ScoreOnHitFont = Content.Load<SpriteFont>("scoreOnHitFont");
+        RestrictionCoordsLower = Globals.Bounds.Y - 25;
     }
 
     public static void Update(GameTime gt)
