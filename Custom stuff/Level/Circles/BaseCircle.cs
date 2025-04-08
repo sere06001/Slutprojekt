@@ -23,6 +23,7 @@ public abstract class BaseCircle
     protected BallManager ballManager { get; set; }
 
     public bool IsMarkedForRemoval { get; private set; } = false;
+    private bool hasAddedRed = false;
 
     public BaseCircle(BallManager ballmngr, Player plyr)
     {
@@ -93,6 +94,11 @@ public abstract class BaseCircle
             {
                 player.IncreaseScoreMultiplier(ScoreMultiplier);
                 player.MultFromPurpleCheck();
+            }
+            if (this is RedCircle && !hasAddedRed)
+            {
+                player.AddRedsHit();
+                hasAddedRed = true;
             }
 
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;

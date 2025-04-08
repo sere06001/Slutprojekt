@@ -8,10 +8,20 @@ public class Player
     public int ScoreLevel { get; private set; }
     public int ScoreMultiplier { get; private set; } = 1;
     public bool HasIncreasedMultFromPurple { get; private set; } = false;
+    public int RedsHit { get; private set; } = 0;
     public Player(BallManager bllmng)
     {
         ballManager = bllmng;
     }
+    public void AddRedsHit()
+    {
+        RedsHit++;
+    }
+    public void ResetRedsHit()
+    {
+        RedsHit = 0;
+    }
+
     public void AddCircleAndBricksHitCount()
     {
         CircleAndBricksHitCount++;
@@ -47,19 +57,19 @@ public class Player
     }
     public virtual void Update()
     {
-        if (ScoreLevel >= 20000)
+        if (RedsHit >= 10)
         {
             ScoreMultiplier = 2;
         }
-        if (ScoreLevel >= 30000)
+        if (RedsHit >= 15)
         {
             ScoreMultiplier = 3;
         }
-        if (ScoreLevel >= 50000)
+        if (RedsHit >= 19)
         {
             ScoreMultiplier = 5;
         }
-        if (ScoreLevel >= 100000)
+        if (RedsHit >= 22)
         {
             ScoreMultiplier = 10;
         }

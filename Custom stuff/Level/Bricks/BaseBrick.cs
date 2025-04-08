@@ -23,6 +23,7 @@ public abstract class BaseBrick
     protected BallManager ballManager { get; set; }
 
     public bool IsMarkedForRemoval { get; private set; } = false;
+    private bool hasAddedRed = false;
 
     public BaseBrick(BallManager ballmngr, Player plyr, float rotation)
     {
@@ -165,6 +166,11 @@ public abstract class BaseBrick
             {
                 player.IncreaseScoreMultiplier(ScoreMultiplier);
                 player.MultFromPurpleCheck();
+            }
+            if (this is RedBrick && !hasAddedRed)
+            {
+                player.AddRedsHit();
+                hasAddedRed = true;
             }
 
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;

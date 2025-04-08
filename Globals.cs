@@ -2,9 +2,9 @@ namespace Slutprojekt;
 public static class Globals
 {
     public const int upperBoundForBricksNCircles = 101;
-    public const int chanceForRed = 20;
-    public const int chanceForPurple = 21;
-    public const int chanceForGreen = 22;
+    public const int chanceForRed = 30;
+    public const int chanceForPurple = 31;
+    public const int chanceForGreen = 32;
     public static Texture2D BallRed { get; private set; }
     public static Texture2D BallRedHit { get; private set; }
     public static Texture2D BallBlue { get; private set; }
