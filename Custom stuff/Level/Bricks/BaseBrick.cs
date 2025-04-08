@@ -23,6 +23,7 @@ public abstract class BaseBrick
     protected BallManager ballManager { get; set; }
 
     public bool IsMarkedForRemoval { get; private set; } = false;
+    protected bool hasContributedToPowerup = false;
     private bool hasAddedRed = false;
 
     public BaseBrick(BallManager ballmngr, Player plyr, float rotation)
@@ -148,11 +149,8 @@ public abstract class BaseBrick
         float rotatedY = vector.X * MathF.Sin(angle) + vector.Y * MathF.Cos(angle);
         return new Vector2(rotatedX, rotatedY);
     }
-
-    public void Update()
+    public void ScoreUpdate()
     {
-        CheckCollisions();
-
         if (Hit)
         {
             if (getScoreToDisplay)
@@ -160,17 +158,6 @@ public abstract class BaseBrick
                 int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
                 scoreToDisplay = scoreMultiplied.ToString();
                 getScoreToDisplay = false;
-            }
-
-            if (this is PurpleBrick && !player.HasIncreasedMultFromPurple)
-            {
-                player.IncreaseScoreMultiplier(ScoreMultiplier);
-                player.MultFromPurpleCheck();
-            }
-            if (this is RedBrick && !hasAddedRed)
-            {
-                player.AddRedsHit();
-                hasAddedRed = true;
             }
 
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
@@ -193,6 +180,12 @@ public abstract class BaseBrick
         }
 
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
+    }
+
+    public virtual void Update()
+    {
+        CheckCollisions();
+        ScoreUpdate();
     }
 
     public void Draw()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickgreenhit.png</SourceFile>
+  <SourceFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickgreenhit.png</SourceFile>
   <SourceTime>2025-03-22T01:14:59.0260375+01:00</SourceTime>
-  <DestFile>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/brickgreenhit.xnb</DestFile>
-  <DestTime>2025-04-08T21:51:35.3952945+02:00</DestTime>
+  <DestFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/brickgreenhit.xnb</DestFile>
+  <DestTime>2025-04-08T22:06:59.8756878+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

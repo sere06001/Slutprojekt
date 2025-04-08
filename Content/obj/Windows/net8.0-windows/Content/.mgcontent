@@ -4,25 +4,25 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/font.spritefont</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/scoreOnHitFont.spritefont</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ball.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballred.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballredhit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballblue.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballbluehit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreen.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreenhit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballpurple.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballpurplehit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickred.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickredhit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickblue.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickbluehit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickgreen.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickgreenhit.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickpurple.png</File>
-    <File>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickpurplehit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/font.spritefont</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/scoreOnHitFont.spritefont</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ball.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballred.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballredhit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballblue.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballbluehit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreen.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballgreenhit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballpurple.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballpurplehit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickred.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickredhit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickblue.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickbluehit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickgreen.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickgreenhit.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickpurple.png</File>
+    <File>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/brickpurplehit.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

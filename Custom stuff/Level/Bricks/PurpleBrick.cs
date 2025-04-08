@@ -12,4 +12,16 @@ public class PurpleBrick : BaseBrick
         TextureHit = Globals.BrickPurpleHit;
         TextureNotHit = Globals.BrickPurple;
     }
+    public override void Update()
+    {
+        base.Update();
+        if (Hit)
+        {
+            if (!player.HasIncreasedMultFromPurple)
+            {
+                player.IncreaseScoreMultiplier(ScoreMultiplier);
+                player.MultFromPurpleCheck();
+            }
+        }
+    }
 }

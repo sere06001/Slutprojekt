@@ -10,11 +10,6 @@ public abstract class BasePowerup
     }
     public abstract string Description();
     public abstract void PowerupAbility();
-
-    public void IsPowerupActive(bool isActive)
-    {
-        IsActive = isActive;
-    }
     public virtual void ResetPowerup()
     {
         IsActive = false;

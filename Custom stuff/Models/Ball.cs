@@ -14,10 +14,10 @@ public class Ball
     private float gravity = 9.82f * 100; //Scaled up for pixels
     public float Restitution = 0.85f; //Energy loss on bounce
 
-    public Ball()
+    public Ball(Vector2? position = null)
     {
         Origin = new(texture.Width / 2, texture.Height / 2);
-        Position = StartPosition();
+        Position = position ?? StartPosition();
         Direction = RandomDirection();
         Velocity = Direction * Speed;
     }

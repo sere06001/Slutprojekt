@@ -21,9 +21,9 @@ public abstract class BaseCircle
     public virtual float Rotation { get; set; }
     public Vector2 Origin => new Vector2(TextureCurrent.Width / 4, TextureCurrent.Height / 4);
     protected BallManager ballManager { get; set; }
+    protected bool hasContributedToPowerup = false;
 
     public bool IsMarkedForRemoval { get; private set; } = false;
-    private bool hasAddedRed = false;
 
     public BaseCircle(BallManager ballmngr, Player plyr)
     {
@@ -76,11 +76,8 @@ public abstract class BaseCircle
             Globals.SpriteBatch.DrawString(Globals.ScoreOnHitFont, scoreToDisplay, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }
     }
-
-    public void Update()
+    public void ScoreUpdate()
     {
-        CheckCollisions();
-
         if (Hit)
         {
             if (getScoreToDisplay)
@@ -88,22 +85,6 @@ public abstract class BaseCircle
                 int scoreMultiplied = ScoreOnHit * player.ScoreMultiplier;
                 scoreToDisplay = scoreMultiplied.ToString();
                 getScoreToDisplay = false;
-            }
-            if (this is GreenCircle && !player.Powerup.IsActive)
-            {
-                player.Powerup.PowerupAbility();
-                player.Powerup.IsPowerupActive(player.Powerup.IsActive);
-            }
-
-            if (this is PurpleCircle && !player.HasIncreasedMultFromPurple)
-            {
-                player.IncreaseScoreMultiplier(ScoreMultiplier);
-                player.MultFromPurpleCheck();
-            }
-            if (this is RedCircle && !hasAddedRed)
-            {
-                player.AddRedsHit();
-                hasAddedRed = true;
             }
 
             secondsBeforeRemovalTimer -= Globals.TotalSeconds;
@@ -126,6 +107,12 @@ public abstract class BaseCircle
         }
 
         TextureCurrent = Hit ? TextureHit : TextureNotHit;
+    }
+
+    public virtual void Update()
+    {
+        CheckCollisions();
+        ScoreUpdate();
     }
 
     public void Draw()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballblue.png</SourceFile>
+  <SourceFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/ballblue.png</SourceFile>
   <SourceTime>2025-03-30T03:40:39.5241332+02:00</SourceTime>
-  <DestFile>c:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballblue.xnb</DestFile>
-  <DestTime>2025-04-08T21:51:35.3730253+02:00</DestTime>
+  <DestFile>C:/Users/Kreedy/Documents/GitHub/Slutprojekt/Content/bin/Windows/Content/ballblue.xnb</DestFile>
+  <DestTime>2025-04-08T22:06:59.8577335+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

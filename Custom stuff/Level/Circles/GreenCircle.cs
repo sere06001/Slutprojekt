@@ -11,4 +11,16 @@ public class GreenCircle : BaseCircle
         TextureHit = Globals.BallGreenHit;
         TextureNotHit = Globals.BallGreen;
     }
+    public override void Update()
+    {
+        base.Update();
+        if (Hit)
+        {
+            if (!hasContributedToPowerup)
+            {
+               player.Powerup.PowerupAbility();
+               hasContributedToPowerup = true;
+            }
+        }
+    }
 }

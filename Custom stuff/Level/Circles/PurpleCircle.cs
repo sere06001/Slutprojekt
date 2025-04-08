@@ -12,4 +12,16 @@ public class PurpleCircle : BaseCircle
         TextureHit = Globals.BallPurpleHit;
         TextureNotHit = Globals.BallPurple;
     }
+    public override void Update()
+    {
+        base.Update();
+        if (Hit)
+        {
+            if (!player.HasIncreasedMultFromPurple)
+            {
+                player.IncreaseScoreMultiplier(ScoreMultiplier);
+                player.MultFromPurpleCheck();
+            }
+        }
+    }
 }
