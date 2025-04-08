@@ -14,10 +14,10 @@ public class UI
         Vector2 FinalscorePos = new(Globals.Bounds.X-400, 25);
         Globals.SpriteBatch.DrawString(Globals.Font, "Score level: "+player.ScoreLevel.ToString(), FinalscorePos, Color.White);
 
-        Vector2 scoreMultPos = new(Globals.Bounds.X-400, 75);
+        Vector2 scoreMultPos = new(Globals.Bounds.X-400, 50);
         Globals.SpriteBatch.DrawString(Globals.Font, "Score mult: "+player.ScoreMultiplier.ToString(), scoreMultPos, Color.White);
 
-        Vector2 redHits = new(Globals.Bounds.X-400, 100);
+        Vector2 redHits = new(Globals.Bounds.X-400, 75);
         Globals.SpriteBatch.DrawString(Globals.Font, "RedHits: "+player.RedsHit.ToString(), redHits, Color.White);
     }
     public void Draw()
