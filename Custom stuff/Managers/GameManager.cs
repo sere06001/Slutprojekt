@@ -27,10 +27,6 @@ public class GameManager
     {
         ballManager.Update();
         player.Update();
-        if (ballManager.balls.Count <= 0)
-        {
-            player.ResetScoreMultiplier();
-        }
         levelGenerator.Update();
 
         MouseState currentMouseState = Mouse.GetState();
