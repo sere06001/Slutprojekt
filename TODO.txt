@@ -1,5 +1,7 @@
 Make LevelBaseMoving for moving levels
 
+Make scoremult update live with scorelevel instead of after all the balls are destroyed
+
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
 3. Add level winning conditions LevelCombiner.cs
