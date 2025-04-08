@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj": {}
+    "c:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj": {
+    "c:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj",
+        "projectUniqueName": "c:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj",
         "projectName": "Slutprojekt",
-        "projectPath": "C:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj",
+        "projectPath": "c:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\Slutprojekt.csproj",
         "packagesPath": "C:\\Users\\Kreedy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\obj\\",
+        "outputPath": "c:\\Users\\Kreedy\\Documents\\GitHub\\Slutprojekt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

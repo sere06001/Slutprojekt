@@ -1,14 +1,15 @@
 namespace Slutprojekt;
 public abstract class BaseCharacter
 {
-    protected virtual BasePowerup Powerup { get; set; }
+    public virtual BasePowerup Powerup { get; protected set; }
+    public virtual BallManager ballManager { get; set; }
     protected virtual Texture Texture { get; set; }
     protected virtual Vector2 Position { get; set; }
-    public abstract string Description();
-    public virtual void Update()
+    public BaseCharacter(BallManager ballmanager)
     {
-        Powerup.Update();
+        ballManager = ballmanager;
     }
+    public abstract string Description();
     public virtual void Draw()
     {
 

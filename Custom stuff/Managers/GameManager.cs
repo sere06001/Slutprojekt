@@ -3,6 +3,7 @@ public class GameManager
 {
     public BallManager ballManager = new();
     public Player player;
+    public BaseCharacter character;
     public UI UI;
     public LevelGenerator levelGenerator;
     public LevelCombiner levelCombiner;
@@ -10,7 +11,8 @@ public class GameManager
 
     public GameManager()
     {
-        player = new(ballManager);
+        character = new DuplicateBallCharacter(ballManager);
+        player = new(ballManager, character);
         levelCombiner = new(ballManager, player);
         levelGenerator = new(ballManager, player, levelCombiner);
         //Change to LevelGenerator.Update() later, currentLevel is just for testing purposes

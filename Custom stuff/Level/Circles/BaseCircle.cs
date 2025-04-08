@@ -89,6 +89,11 @@ public abstract class BaseCircle
                 scoreToDisplay = scoreMultiplied.ToString();
                 getScoreToDisplay = false;
             }
+            if (this is GreenCircle && !player.Powerup.IsActive)
+            {
+                player.Powerup.PowerupAbility();
+                player.Powerup.IsPowerupActive(player.Powerup.IsActive);
+            }
 
             if (this is PurpleCircle && !player.HasIncreasedMultFromPurple)
             {

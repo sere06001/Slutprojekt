@@ -2,6 +2,7 @@ namespace Slutprojekt;
 public class Player
 {
     public BaseCharacter Character { get; set; }
+    public BasePowerup Powerup { get; set; }
     public BallManager ballManager { get; set; }
     public int CircleAndBricksHitCount { get; private set; } = 0;
     public int ScoreFromHits { get; private set; }
@@ -10,9 +11,11 @@ public class Player
     public int ScoreMultiplier { get; private set; } = 1;
     public bool HasIncreasedMultFromPurple { get; private set; } = false;
     public int RedsHit { get; private set; } = 0;
-    public Player(BallManager bllmng)
+    public Player(BallManager bllmng, BaseCharacter character)
     {
         ballManager = bllmng;
+        Character = character;
+        Powerup = Character.Powerup;
     }
     public void AddRedsHit()
     {
@@ -80,6 +83,5 @@ public class Player
         {
             ScoreMultiplier = 10;
         }
-        //Character.Update();
     }
 }
