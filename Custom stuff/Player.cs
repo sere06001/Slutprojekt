@@ -5,6 +5,7 @@ public class Player
     public BallManager ballManager { get; set; }
     public int CircleAndBricksHitCount { get; private set; } = 0;
     public int ScoreFromHits { get; private set; }
+    public int ScoreForBall { get; private set; }
     public int ScoreLevel { get; private set; }
     public int ScoreMultiplier { get; private set; } = 1;
     public bool HasIncreasedMultFromPurple { get; private set; } = false;
@@ -37,6 +38,7 @@ public class Player
     public void AddScore(int score)
     {
         ScoreFromHits += score;
+        ScoreForBall = ScoreFromHits;
     }
     public void ResetScore()
     {
@@ -57,6 +59,11 @@ public class Player
     }
     public virtual void Update()
     {
+        if (ScoreForBall >= 25000)
+        {
+            ballManager.AddBallsLeft();
+            ScoreForBall = 0;
+        }
         if (RedsHit >= 10)
         {
             ScoreMultiplier = 2;

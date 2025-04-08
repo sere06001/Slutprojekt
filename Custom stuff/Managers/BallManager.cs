@@ -87,6 +87,10 @@ public class BallManager
         balls.Add(newBall);
         BallsLeft--;
     }
+    public void AddBallsLeft()
+    {
+        BallsLeft++;
+    }
 
     public void Update(Player player)
     {
