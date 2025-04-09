@@ -12,6 +12,6 @@ public class RespawnBallPowerup : BasePowerup
     }
     public override void PowerupAbility(Ball ball) //Make ball respawn if hit killzone
     {
-        ballManager.balls.Add(new Ball(ball.StartPosition()));
+        ball.SetRespawn(true);
     }
 }

@@ -41,13 +41,17 @@ public class BallManager
             isDuplicate = ball.IsDuplicate;
             willRespawn = ball.WillRespawn;
             isLowerThanKillZone = ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower;
-            if (!hasHitObject && !isDuplicate && !willRespawn)
+            if (isLowerThanKillZone && willRespawn && hasHitObject)
+            {
+                ball.SetRespawn(false);
+                ball.Position = new Vector2(ball.Position.X, 0);
+            }
+            else if (!hasHitObject && !isDuplicate && !willRespawn)
             {
                 if (isLowerThanKillZone)
                 {
                     AddBall5050();
                 }
-                
             }
         }
         balls.RemoveAll(ball => ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower);
