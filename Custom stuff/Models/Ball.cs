@@ -36,7 +36,7 @@ public class Ball
     {
         HasHitBrickOrCircle = true;
     }
-    private Vector2 StartPosition()
+    public Vector2 StartPosition()
     {
         var x = Globals.Random.Next(Globals.Bounds.X); //Bounds.X/2;
         var y = texture.Height / 2;

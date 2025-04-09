@@ -11,8 +11,8 @@ public class GameManager
 
     public GameManager()
     {
-        character = new DuplicateBallCharacter(ballManager);
-        //character = new RespawnBallCharacter(ballManager);
+        //character = new DuplicateBallCharacter(ballManager);
+        character = new RespawnBallCharacter(ballManager);
         player = new(ballManager, character);
         //PowerupHandler.player = player;
         levelCombiner = new(ballManager, player);

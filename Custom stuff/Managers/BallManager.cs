@@ -31,12 +31,23 @@ public class BallManager
     }
     private void RemoveBallAtBottom()
     {
+        bool hasHitObject;
+        bool isDuplicate;
+        bool willRespawn;
+        bool isLowerThanKillZone;
         foreach (Ball ball in balls)
         {
-            if (!ball.HasHitBrickOrCircle && !ball.IsDuplicate && !ball.WillRespawn
-                && ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower)
+            hasHitObject = ball.HasHitBrickOrCircle;
+            isDuplicate = ball.IsDuplicate;
+            willRespawn = ball.WillRespawn;
+            isLowerThanKillZone = ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower;
+            if (!hasHitObject && !isDuplicate && !willRespawn)
             {
-                AddBall5050();
+                if (isLowerThanKillZone)
+                {
+                    AddBall5050();
+                }
+                
             }
         }
         balls.RemoveAll(ball => ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower);

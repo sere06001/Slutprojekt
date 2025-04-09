@@ -65,7 +65,7 @@ public static class Globals
 
         Font = Content.Load<SpriteFont>("font");
         ScoreOnHitFont = Content.Load<SpriteFont>("scoreOnHitFont");
-        RestrictionCoordsLower = Globals.Bounds.Y - 25;
+        RestrictionCoordsLower = Bounds.Y - 25;
     }
 
     public static void Update(GameTime gt)

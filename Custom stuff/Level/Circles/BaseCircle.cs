@@ -6,10 +6,10 @@ public abstract class BaseCircle
     public virtual int ScoreMultiplier { get; protected set; } = 1;
     private string scoreToDisplay;
     private bool getScoreToDisplay = true;
-    private float scoreDisplayTimer = 0f;
-    private float ScoreDisplayDurationSeconds = 1.5f;
-    private bool showScore = false;
-    private bool hasShownScore = false;
+    protected float scoreDisplayTimer = 0f;
+    protected float ScoreDisplayDurationSeconds = 1.5f;
+    protected bool showScore = false;
+    protected bool hasShownScore = false;
     protected float secondsBeforeRemovalTimer = 0f;
     protected float secondsBeforeRemoval = 10f;
     public float Radius => TextureCurrent.Width / 2;

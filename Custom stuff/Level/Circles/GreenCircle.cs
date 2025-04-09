@@ -22,26 +22,28 @@ public class GreenCircle : BaseCircle
                 if (!Hit)
                 {
                     ballPosList.Add(ball);
+                    if (player.Powerup is RespawnBallPowerup)
+                    {
+                        ball.SetRespawn(true);
+                    }
                     Hit = true;
                     ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
                     secondsBeforeRemovalTimer = secondsBeforeRemoval;
+                    showScore = true;
+                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
                 ball.HasHit();
             }
         }
-        foreach (Ball ball in ballPosList)
+        if (player.Powerup is DuplicateBallPowerup)
         {
-            player.Powerup.PowerupAbility(ball);
+            foreach (Ball ball in ballPosList)
+            {
+                player.Powerup.PowerupAbility(ball);
+            }
         }
-    }
-    public void HandlePowerups(BasePowerup powerup)
-    {
         
-    }
-    public override void Update()
-    {
-        base.Update();
     }
 }
