@@ -33,7 +33,7 @@ public class BallManager
     {
         foreach (Ball ball in balls)
         {
-            if (!ball.HasHitBrickOrCircle && !ball.IsDuplicate
+            if (!ball.HasHitBrickOrCircle && !ball.IsDuplicate && !ball.WillRespawn
                 && ball.Position.Y + ball.texture.Height > Globals.RestrictionCoordsLower)
             {
                 AddBall5050();

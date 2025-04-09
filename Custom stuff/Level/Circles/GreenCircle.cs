@@ -36,6 +36,10 @@ public class GreenCircle : BaseCircle
             player.Powerup.PowerupAbility(ball);
         }
     }
+    public void HandlePowerups(BasePowerup powerup)
+    {
+        
+    }
     public override void Update()
     {
         base.Update();

@@ -10,9 +10,8 @@ public class RespawnBallPowerup : BasePowerup
         string description = "";
         return description;
     }
-    public override void PowerupAbility(Ball ball) //Vector2 pos of ball that hit brick
+    public override void PowerupAbility(Ball ball) //Make ball respawn if hit killzone
     {
-        Vector2 ballPos = new(ball.Position.X, ball.Position.Y); //Create new ball at pos
-        ballManager.balls.Add(new Ball(ballPos)); //Add ball at pos with upward velocity
+        ball.SetRespawn(true);
     }
 }

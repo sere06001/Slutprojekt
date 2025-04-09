@@ -5,6 +5,7 @@ public class Ball
 {
     public Texture2D texture = Globals.BallTexture;
     public bool HasHitBrickOrCircle { get; private set; } = false;
+    public bool WillRespawn { get; private set; } = false;
     public Vector2 Origin { get; private set; }
     public Vector2 Position { get; set; }
     public Vector2 Direction { get; set; }
@@ -22,6 +23,10 @@ public class Ball
         Direction = RandomDirection();
         Velocity = Direction * Speed;
         IsDuplicate = isDuplicate;
+    }
+    public void SetRespawn(bool willRespawn)
+    {
+        WillRespawn = willRespawn;
     }
     public void IncreaseHitCount(Player player)
     {

@@ -12,7 +12,9 @@ public class GameManager
     public GameManager()
     {
         character = new DuplicateBallCharacter(ballManager);
+        //character = new RespawnBallCharacter(ballManager);
         player = new(ballManager, character);
+        //PowerupHandler.player = player;
         levelCombiner = new(ballManager, player);
         levelGenerator = new(ballManager, player, levelCombiner);
         //Change to LevelGenerator.Update() later, currentLevel is just for testing purposes
