@@ -10,8 +10,8 @@ public class DuplicateBallPowerup : BasePowerup
         string description = "";
         return description;
     }
-    public override void PowerupAbility()
+    public override void PowerupAbility() //Vector2 pos of ball that hit brick
     {
-        ballManager.balls.Add(new());
+        ballManager.balls.Add(new()); //Add ball at pos with upward velocity
     }
 }
