@@ -9,7 +9,7 @@ public abstract class BasePowerup
         this.ballManager = ballManager;
     }
     public abstract string Description();
-    public abstract void PowerupAbility(Vector2 ballpos);
+    public abstract void PowerupAbility(Ball ball);
     public virtual void ResetPowerup()
     {
         IsActive = false;

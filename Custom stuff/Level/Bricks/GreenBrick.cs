@@ -35,7 +35,7 @@ public class GreenBrick : BaseBrick
         }
         foreach (Ball ball in ballPosList)
         {
-            player.Powerup.PowerupAbility(ball.Position);
+            player.Powerup.PowerupAbility(ball);
         }
     }
     public override void Update()
