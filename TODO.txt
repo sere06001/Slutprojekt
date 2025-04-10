@@ -5,6 +5,7 @@ Powerups:
 ExplodePowerup - Explodes circles and bricks within a certain radius
 BreakRedsPowerup - Breaks 1/5th of all active reds
 FireballPowerup - Implemented but make it so that the next ball shot gets set on fire instead of active ball
+ExtendTrajectoryPowerup - Extends trajectory
 
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();
