@@ -3,10 +3,9 @@ public class Cannon
 {
     public Vector2 Position { get; private set; }
     public float Rotation { get; private set; }
-    public float MaxRotation = MathHelper.ToRadians(80f);
+    public float MaxRotation = 2*MathF.PI; //MathHelper.ToRadians(80f)
     private readonly BallManager ballManager;
     private readonly Texture2D texture;
-
     private const int PREDICTION_STEPS = 100;
     private const float TIME_STEP = 1f / 60f;
     private float spawnOffset = 75f;
