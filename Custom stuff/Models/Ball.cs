@@ -55,7 +55,8 @@ public class Ball
 
     private void HandleCollision()
     {
-        if (Position.X < Origin.X || Position.X > Globals.Bounds.X - Origin.X)
+        if (Position.X < Origin.X || Position.X > Globals.Bounds.X - Origin.X
+            || Position.X < Globals.LeftWall || Position.X > Globals.RightWall)
         {
             Velocity = new(-Velocity.X * Restitution, Velocity.Y);
             Position = new(

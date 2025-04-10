@@ -7,7 +7,7 @@ public class Cannon
     private readonly BallManager ballManager;
     private readonly Texture2D texture;
 
-    private const int PREDICTION_STEPS = 25;
+    private const int PREDICTION_STEPS = 100;
     private const float TIME_STEP = 1f / 60f;
     private List<Vector2> trajectoryPoints = new();
 
@@ -33,7 +33,7 @@ public class Cannon
             velocity += new Vector2(0, Globals.Gravity) * TIME_STEP;
             position += velocity * TIME_STEP;
 
-            if (position.X < 0 || position.X > Globals.Bounds.X) //Changes trajectory if it touches walls
+            if (position.X < Globals.LeftWall || position.X > Globals.RightWall) //Changes trajectory if it touches walls
             {
                 velocity.X = -velocity.X * 0.9f;
                 position.X = MathHelper.Clamp(position.X, 0, Globals.Bounds.X);
