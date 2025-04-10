@@ -1,6 +1,10 @@
 Max 25 reds per combined level
 
 Create static poweruphandler class that will handle powerup usage logic when given a powerup as parameter from green circle/brick
+Powerups:
+ExplodePowerup - Explodes circles and bricks within a certain radius
+BreakRedsPowerup - Breaks 1/5th of all active reds
+FireballPowerup - Burns through all circles and bricks without bouncing back, in BaseBrick and BaseCircle do not bounce back ball if player.Powerup is FireballPowerup
 
 1. Make level selector screen
 2. Make level picked from level selector screen decide which version of LevelBase etc get updated and drawn i.e Face();

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/font.spritefont</SourceFile>
+  <SourceFile>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/font.spritefont</SourceFile>
   <SourceTime>2025-03-24T11:44:10.3943929+01:00</SourceTime>
-  <DestFile>c:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/font.xnb</DestFile>
-  <DestTime>2025-04-10T12:05:49.0765782+02:00</DestTime>
+  <DestFile>C:/GA-Monogame/GA_2DSpel/Slutprojekt/Content/bin/Windows/Content/font.xnb</DestFile>
+  <DestTime>2025-04-10T12:09:22.3405397+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
