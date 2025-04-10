@@ -5,7 +5,6 @@ public class Ball
     {
         Left,
         Right,
-        None
     }
 
     public Texture2D texture = Globals.BallTexture;
@@ -57,14 +56,7 @@ public class Ball
     }
     private void UpdateDirection()
     {
-        if (Math.Abs(Velocity.X) < 0.1f)
-        {
-            CurrentDirection = HorizontalDirection.None;
-        }
-        else
-        {
-            CurrentDirection = Velocity.X > 0 ? HorizontalDirection.Right : HorizontalDirection.Left;
-        }
+        CurrentDirection = Velocity.X > 0 ? HorizontalDirection.Right : HorizontalDirection.Left;
     }
 
     private Vector2 RandomDirection() //Make it follow mouse instead
