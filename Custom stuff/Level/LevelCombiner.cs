@@ -4,18 +4,24 @@ public class LevelCombiner
     public Player player;
     public BallManager ballManager;
     private List<LevelGrid> levelGrids = new List<LevelGrid>();
-    //private List<RedBrick> redBricks = new List<RedBrick>(); When all red bricks/circles have been Hit || IsMarkedForDeletion, initiate winning stuff
-    //private List<RedCircle> redCircles = new List<RedCircle>();
+    private TeleporterManager teleporterManager;
 
     public LevelCombiner(BallManager ballmngr, Player plyr)
     {
         ballManager = ballmngr;
         player = plyr;
+        teleporterManager = new TeleporterManager(ballManager);
     }
 
     public void UnevenCircleGrid()
     {
         levelGrids.Clear();
+
+        // Add some example teleporters
+        teleporterManager.AddTeleporterPair(
+            new Vector2(Globals.LeftWall + 50, 200),
+            new Vector2(Globals.RightWall - 50, 200)
+        );
 
         for (int i = 0; i < 8; i++)
         {
@@ -39,6 +45,7 @@ public class LevelCombiner
         {
             grid.Update();
         }
+        teleporterManager.Update();
     }
 
     public void Draw()
@@ -47,5 +54,6 @@ public class LevelCombiner
         {
             grid.Draw();
         }
+        teleporterManager.Draw();
     }
 }
