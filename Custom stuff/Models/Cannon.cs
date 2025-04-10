@@ -50,32 +50,35 @@ public class Cannon
     {
         float bestAngle = Rotation;
         float closestDistance = float.MaxValue;
-
-        for (float angle = -3f; angle <= 3f; angle += 0.1f)
+        
+        for (float angle = -3f; angle <= 3f; angle += 0.01f)
         {
             Vector2 pos = Position + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * spawnOffset;
             Vector2 dir = new((float)Math.Cos(angle), (float)Math.Sin(angle));
             Vector2 vel = dir * Ball.Speed;
 
-            for (int step = 0; step < 60; step++)
+            for (int step = 0; step < 120; step++)
             {
                 float dist = Vector2.Distance(pos, target);
-                
                 if (dist < closestDistance)
                 {
                     closestDistance = dist;
                     bestAngle = angle;
-                }
 
-                if (pos.Y > target.Y + 10) break;
+                    if (dist < 5f) break;
+                }
 
                 vel += new Vector2(0, Globals.Gravity) * TIME_STEP;
                 pos += vel * TIME_STEP;
 
-                if (pos.X < Globals.LeftWall || pos.X > Globals.RightWall || 
+                if (pos.Y > target.Y + 5 || 
+                    pos.X < Globals.LeftWall || 
+                    pos.X > Globals.RightWall || 
                     pos.Y > Globals.RestrictionCoordsLower)
                     break;
             }
+
+            if (closestDistance < 5f) break;
         }
 
         return bestAngle;
