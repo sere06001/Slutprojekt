@@ -1,5 +1,7 @@
 Max 25 reds per combined level
 
+moving levels
+
 Poweruphandler in green objects
 Powerups:
 ExplodePowerup - Explodes circles and bricks within a certain radius
