@@ -12,7 +12,7 @@ public class BreakRedsPowerup : BasePowerup
     }
     public override void PowerupAbility(Ball ball)
     {
-        Vector2 ballPos = new(ball.Position.X, ball.Position.Y); //Create new ball at pos
-        ballManager.balls.Add(new Ball(ballPos)); //Add ball at pos with upward velocity
+        Vector2 ballPos = new(ball.Position.X, ball.Position.Y);
+        ballManager.balls.Add(new Ball(ballPos));
     }
 }

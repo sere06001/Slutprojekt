@@ -10,10 +10,10 @@ public class DuplicateBallPowerup : BasePowerup
         string description = "";
         return description;
     }
-    public override void PowerupAbility(Ball ball) //Vector2 pos of ball that hit circle
+    public override void PowerupAbility(Ball ball)
     {
         int direction;
-        if (ball.CurrentDirection == Ball.HorizontalDirection.Left) //If ball is going left, randomize direction
+        if (ball.CurrentDirection == Ball.HorizontalDirection.Right)
         {
             direction = -1;
         }
@@ -21,7 +21,7 @@ public class DuplicateBallPowerup : BasePowerup
         {
             direction = 1;
         }
-        Vector2 ballPos = new(ball.Position.X + (direction * Globals.BallTexture.Width / 2), ball.Position.Y + Globals.BallTexture.Height / 2); //Create new ball at pos
+        Vector2 ballPos = new(ball.Position.X + (direction * Globals.BallTexture.Width), ball.Position.Y + Globals.BallTexture.Height / 2); //Create new ball at pos
         ballManager.balls.Add(new Ball(ballPos)); //Add ball at pos with upward velocity
     }
 }
