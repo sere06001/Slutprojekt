@@ -17,7 +17,7 @@ public class Ball
     public HorizontalDirection CurrentDirection { get; private set; }
     public static int Speed { get; private set; } = 400;
     public Color Color { get; set; } = Color.White;
-    public float Restitution = 0.9f;
+    public float Restitution = 0.8f;
     public bool IsDuplicate { get; private set; } = false;
     public bool IsOnFire { get; private set; } = false;
 
