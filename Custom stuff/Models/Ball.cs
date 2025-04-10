@@ -15,9 +15,8 @@ public class Ball
     public Vector2 Direction { get; set; }
     public Vector2 Velocity { get; set; }
     public HorizontalDirection CurrentDirection { get; private set; }
-    public static int Speed { get; private set; } = 300;
+    public static int Speed { get; private set; } = 400;
     public Color Color { get; set; } = Color.White;
-    private float gravity = 9.82f * 100;
     public float Restitution = 0.9f;
     public bool IsDuplicate { get; private set; } = false;
     public bool IsOnFire { get; private set; } = false;
@@ -26,8 +25,8 @@ public class Ball
     {
         Origin = new(texture.Width / 2, texture.Height / 2);
         Position = position;
-        Direction = Vector2.Zero; // Direction will be set when shot from cannon
-        Velocity = Vector2.Zero; // Velocity will be set when shot from cannon
+        Direction = Vector2.Zero;
+        Velocity = Vector2.Zero;
         IsDuplicate = isDuplicate;
         UpdateDirection();
     }
@@ -63,7 +62,7 @@ public class Ball
                 MathHelper.Clamp(Position.X, Origin.X, Globals.Bounds.X - Origin.X),
                 Position.Y
             );
-            UpdateDirection(); // Update direction after wall bounce
+            UpdateDirection();
         }
 
         if (Position.Y < Origin.Y || Position.Y > Globals.Bounds.Y - Origin.Y)
@@ -78,9 +77,9 @@ public class Ball
 
     private void UpdatePosition()
     {
-        Velocity += new Vector2(0, gravity) * Globals.TotalSeconds;
+        Velocity += new Vector2(0, Globals.Gravity) * Globals.TotalSeconds;
         Position += Velocity * Globals.TotalSeconds;
-        UpdateDirection(); // Update direction as velocity changes
+        UpdateDirection();
         HandleCollision();
     }
 
