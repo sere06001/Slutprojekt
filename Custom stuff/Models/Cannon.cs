@@ -46,14 +46,45 @@ public class Cannon
         }
     }
 
+    private float FindAngleForTarget(Vector2 target)
+    {
+        float bestAngle = Rotation;
+        float closestDistance = float.MaxValue;
+
+        for (float angle = -3f; angle <= 3f; angle += 0.1f)
+        {
+            Vector2 pos = Position + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * spawnOffset;
+            Vector2 dir = new((float)Math.Cos(angle), (float)Math.Sin(angle));
+            Vector2 vel = dir * Ball.Speed;
+
+            for (int step = 0; step < 60; step++)
+            {
+                float dist = Vector2.Distance(pos, target);
+                
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                    bestAngle = angle;
+                }
+
+                if (pos.Y > target.Y + 10) break;
+
+                vel += new Vector2(0, Globals.Gravity) * TIME_STEP;
+                pos += vel * TIME_STEP;
+
+                if (pos.X < Globals.LeftWall || pos.X > Globals.RightWall || 
+                    pos.Y > Globals.RestrictionCoordsLower)
+                    break;
+            }
+        }
+
+        return bestAngle;
+    }
+
     public void Update()
     {
         Vector2 mousePosition = new(Mouse.GetState().X, Mouse.GetState().Y);
-        Vector2 direction = mousePosition - Position;
-        float targetRotation = (float)Math.Atan2(direction.Y, direction.X);
-
-        float adjustedRotation = targetRotation - MathHelper.PiOver2;
-        Rotation = MathHelper.Clamp(adjustedRotation, -MaxRotation, MaxRotation) + MathHelper.PiOver2;
+        Rotation = FindAngleForTarget(mousePosition);
 
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && ballManager.BallsLeft > 0)
         {
