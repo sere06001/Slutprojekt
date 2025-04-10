@@ -3,7 +3,7 @@ public class Cannon
 {
     public Vector2 Position { get; private set; }
     public float Rotation { get; private set; }
-    public float MaxRotation = 2*MathF.PI; //MathHelper.ToRadians(80f)
+    public float MaxRotation = MathHelper.ToRadians(105f); //Degrees from vertical in each direction
     private readonly BallManager ballManager;
     private readonly Texture2D texture;
     private const int PREDICTION_STEPS = 100;
@@ -27,9 +27,9 @@ public class Cannon
 
         Vector2 position = spawnPosition;
         Vector2 velocity = direction * Ball.Speed;
-        float timeStep = TIME_STEP / 2f; // Smaller timestep for smoother prediction
+        float timeStep = TIME_STEP / 2f;
 
-        for (int i = 0; i < PREDICTION_STEPS * 2; i++) // Double steps for smoother curve
+        for (int i = 0; i < PREDICTION_STEPS * 2; i++)
         {
             trajectoryPoints.Add(position);
 
@@ -51,11 +51,13 @@ public class Cannon
     {
         float bestAngle = Rotation;
         float closestDistance = float.MaxValue;
-        float searchRange = 0.5f;
-        float startAngle = Rotation - searchRange;
-        float endAngle = Rotation + searchRange;
-        
-        for (float angle = startAngle; angle <= endAngle; angle += 0.01f)
+
+        float baseAngle = MathF.PI / 2;
+
+        float minAngle = baseAngle - MaxRotation;
+        float maxAngle = baseAngle + MaxRotation;
+
+        for (float angle = minAngle; angle <= maxAngle; angle += 0.01f)
         {
             Vector2 pos = Position + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * spawnOffset;
             Vector2 dir = new((float)Math.Cos(angle), (float)Math.Sin(angle));
@@ -84,7 +86,7 @@ public class Cannon
             }
         }
 
-        return bestAngle;
+        return MathHelper.Clamp(bestAngle, minAngle, maxAngle);
     }
 
     public void Update()

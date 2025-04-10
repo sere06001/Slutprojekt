@@ -39,7 +39,7 @@ public static class Globals
     public static SpriteBatch SpriteBatch { get; set; }
     public static Point Bounds { get; set; }
     public static Random Random = new();
-    public static float Gravity = 4f * 100;
+    public static float Gravity = 5f * 100;
     public static int LeftWall = 300;
     public static int RightWall = 1000;
     public static float RestrictionCoordsLower;
