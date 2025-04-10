@@ -75,7 +75,7 @@ public abstract class BaseCircle
     {
         if (showScore && scoreDisplayTimer > 0)
         {
-            Vector2 pos = Position + Origin + new Vector2(0, -TextureHit.Height * 2);
+            Vector2 pos = Position + Origin + new Vector2(0, TextureHit.Height / 2);
             Vector2 textOrigin = new Vector2(Globals.ScoreOnHitFont.MeasureString(scoreToDisplay).X / 2, 0);
             Globals.SpriteBatch.DrawString(Globals.ScoreOnHitFont, scoreToDisplay, pos, Color.White, 0f, textOrigin, 1f, SpriteEffects.None, 0f);
         }

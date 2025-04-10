@@ -11,6 +11,17 @@ public class GreenCircle : BaseCircle
         TextureHit = Globals.BallGreenHit;
         TextureNotHit = Globals.BallGreen;
     }
+    private void PowerupHandler(BasePowerup powerup, Ball ball)
+    {
+        if (player.Powerup is RespawnBallPowerup)
+        {
+            ball.SetRespawn(true);
+        }
+        if (player.Powerup is FireballPowerup)
+        {
+            ball.SetFireStatus(true);
+        }
+    }
     protected override void CheckCollisions()
     {
         List<Ball> ballPosList = new List<Ball>();
@@ -22,14 +33,7 @@ public class GreenCircle : BaseCircle
                 if (!Hit)
                 {
                     ballPosList.Add(ball);
-                    if (player.Powerup is RespawnBallPowerup)
-                    {
-                        ball.SetRespawn(true);
-                    }
-                    if (player.Powerup is FireballPowerup)
-                    {
-                        ball.SetFireStatus(true);
-                    }
+                    PowerupHandler(player.Powerup, ball);
                     Hit = true;
                     ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();
