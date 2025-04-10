@@ -27,18 +27,19 @@ public class Cannon
 
         Vector2 position = spawnPosition;
         Vector2 velocity = direction * Ball.Speed;
+        float timeStep = TIME_STEP / 2f; // Smaller timestep for smoother prediction
 
-        for (int i = 0; i < PREDICTION_STEPS; i++)
+        for (int i = 0; i < PREDICTION_STEPS * 2; i++) // Double steps for smoother curve
         {
             trajectoryPoints.Add(position);
 
-            velocity += new Vector2(0, Globals.Gravity) * TIME_STEP;
-            position += velocity * TIME_STEP;
+            velocity += new Vector2(0, Globals.Gravity) * timeStep;
+            position += velocity * timeStep;
 
-            if (position.X < Globals.LeftWall || position.X > Globals.RightWall) //Changes trajectory if it touches walls
+            if (position.X < Globals.LeftWall || position.X > Globals.RightWall)
             {
                 velocity.X = -velocity.X * 0.9f;
-                position.X = MathHelper.Clamp(position.X, 0, Globals.Bounds.X);
+                position.X = MathHelper.Clamp(position.X, Globals.LeftWall, Globals.RightWall);
             }
 
             if (position.Y > Globals.RestrictionCoordsLower)
@@ -50,35 +51,37 @@ public class Cannon
     {
         float bestAngle = Rotation;
         float closestDistance = float.MaxValue;
+        float searchRange = 0.5f;
+        float startAngle = Rotation - searchRange;
+        float endAngle = Rotation + searchRange;
         
-        for (float angle = -3f; angle <= 3f; angle += 0.01f)
+        for (float angle = startAngle; angle <= endAngle; angle += 0.01f)
         {
             Vector2 pos = Position + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * spawnOffset;
             Vector2 dir = new((float)Math.Cos(angle), (float)Math.Sin(angle));
             Vector2 vel = dir * Ball.Speed;
 
+            float closestDistThisAngle = float.MaxValue;
             for (int step = 0; step < 120; step++)
             {
                 float dist = Vector2.Distance(pos, target);
-                if (dist < closestDistance)
+                if (dist < closestDistThisAngle)
                 {
-                    closestDistance = dist;
-                    bestAngle = angle;
-
-                    if (dist < 5f) break;
+                    closestDistThisAngle = dist;
                 }
 
                 vel += new Vector2(0, Globals.Gravity) * TIME_STEP;
                 pos += vel * TIME_STEP;
 
-                if (pos.Y > target.Y + 5 || 
-                    pos.X < Globals.LeftWall || 
-                    pos.X > Globals.RightWall || 
-                    pos.Y > Globals.RestrictionCoordsLower)
+                if (pos.Y > target.Y + 5 || pos.Y > Globals.RestrictionCoordsLower)
                     break;
             }
 
-            if (closestDistance < 5f) break;
+            if (closestDistThisAngle < closestDistance)
+            {
+                closestDistance = closestDistThisAngle;
+                bestAngle = angle;
+            }
         }
 
         return bestAngle;
