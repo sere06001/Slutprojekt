@@ -15,19 +15,19 @@ public class Ball
     public Vector2 Direction { get; set; }
     public Vector2 Velocity { get; set; }
     public HorizontalDirection CurrentDirection { get; private set; }
-    private int Speed { get; set; } = 200;
+    public static int Speed { get; private set; } = 300;
     public Color Color { get; set; } = Color.White;
     private float gravity = 9.82f * 100;
-    public float Restitution = 0.85f;
+    public float Restitution = 0.9f;
     public bool IsDuplicate { get; private set; } = false;
     public bool IsOnFire { get; private set; } = false;
 
-    public Ball(Vector2? position = null, bool isDuplicate = false)
+    public Ball(Vector2 position, bool isDuplicate = false)
     {
         Origin = new(texture.Width / 2, texture.Height / 2);
-        Position = position ?? StartPosition();
-        Direction = RandomDirection();
-        Velocity = Direction * Speed;
+        Position = position;
+        Direction = Vector2.Zero; // Direction will be set when shot from cannon
+        Velocity = Vector2.Zero; // Velocity will be set when shot from cannon
         IsDuplicate = isDuplicate;
         UpdateDirection();
     }
@@ -48,22 +48,12 @@ public class Ball
     {
         HasHitBrickOrCircle = true;
     }
-    public Vector2 StartPosition()
-    {
-        var x = Globals.Random.Next(Globals.Bounds.X); //Bounds.X/2;
-        var y = texture.Height / 2;
-        return new(x, y);
-    }
+
     private void UpdateDirection()
     {
         CurrentDirection = Velocity.X > 0 ? HorizontalDirection.Right : HorizontalDirection.Left;
     }
 
-    private Vector2 RandomDirection() //Make it follow mouse instead
-    {
-        var angle = Globals.Random.NextDouble() * 2 * Math.PI;
-        return new((float)Math.Sin(angle), -(float)Math.Cos(angle));
-    }
     private void HandleCollision()
     {
         if (Position.X < Origin.X || Position.X > Globals.Bounds.X - Origin.X)

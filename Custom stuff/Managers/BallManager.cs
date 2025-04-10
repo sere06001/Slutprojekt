@@ -90,17 +90,20 @@ public class BallManager
         b1.Position -= separation;
         b2.Position += separation;
     }
-    public void SpawnBall(Vector2 position)
+
+    public void ShootBall(Vector2 position, Vector2 direction)
     {
-        Vector2 pos = new(position.X, position.Y-Globals.BallTexture.Height);
-        Ball newBall = new Ball
+        if (BallsLeft <= 0 || balls.Count > 0) return;
+
+        Ball newBall = new Ball(position, false)
         {
-            Position = pos,
-            Velocity = Vector2.Zero,
+            Direction = direction,
+            Velocity = direction * Ball.Speed // Increased initial velocity for cannon shot
         };
         balls.Add(newBall);
         BallsLeft--;
     }
+
     public void AddBallsLeft()
     {
         BallsLeft++;

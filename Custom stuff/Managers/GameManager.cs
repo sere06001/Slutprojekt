@@ -7,7 +7,7 @@ public class GameManager
     public UI UI;
     public LevelGenerator levelGenerator;
     public LevelCombiner levelCombiner;
-    private MouseState previousMouseState;
+    private Cannon cannon;  // Add cannon field
 
     public GameManager()
     {
@@ -15,11 +15,9 @@ public class GameManager
         //character = new RespawnBallCharacter(ballManager);
         //character = new FireballCharacter(ballManager);
         player = new(ballManager, character);
-        //PowerupHandler.player = player;
         levelCombiner = new(ballManager, player);
         levelGenerator = new(ballManager, player, levelCombiner);
-        //Change to LevelGenerator.Update() later, currentLevel is just for testing purposes
-
+        cannon = new Cannon(ballManager);  // Initialize cannon
         UI = new();
     }
     public void Init()
@@ -33,22 +31,7 @@ public class GameManager
         player.Update();
         ballManager.Update(player);
         levelGenerator.Update();
-
-        MouseState currentMouseState = Mouse.GetState();
-        
-        if (ballManager.BallsLeft > 0 &&
-            currentMouseState.LeftButton == ButtonState.Pressed &&
-            previousMouseState.LeftButton == ButtonState.Released)
-        {
-
-            var x = Globals.Bounds.X/2; //Bounds.X/2;
-            var y = 50;
-            Vector2 mousePosition = currentMouseState.Position.ToVector2();
-            //ballManager.SpawnBall(new(x, y));
-            ballManager.SpawnBall(new(mousePosition.X, mousePosition.Y + Globals.BallTexture.Height));
-        }
-
-        previousMouseState = currentMouseState;
+        cannon.Update();  // Update cannon
     }
 
     public void Draw()
@@ -56,5 +39,6 @@ public class GameManager
         ballManager.Draw();
         UI.Draw();
         levelGenerator.Draw();
+        cannon.Draw();  // Draw cannon
     }
 }
