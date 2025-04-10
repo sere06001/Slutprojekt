@@ -9,7 +9,9 @@ public class Cannon
 
     private const int PREDICTION_STEPS = 100;
     private const float TIME_STEP = 1f / 60f;
+    private float spawnOffset = 75f;
     private List<Vector2> trajectoryPoints = new();
+    private Vector2 spawnPosition;
 
     public Cannon(BallManager ballManager)
     {
@@ -22,8 +24,9 @@ public class Cannon
     {
         trajectoryPoints.Clear();
         Vector2 direction = new((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
+        spawnPosition = Position + direction * spawnOffset;
 
-        Vector2 position = Position;
+        Vector2 position = spawnPosition;
         Vector2 velocity = direction * Ball.Speed;
 
         for (int i = 0; i < PREDICTION_STEPS; i++)
@@ -64,7 +67,7 @@ public class Cannon
     private void ShootBall()
     {
         Vector2 direction = new((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
-        ballManager.ShootBall(Position, direction);
+        ballManager.ShootBall(spawnPosition, direction);
     }
 
     public void Draw()
