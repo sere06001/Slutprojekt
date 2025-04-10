@@ -10,7 +10,7 @@ public class FireballPowerup : BasePowerup
         string description = "";
         return description;
     }
-    public override void PowerupAbility(Ball ball) //Vector2 pos of ball that hit circle
+    public override void PowerupAbility(Ball ball)
     {
         ball.SetFireStatus(true);
     }

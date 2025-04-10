@@ -1,5 +1,3 @@
-using System.Configuration.Assemblies;
-
 namespace Slutprojekt;
 public class Ball
 {

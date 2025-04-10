@@ -11,9 +11,9 @@ public class GameManager
 
     public GameManager()
     {
-        //character = new DuplicateBallCharacter(ballManager);
+        character = new DuplicateBallCharacter(ballManager);
         //character = new RespawnBallCharacter(ballManager);
-        character = new FireballCharacter(ballManager);
+        //character = new FireballCharacter(ballManager);
         player = new(ballManager, character);
         //PowerupHandler.player = player;
         levelCombiner = new(ballManager, player);
@@ -40,8 +40,12 @@ public class GameManager
             currentMouseState.LeftButton == ButtonState.Pressed &&
             previousMouseState.LeftButton == ButtonState.Released)
         {
+
+            var x = Globals.Bounds.X/2; //Bounds.X/2;
+            var y = 50;
             Vector2 mousePosition = currentMouseState.Position.ToVector2();
-            ballManager.SpawnBall(mousePosition);
+            //ballManager.SpawnBall(new(x, y));
+            ballManager.SpawnBall(new(mousePosition.X, mousePosition.Y + Globals.BallTexture.Height));
         }
 
         previousMouseState = currentMouseState;
