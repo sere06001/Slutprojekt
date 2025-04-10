@@ -1,6 +1,13 @@
 namespace Slutprojekt;
 public class Ball
 {
+    public enum HorizontalDirection
+    {
+        Left,
+        Right,
+        None
+    }
+
     public Texture2D texture = Globals.BallTexture;
     public bool HasHitBrickOrCircle { get; private set; } = false;
     public bool WillRespawn { get; private set; } = false;
@@ -8,10 +15,11 @@ public class Ball
     public Vector2 Position { get; set; }
     public Vector2 Direction { get; set; }
     public Vector2 Velocity { get; set; }
-    private int Speed { get; set; } = 200; //Initial speed in pixels per second, change this when cannon is added
+    public HorizontalDirection CurrentDirection { get; private set; }
+    private int Speed { get; set; } = 200;
     public Color Color { get; set; } = Color.White;
-    private float gravity = 9.82f * 100; //Scaled up for pixels
-    public float Restitution = 0.85f; //Energy loss on bounce
+    private float gravity = 9.82f * 100;
+    public float Restitution = 0.85f;
     public bool IsDuplicate { get; private set; } = false;
     public bool IsOnFire { get; private set; } = false;
 
@@ -22,7 +30,9 @@ public class Ball
         Direction = RandomDirection();
         Velocity = Direction * Speed;
         IsDuplicate = isDuplicate;
+        UpdateDirection();
     }
+
     public void SetRespawn(bool willRespawn)
     {
         WillRespawn = willRespawn;
@@ -45,6 +55,17 @@ public class Ball
         var y = texture.Height / 2;
         return new(x, y);
     }
+    private void UpdateDirection()
+    {
+        if (Math.Abs(Velocity.X) < 0.1f)
+        {
+            CurrentDirection = HorizontalDirection.None;
+        }
+        else
+        {
+            CurrentDirection = Velocity.X > 0 ? HorizontalDirection.Right : HorizontalDirection.Left;
+        }
+    }
 
     private Vector2 RandomDirection() //Make it follow mouse instead
     {
@@ -60,6 +81,7 @@ public class Ball
                 MathHelper.Clamp(Position.X, Origin.X, Globals.Bounds.X - Origin.X),
                 Position.Y
             );
+            UpdateDirection(); // Update direction after wall bounce
         }
 
         if (Position.Y < Origin.Y || Position.Y > Globals.Bounds.Y - Origin.Y)
@@ -71,11 +93,12 @@ public class Ball
             );
         }
     }
+
     private void UpdatePosition()
     {
         Velocity += new Vector2(0, gravity) * Globals.TotalSeconds;
         Position += Velocity * Globals.TotalSeconds;
-
+        UpdateDirection(); // Update direction as velocity changes
         HandleCollision();
     }
 
