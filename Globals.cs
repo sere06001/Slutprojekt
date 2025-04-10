@@ -4,7 +4,7 @@ public static class Globals
     public const int upperBoundForBricksNCircles = 101;
     public const int chanceForRed = 30;
     public const int chanceForPurple = 31;
-    public const int chanceForGreen = 32;
+    public const int chanceForGreen = 50;
 
     public const int maxReds = 25;
     public const int maxGreenObjects = 2;

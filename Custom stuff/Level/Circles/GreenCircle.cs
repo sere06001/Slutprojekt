@@ -26,6 +26,10 @@ public class GreenCircle : BaseCircle
                     {
                         ball.SetRespawn(true);
                     }
+                    if (player.Powerup is FireballPowerup)
+                    {
+                        ball.SetFireStatus(true);
+                    }
                     Hit = true;
                     ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();

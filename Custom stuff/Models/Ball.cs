@@ -15,6 +15,7 @@ public class Ball
     private float gravity = 9.82f * 100; //Scaled up for pixels
     public float Restitution = 0.85f; //Energy loss on bounce
     public bool IsDuplicate { get; private set; } = false;
+    public bool IsOnFire { get; private set; } = false;
 
     public Ball(Vector2? position = null, bool isDuplicate = false)
     {
@@ -27,6 +28,10 @@ public class Ball
     public void SetRespawn(bool willRespawn)
     {
         WillRespawn = willRespawn;
+    }
+    public void SetFireStatus(bool isonfire)
+    {
+        IsOnFire = isonfire;
     }
     public void IncreaseHitCount(Player player)
     {

@@ -37,7 +37,14 @@ public abstract class BaseCircle
         {
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
-                ResolveBallCollision(ball);
+                if (ball.IsOnFire)
+                {
+                    IsMarkedForRemoval = true;
+                }
+                else
+                {
+                    ResolveBallCollision(ball);
+                }
                 if (!Hit)
                 {
                     Hit = true;
