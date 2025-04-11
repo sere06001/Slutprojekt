@@ -21,7 +21,7 @@ public class GameManager
         //character = new FireballCharacter(ballManager);
         player.SetCharacter(character);
         
-        cannon = new Cannon(ballManager);
+        cannon = new Cannon(ballManager, levelCombiner);
         UI = new();
     }
     public void Init()

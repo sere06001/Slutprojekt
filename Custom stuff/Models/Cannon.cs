@@ -5,18 +5,52 @@ public class Cannon
     public float Rotation { get; private set; }
     public float MaxRotation = MathHelper.ToRadians(105f); //Degrees from vertical in each direction
     private readonly BallManager ballManager;
+    private readonly LevelCombiner levelCombiner;
     private readonly Texture2D texture;
-    private int PREDICTION_STEPS = 10;
+    private int PREDICTION_STEPS = 50;
     private float TIME_STEP = 1f / 60f;
     private float spawnOffset = 75f;
     private List<Vector2> trajectoryPoints = new();
     private Vector2 spawnPosition;
 
-    public Cannon(BallManager ballManager)
+    public Cannon(BallManager ballManager, LevelCombiner levelCombiner)
     {
         this.ballManager = ballManager;
+        this.levelCombiner = levelCombiner;
         texture = Globals.BallTexture; //Change later
         Position = new Vector2(Globals.Bounds.X / 2, 50);
+    }
+
+    private bool CheckCollisionWithObjects(Vector2 position)
+    {
+        foreach (var grid in levelCombiner.levelGrids)
+        {
+            foreach (var circle in grid.circlePlacer.GetCircles())
+            {
+                if (!circle.Hit && !circle.IsMarkedForRemoval)
+                {
+                    if ((position - (circle.Position + circle.Origin)).Length() < circle.Radius)
+                        return true;
+                }
+            }
+
+            foreach (var brick in grid.brickPlacer.GetBricks())
+            {
+                if (!brick.Hit && !brick.IsMarkedForRemoval)
+                {
+                    Rectangle brickBounds = new Rectangle(
+                        (int)(brick.Position.X - brick.Width / 2),
+                        (int)(brick.Position.Y - brick.Height / 2),
+                        brick.Width,
+                        brick.Height
+                    );
+
+                    if (brickBounds.Contains((int)position.X, (int)position.Y))
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void UpdateTrajectoryPrediction()
@@ -32,6 +66,9 @@ public class Cannon
         for (int i = 0; i < PREDICTION_STEPS * 2; i++)
         {
             trajectoryPoints.Add(position);
+
+            if (CheckCollisionWithObjects(position))
+                break;
 
             velocity += new Vector2(0, Globals.Gravity) * timeStep;
             position += velocity * timeStep;
