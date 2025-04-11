@@ -27,16 +27,16 @@ public class Cannon
         {
             foreach (var circle in grid.circlePlacer.GetCircles())
             {
-                if (!circle.Hit && !circle.IsMarkedForRemoval)
+                if (!circle.IsMarkedForRemoval)
                 {
-                    if ((position - (circle.Position + circle.Origin)).Length() < circle.Radius)
+                    if ((position - (circle.Position + circle.Origin)).Length() < circle.Radius+2)
                         return true;
                 }
             }
 
             foreach (var brick in grid.brickPlacer.GetBricks())
             {
-                if (!brick.Hit && !brick.IsMarkedForRemoval)
+                if (!brick.IsMarkedForRemoval)
                 {
                     Rectangle brickBounds = new Rectangle(
                         (int)(brick.Position.X - brick.Width / 2),
