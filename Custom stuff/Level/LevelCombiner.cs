@@ -23,6 +23,13 @@ public class LevelCombiner
             Globals.Bounds.X / 4-15, 
             Globals.Bounds.Y / 2, 
             true, false, 0.4f, (float)Math.PI/1.90f));
+        levels.Add(new LevelCircle(ballManager, player, 
+            250, 11, 
+            Globals.Bounds.X / 4*3-15, 
+            Globals.Bounds.Y / 2, 
+            true, false, 
+            (float)Math.PI/2 + 0.4f, // Add π to start angle
+            (float)Math.PI/2 + (float)Math.PI/1.90f));
     }
 
     public void FirstLevel()
