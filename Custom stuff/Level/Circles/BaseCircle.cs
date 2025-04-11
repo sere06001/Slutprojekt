@@ -4,7 +4,7 @@ public abstract class BaseCircle
     public Player player;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
-    private string scoreToDisplay;
+    private string scoreToDisplay = "0";
     private bool getScoreToDisplay = true;
     protected float scoreDisplayTimer = 0f;
     protected float ScoreDisplayDurationSeconds = 1.5f;
@@ -37,11 +37,13 @@ public abstract class BaseCircle
         {
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
+                ball.HasHit();
                 if (!Hit)
                 {
                     SetHit();
                     ball.IncreaseHitCount(player);
                 }
+
                 if (ball.IsOnFire)
                 {
                     IsMarkedForRemoval = true;
@@ -50,15 +52,17 @@ public abstract class BaseCircle
                 {
                     ResolveBallCollision(ball);
                 }
-                ball.HasHit();
             }
         }
     }
+
     public void SetHit()
     {
         Hit = true;
         player.AddCircleAndBricksHitCount();
         player.AddScore(ScoreOnHit * player.ScoreMultiplier);
+        scoreToDisplay = (ScoreOnHit * player.ScoreMultiplier).ToString();
+        getScoreToDisplay = false;
         secondsBeforeRemovalTimer = secondsBeforeRemoval;
         showScore = true;
         scoreDisplayTimer = ScoreDisplayDurationSeconds;

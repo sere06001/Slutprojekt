@@ -4,7 +4,7 @@ public abstract class BaseBrick
     public Player player;
     public virtual int ScoreOnHit { get; protected set; }
     public virtual int ScoreMultiplier { get; protected set; } = 1;
-    private string scoreToDisplay;
+    private string scoreToDisplay = "0";
     private bool getScoreToDisplay = true;
     protected float scoreDisplayTimer = 0f;
     protected float ScoreDisplayDurationSeconds = 2.5f;
@@ -38,21 +38,24 @@ public abstract class BaseBrick
         {
             if (CheckBallCollision(ball))
             {
-                ResolveBallCollision(ball);
+                ball.HasHit();
                 if (!Hit)
                 {
-                    ball.IncreaseHitCount(player);
                     SetHit();
+                    ball.IncreaseHitCount(player);
                 }
-                ball.HasHit();
+                ResolveBallCollision(ball);
             }
         }
     }
+
     public void SetHit()
     {
+        Hit = true;
         player.AddCircleAndBricksHitCount();
         player.AddScore(ScoreOnHit * player.ScoreMultiplier);
-        Hit = true;
+        scoreToDisplay = (ScoreOnHit * player.ScoreMultiplier).ToString();
+        getScoreToDisplay = false;
         secondsBeforeRemovalTimer = secondsBeforeRemoval;
         showScore = true;
         scoreDisplayTimer = ScoreDisplayDurationSeconds;
