@@ -2,6 +2,8 @@ Max 25 reds per combined level
 
 moving levels
 
+finish 2nd level in levelCombiner
+
 Powerups:
 FireballPowerup - Implemented but make it so that the next ball shot gets set on fire instead of active ball
 
