@@ -6,7 +6,7 @@ public class Cannon
     public float MaxRotation = MathHelper.ToRadians(105f); //Degrees from vertical in each direction
     private readonly BallManager ballManager;
     private readonly Texture2D texture;
-    private int PREDICTION_STEPS = 100;
+    private int PREDICTION_STEPS = 10;
     private float TIME_STEP = 1f / 60f;
     private float spawnOffset = 75f;
     private List<Vector2> trajectoryPoints = new();
