@@ -3,6 +3,7 @@ public class ExplodePowerup : BasePowerup
 {
     private readonly LevelCombiner levelCombiner;
     private float explosionRadius = 100f;
+    private HashSet<Vector2> processedExplosions = new();
 
     public ExplodePowerup(BallManager ballManager, LevelCombiner levelCombiner) : base(ballManager)
     {
@@ -15,10 +16,10 @@ public class ExplodePowerup : BasePowerup
         return description;
     }
 
-    public override void PowerupAbility(Ball ball)
+    private void TriggerExplosion(Vector2 center, Ball ball)
     {
-
-        Vector2 explosionCenter = ball.Position;
+        if (processedExplosions.Contains(center)) return;
+        processedExplosions.Add(center);
 
         foreach (var grid in levelCombiner.levelGrids)
         {
@@ -26,11 +27,16 @@ public class ExplodePowerup : BasePowerup
             {
                 if (!circle.Hit && !circle.IsMarkedForRemoval)
                 {
-                    float dist = Vector2.Distance(explosionCenter, circle.Position + circle.Origin);
+                    float dist = Vector2.Distance(center, circle.Position + circle.Origin);
                     if (dist <= explosionRadius)
                     {
                         circle.SetHit();
                         ball.HasHit();
+
+                        if (circle is GreenCircle)
+                        {
+                            TriggerExplosion(circle.Position + circle.Origin, ball);
+                        }
                     }
                 }
             }
@@ -39,14 +45,25 @@ public class ExplodePowerup : BasePowerup
             {
                 if (!brick.Hit && !brick.IsMarkedForRemoval)
                 {
-                    float dist = Vector2.Distance(explosionCenter, brick.Position);
+                    float dist = Vector2.Distance(center, brick.Position);
                     if (dist <= explosionRadius)
                     {
                         brick.SetHit();
                         ball.HasHit();
+
+                        if (brick is GreenBrick)
+                        {
+                            TriggerExplosion(brick.Position, ball);
+                        }
                     }
                 }
             }
         }
+    }
+
+    public override void PowerupAbility(Ball ball)
+    {
+        processedExplosions.Clear();
+        TriggerExplosion(ball.Position, ball);
     }
 }
