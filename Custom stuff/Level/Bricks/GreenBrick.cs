@@ -11,6 +11,13 @@ public class GreenBrick : BaseBrick
         TextureHit = Globals.BrickGreenHit;
         TextureNotHit = Globals.BrickGreen;
     }
+    private void PowerupHandler(Ball ball)
+    {
+        if (player.Powerup is not DuplicateBallPowerup)
+        {
+            player.Powerup.PowerupAbility(ball);
+        }
+    }
     protected override void CheckCollisions()
     {
         List<Ball> ballPosList = new List<Ball>();
@@ -22,6 +29,7 @@ public class GreenBrick : BaseBrick
                 if (!Hit)
                 {
                     ballPosList.Add(ball);
+                    PowerupHandler(ball);
                     ball.IncreaseHitCount(player);
                     player.AddCircleAndBricksHitCount();
                     player.AddScore(ScoreOnHit * player.ScoreMultiplier);
@@ -33,9 +41,12 @@ public class GreenBrick : BaseBrick
                 ball.HasHit();
             }
         }
-        foreach (Ball ball in ballPosList)
+        if (player.Powerup is DuplicateBallPowerup)
         {
-            player.Powerup.PowerupAbility(ball);
+            foreach (Ball ball in ballPosList)
+            {
+                player.Powerup.PowerupAbility(ball);
+            }
         }
     }
     public override void Update()
