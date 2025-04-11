@@ -131,12 +131,15 @@ public class Cannon
         Vector2 mousePosition = new(Mouse.GetState().X, Mouse.GetState().Y);
         Rotation = FindAngleForTarget(mousePosition);
 
+        if (ballManager.balls.Count == 0)
+        {
+            UpdateTrajectoryPrediction();
+        }
+
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && ballManager.BallsLeft > 0)
         {
             ShootBall();
         }
-
-        UpdateTrajectoryPrediction();
     }
 
     private void ShootBall()
@@ -147,28 +150,31 @@ public class Cannon
 
     public void Draw()
     {
-        for (int i = 1; i < trajectoryPoints.Count; i++)
+        if (ballManager.balls.Count == 0)
         {
-            Vector2 start = trajectoryPoints[i - 1];
-            Vector2 end = trajectoryPoints[i];
-            float distance = Vector2.Distance(start, end);
-            float rotation = (float)Math.Atan2(end.Y - start.Y, end.X - start.X);
+            for (int i = 1; i < trajectoryPoints.Count; i++)
+            {
+                Vector2 start = trajectoryPoints[i - 1];
+                Vector2 end = trajectoryPoints[i];
+                float distance = Vector2.Distance(start, end);
+                float rotation = (float)Math.Atan2(end.Y - start.Y, end.X - start.X);
 
-            Rectangle destRect = new Rectangle(
-                (int)start.X,
-                (int)start.Y,
-                (int)distance,
-                4); //width of trajectory line
+                Rectangle destRect = new Rectangle(
+                    (int)start.X,
+                    (int)start.Y,
+                    (int)distance,
+                    4); //width of trajectory line
 
-            Globals.SpriteBatch.Draw(
-                Globals.Pixel,
-                destRect,
-                null,
-                new Color(Color.White, 0.3f),
-                rotation,
-                Vector2.Zero,
-                SpriteEffects.None,
-                0);
+                Globals.SpriteBatch.Draw(
+                    Globals.Pixel,
+                    destRect,
+                    null,
+                    new Color(Color.White, 0.3f),
+                    rotation,
+                    Vector2.Zero,
+                    SpriteEffects.None,
+                    0);
+            }
         }
 
         Rectangle sourceRect = new(0, 0, texture.Width, texture.Height);
