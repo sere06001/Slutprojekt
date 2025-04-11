@@ -2,7 +2,6 @@ Max 25 reds per combined level
 
 moving levels
 
-Poweruphandler in green objects
 Powerups:
 FireballPowerup - Implemented but make it so that the next ball shot gets set on fire instead of active ball
 
