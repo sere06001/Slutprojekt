@@ -3,7 +3,7 @@ public class LevelCombiner
 {
     public Player player;
     public BallManager ballManager;
-    private List<LevelGrid> levelGrids = new List<LevelGrid>();
+    public List<LevelGrid> levelGrids = new List<LevelGrid>();
     private TeleporterManager teleporterManager;
 
     public LevelCombiner(BallManager ballmngr, Player plyr)

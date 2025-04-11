@@ -16,7 +16,7 @@ public abstract class BaseCircle
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
     protected Texture2D TextureNotHit { get; set; }
-    protected bool Hit { get; set; }
+    public bool Hit { get; set; }
     public virtual Vector2 Position { get; set; }
     public virtual float Rotation { get; set; }
     public Vector2 Origin => new Vector2(TextureCurrent.Width / 4, TextureCurrent.Height / 4);
@@ -37,6 +37,11 @@ public abstract class BaseCircle
         {
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
+                if (!Hit)
+                {
+                    SetHit();
+                    ball.IncreaseHitCount(player);
+                }
                 if (ball.IsOnFire)
                 {
                     IsMarkedForRemoval = true;
@@ -45,19 +50,18 @@ public abstract class BaseCircle
                 {
                     ResolveBallCollision(ball);
                 }
-                if (!Hit)
-                {
-                    Hit = true;
-                    ball.IncreaseHitCount(player);
-                    player.AddCircleAndBricksHitCount();
-                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
-                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
-                    showScore = true;
-                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
-                }
                 ball.HasHit();
             }
         }
+    }
+    public void SetHit()
+    {
+        Hit = true;
+        player.AddCircleAndBricksHitCount();
+        player.AddScore(ScoreOnHit * player.ScoreMultiplier);
+        secondsBeforeRemovalTimer = secondsBeforeRemoval;
+        showScore = true;
+        scoreDisplayTimer = ScoreDisplayDurationSeconds;
     }
 
     protected void ResolveBallCollision(Ball ball)

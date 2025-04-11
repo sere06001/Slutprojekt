@@ -7,17 +7,20 @@ public class GameManager
     public UI UI;
     public LevelGenerator levelGenerator;
     public LevelCombiner levelCombiner;
-    private Cannon cannon;  // Add cannon field
+    private Cannon cannon;
 
     public GameManager()
     {
-        character = new DuplicateBallCharacter(ballManager);
-        //character = new RespawnBallCharacter(ballManager);
-        //character = new FireballCharacter(ballManager);
-        player = new(ballManager, character);
+        player = new(ballManager);
         levelCombiner = new(ballManager, player);
         levelGenerator = new(ballManager, player, levelCombiner);
-        cannon = new Cannon(ballManager);  // Initialize cannon
+        //character = new BreakRedsCharacter(ballManager, levelCombiner);
+        //character = new DuplicateBallCharacter(ballManager);
+        //character = new RespawnBallCharacter(ballManager);
+        character = new FireballCharacter(ballManager);
+        player.SetCharacter(character);
+        
+        cannon = new Cannon(ballManager);
         UI = new();
     }
     public void Init()
@@ -31,7 +34,7 @@ public class GameManager
         player.Update();
         ballManager.Update(player);
         levelGenerator.Update();
-        cannon.Update();  // Update cannon
+        cannon.Update();
     }
 
     public void Draw()
@@ -39,6 +42,6 @@ public class GameManager
         ballManager.Draw();
         UI.Draw();
         levelGenerator.Draw();
-        cannon.Draw();  // Draw cannon
+        cannon.Draw();
     }
 }

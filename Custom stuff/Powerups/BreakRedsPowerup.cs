@@ -1,9 +1,10 @@
 namespace Slutprojekt;
 public class BreakRedsPowerup : BasePowerup
 {
-    public BreakRedsPowerup(BallManager ballmanager) : base(ballmanager)
+    public LevelCombiner levelCombiner;
+    public BreakRedsPowerup(BallManager ballmanager, LevelCombiner levelCombiner) : base(ballmanager)
     {
-        
+        this.levelCombiner = levelCombiner;
     }
     public override string Description()
     {
@@ -13,6 +14,5 @@ public class BreakRedsPowerup : BasePowerup
     public override void PowerupAbility(Ball ball)
     {
         Vector2 ballPos = new(ball.Position.X, ball.Position.Y);
-        ballManager.balls.Add(new Ball(ballPos));
     }
 }

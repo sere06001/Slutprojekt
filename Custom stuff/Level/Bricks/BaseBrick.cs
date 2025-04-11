@@ -17,7 +17,7 @@ public abstract class BaseBrick
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
     protected Texture2D TextureNotHit { get; set; }
-    public bool Hit { get; protected set; }
+    public bool Hit { get; set; }
     public virtual Vector2 Position { get; set; }
     public virtual float Rotation { get; set; }
     protected BallManager ballManager { get; set; }
@@ -42,16 +42,20 @@ public abstract class BaseBrick
                 if (!Hit)
                 {
                     ball.IncreaseHitCount(player);
-                    player.AddCircleAndBricksHitCount();
-                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
-                    Hit = true;
-                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
-                    showScore = true;
-                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
+                    SetHit();
                 }
                 ball.HasHit();
             }
         }
+    }
+    public void SetHit()
+    {
+        player.AddCircleAndBricksHitCount();
+        player.AddScore(ScoreOnHit * player.ScoreMultiplier);
+        Hit = true;
+        secondsBeforeRemovalTimer = secondsBeforeRemoval;
+        showScore = true;
+        scoreDisplayTimer = ScoreDisplayDurationSeconds;
     }
 
     protected bool CheckBallCollision(Ball ball)
