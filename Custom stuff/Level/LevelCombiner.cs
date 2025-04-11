@@ -12,12 +12,15 @@ public class LevelCombiner
         player = plyr;
         teleporterManager = new TeleporterManager(ballManager);
     }
+    public void Reset()
+    {
+        levelGrids.Clear();
+        teleporterManager = new TeleporterManager(ballManager);
+    }
 
     public void UnevenCircleGrid()
     {
-        levelGrids.Clear();
 
-        // Add some example teleporters
         teleporterManager.AddTeleporterPair(
             new Vector2(Globals.LeftWall + 50, 200),
             new Vector2(Globals.RightWall - 50, 200)
@@ -36,6 +39,7 @@ public class LevelCombiner
 
     public void Init()
     {
+        Reset();
         UnevenCircleGrid();
     }
 
