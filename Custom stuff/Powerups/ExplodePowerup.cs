@@ -21,7 +21,7 @@ public class ExplodePowerup : BasePowerup
         if (processedExplosions.Contains(center)) return;
         processedExplosions.Add(center);
 
-        foreach (var grid in levelCombiner.levelGrids)
+        foreach (var grid in levelCombiner.levels)
         {
             foreach (var circle in grid.circlePlacer.GetCircles())
             {

@@ -23,7 +23,7 @@ public class Cannon
 
     private bool CheckCollisionWithObjects(Vector2 position)
     {
-        foreach (var grid in levelCombiner.levelGrids)
+        foreach (var grid in levelCombiner.levels)
         {
             foreach (var circle in grid.circlePlacer.GetCircles())
             {

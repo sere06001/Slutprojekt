@@ -18,7 +18,7 @@ public class BreakRedsPowerup : BasePowerup
     {
         var redObjects = new List<(float distance, object obj)>();
 
-        foreach (var grid in levelCombiner.levelGrids)
+        foreach (var grid in levelCombiner.levels)
         {
 
             var circles = grid.circlePlacer.GetCircles();

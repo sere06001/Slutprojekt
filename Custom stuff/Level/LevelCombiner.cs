@@ -3,8 +3,7 @@ public class LevelCombiner
 {
     public Player player;
     public BallManager ballManager;
-    public List<LevelGrid> levelGrids = new List<LevelGrid>();
-    public LevelCircle levelCircle;
+    public List<LevelBase> levels = new List<LevelBase>();
     private TeleporterManager teleporterManager;
     public LevelCombiner(BallManager ballmngr, Player plyr)
     {
@@ -14,16 +13,16 @@ public class LevelCombiner
     }
     public void Reset()
     {
-        levelGrids.Clear();
+        levels.Clear();
         teleporterManager = new TeleporterManager(ballManager);
     }
     public void SecondLevel()
     {
-        levelCircle = new LevelCircle(ballManager, player, 
-            250, 10, 
-            Globals.Bounds.X / 4, 
+        levels.Add(new LevelCircle(ballManager, player, 
+            250, 11, 
+            Globals.Bounds.X / 4-15, 
             Globals.Bounds.Y / 2, 
-            true, false, 0.3f, (float)Math.PI/2f);
+            true, false, 0.4f, (float)Math.PI/1.90f));
     }
 
     public void FirstLevel()
@@ -38,7 +37,7 @@ public class LevelCombiner
         {
             int varyingOffset = (i % 2 == 0) ? 10 : -10;
 
-            levelGrids.Add(new LevelGrid(ballManager, player, 1, 12, 
+            levels.Add(new LevelGrid(ballManager, player, 1, 12, 
                 Globals.BallBlue.Width * 1.5f + 4, 
                 Globals.Bounds.X / 2 + varyingOffset, 
                 Globals.Bounds.Y * 0.3f + 40*i, false, false));
@@ -53,23 +52,21 @@ public class LevelCombiner
 
     public void Update()
     {
-        foreach (var grid in levelGrids)
+        foreach (var level in levels)
         {
-            grid.Update();
+            level.Update();
         }
         teleporterManager.Update();
 
-        levelCircle.Update();
     }
 
     public void Draw()
     {
-        foreach (var grid in levelGrids)
+        foreach (var level in levels)
         {
-            grid.Draw();
+            level.Draw();
         }
         teleporterManager.Draw();
 
-        levelCircle.Draw();
     }
 }
