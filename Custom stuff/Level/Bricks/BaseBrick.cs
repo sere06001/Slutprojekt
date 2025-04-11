@@ -44,7 +44,14 @@ public abstract class BaseBrick
                     SetHit();
                     ball.IncreaseHitCount(player);
                 }
-                ResolveBallCollision(ball);
+                if (ball.IsOnFire)
+                {
+                    IsMarkedForRemoval = true;
+                }
+                else
+                {
+                    ResolveBallCollision(ball);
+                }
             }
         }
     }
