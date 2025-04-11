@@ -4,21 +4,28 @@ public class LevelCircle : LevelBase
     protected override Vector2 Position { get; set; }
     private float radius;
     private int circleCount;
+    private float startAngle;
+    private float endAngle;
 
-    public LevelCircle(BallManager ballmanager, Player plyr, float radius, int circleCount, float centerX, float centerY, bool useBricks, bool move) 
+    public LevelCircle(BallManager ballmanager, Player plyr, float radius, int circleCount, 
+        float centerX, float centerY, bool useBricks, bool move, 
+        float startAngle = 0f, float endAngle = MathHelper.TwoPi) 
         : base(ballmanager, plyr, centerX, centerY, useBricks, move)
     {
         this.radius = radius;
         this.circleCount = circleCount;
+        this.startAngle = startAngle;
+        this.endAngle = endAngle;
         CreateCirclePattern(useBricks);
     }
 
     private void CreateCirclePattern(bool usebricks)
     {
+        float angleStep = (endAngle - startAngle) / circleCount;
+        
         for (int i = 0; i < circleCount; i++)
         {
-            float angle = i * MathHelper.TwoPi / circleCount;
-            
+            float angle = startAngle + (i * angleStep);
             float x = Position.X + radius * (float)Math.Cos(angle);
             float y = Position.Y + radius * (float)Math.Sin(angle);
             UseBrickOrCircle(x, y, usebricks);

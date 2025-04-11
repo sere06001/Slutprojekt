@@ -40,9 +40,13 @@ public class GameManager
 
     public void Draw()
     {
-        ballManager.Draw();
-        UI.Draw();
         levelGenerator.Draw();
         cannon.Draw();
+        
+        
+        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.LeftWall, Globals.Bounds.Y), Color.Blue);
+        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(Globals.RightWall, 0, Globals.Bounds.X-Globals.RightWall, Globals.Bounds.Y), Color.Pink);
+        ballManager.Draw();
+        UI.Draw();
     }
 }

@@ -4,6 +4,7 @@ public class LevelCombiner
     public Player player;
     public BallManager ballManager;
     public List<LevelGrid> levelGrids = new List<LevelGrid>();
+    public LevelCircle levelCircle;
     private TeleporterManager teleporterManager;
     public LevelCombiner(BallManager ballmngr, Player plyr)
     {
@@ -16,12 +17,16 @@ public class LevelCombiner
         levelGrids.Clear();
         teleporterManager = new TeleporterManager(ballManager);
     }
-    public void FirstLevel()
+    public void SecondLevel()
     {
-        UnevenCircleGrid();
+        levelCircle = new LevelCircle(ballManager, player, 
+            250, 10, 
+            Globals.Bounds.X / 4, 
+            Globals.Bounds.Y / 2, 
+            true, false, 0.3f, (float)Math.PI/2f);
     }
 
-    public void UnevenCircleGrid()
+    public void FirstLevel()
     {
 
         teleporterManager.AddTeleporterPair(
@@ -43,7 +48,7 @@ public class LevelCombiner
     public void Init()
     {
         Reset();
-        FirstLevel();
+        SecondLevel();
     }
 
     public void Update()
@@ -53,6 +58,8 @@ public class LevelCombiner
             grid.Update();
         }
         teleporterManager.Update();
+
+        levelCircle.Update();
     }
 
     public void Draw()
@@ -62,5 +69,7 @@ public class LevelCombiner
             grid.Draw();
         }
         teleporterManager.Draw();
+
+        levelCircle.Draw();
     }
 }
