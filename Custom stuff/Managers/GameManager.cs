@@ -14,7 +14,8 @@ public class GameManager
         player = new(ballManager);
         levelCombiner = new(ballManager, player);
         levelGenerator = new(ballManager, player, levelCombiner);
-        character = new BreakRedsCharacter(ballManager, levelCombiner);
+        //character = new BreakRedsCharacter(ballManager, levelCombiner);
+        character = new ExplodeCharacter(ballManager, levelCombiner);
         //character = new DuplicateBallCharacter(ballManager);
         //character = new RespawnBallCharacter(ballManager);
         //character = new FireballCharacter(ballManager);

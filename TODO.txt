@@ -4,8 +4,6 @@ moving levels
 
 Poweruphandler in green objects
 Powerups:
-ExplodePowerup - Explodes circles and bricks within a certain radius
-BreakRedsPowerup - Breaks 1/5th of all active reds
 FireballPowerup - Implemented but make it so that the next ball shot gets set on fire instead of active ball
 
 1. Make level selector screen
