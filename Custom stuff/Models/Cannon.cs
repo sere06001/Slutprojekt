@@ -7,8 +7,8 @@ public class Cannon
     private readonly BallManager ballManager;
     private readonly LevelCombiner levelCombiner;
     private readonly Texture2D texture;
-    private int PREDICTION_STEPS = 50;
-    private float TIME_STEP = 1f / 60f;
+    private int predictionSteps = 25;
+    private float time = 1f / 60f;
     private float spawnOffset = 75f;
     private List<Vector2> trajectoryPoints = new();
     private Vector2 spawnPosition;
@@ -61,9 +61,9 @@ public class Cannon
 
         Vector2 position = spawnPosition;
         Vector2 velocity = direction * Ball.Speed;
-        float timeStep = TIME_STEP / 2f;
+        float timeStep = time / 2f;
 
-        for (int i = 0; i < PREDICTION_STEPS * 2; i++)
+        for (int i = 0; i < predictionSteps * 2; i++)
         {
             trajectoryPoints.Add(position);
 
@@ -109,8 +109,8 @@ public class Cannon
                     closestDistThisAngle = dist;
                 }
 
-                vel += new Vector2(0, Globals.Gravity) * TIME_STEP;
-                pos += vel * TIME_STEP;
+                vel += new Vector2(0, Globals.Gravity) * time;
+                pos += vel * time;
 
                 if (pos.Y > target.Y + 5 || pos.Y > Globals.RestrictionCoordsLower)
                     break;
@@ -158,7 +158,7 @@ public class Cannon
                 (int)start.X,
                 (int)start.Y,
                 (int)distance,
-                2);
+                4); //width of trajectory line
 
             Globals.SpriteBatch.Draw(
                 Globals.Pixel,
