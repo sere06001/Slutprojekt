@@ -5,9 +5,6 @@ public class CirclePlacer
     private List<BaseCircle> circles = new();
     private BallManager ballManager;
 
-    private static int totalGreenObjects = 0;
-    private static int totalPurpleObjects = 0;
-
     public CirclePlacer(BallManager ballManager, Player plyr)
     {
         this.ballManager = ballManager;
@@ -26,14 +23,15 @@ public class CirclePlacer
         int roll = Globals.Random.Next(1, 101);
         string color = roll switch
         {
-            <= Globals.chanceForRed => "red",
-            <= Globals.chanceForPurple when totalPurpleObjects < Globals.maxPurpleObjects => "purple",
-            <= Globals.chanceForGreen when totalGreenObjects < Globals.maxGreenObjects => "green",
+            <= Globals.chanceForRed when Globals.placedRedObjects < Globals.maxRedObjects => "red",
+            <= Globals.chanceForPurple when Globals.placedPurpleObjects < Globals.maxPurpleObjects => "purple",
+            <= Globals.chanceForGreen when Globals.placedGreenObjects < Globals.maxGreenObjects => "green",
             _ => "blue"
         };
 
-        if (color == "green") totalGreenObjects++;
-        if (color == "purple") totalPurpleObjects++;
+        if (color == "green") Globals.placedGreenObjects++;
+        if (color == "purple") Globals.placedPurpleObjects++;
+        if (color == "red") Globals.placedRedObjects++;
 
         BaseCircle circle = color switch
         {
@@ -59,8 +57,9 @@ public class CirclePlacer
             bool toRemove = circle.IsMarkedForRemoval;
             if (toRemove)
             {
-                if (circle is GreenCircle) totalGreenObjects--;
-                if (circle is PurpleCircle) totalPurpleObjects--;
+                if (circle is GreenCircle) Globals.placedGreenObjects--;
+                if (circle is PurpleCircle) Globals.placedPurpleObjects--;
+                if (circle is RedCircle) Globals.placedRedObjects--;
             }
             return toRemove;
         });

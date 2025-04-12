@@ -27,14 +27,15 @@ public class BrickPlacer
         int roll = Globals.Random.Next(1, Globals.upperBoundForBricksNCircles);
         string color = roll switch
         {
-            <= Globals.chanceForRed => "red",
-            <= Globals.chanceForPurple when totalPurpleObjects < Globals.maxPurpleObjects => "purple",
-            <= Globals.chanceForGreen when totalGreenObjects < Globals.maxGreenObjects => "green",
+            <= Globals.chanceForRed when Globals.placedRedObjects < Globals.maxRedObjects => "red",
+            <= Globals.chanceForPurple when Globals.placedPurpleObjects < Globals.maxPurpleObjects => "purple",
+            <= Globals.chanceForGreen when Globals.placedGreenObjects < Globals.maxGreenObjects => "green",
             _ => "blue"
         };
 
         if (color == "green") totalGreenObjects++;
         if (color == "purple") totalPurpleObjects++;
+        if (color == "red") Globals.placedRedObjects++;
 
         BaseBrick brick = color switch
         {
@@ -62,6 +63,7 @@ public class BrickPlacer
             {
                 if (brick is GreenBrick) totalGreenObjects--;
                 if (brick is PurpleBrick) totalPurpleObjects--;
+                if (brick is RedBrick) Globals.placedRedObjects--;
             }
             return toRemove;
         });

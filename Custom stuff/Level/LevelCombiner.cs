@@ -27,6 +27,7 @@ public class LevelCombiner
             Globals.LeftWall + 5, 
             100, 
             true, false, 0.6f, (float)Math.PI/1.90f));
+            
         levels.Add(new LevelCircle(ballManager, player, 
             250, 9, 
             Globals.RightWall - 9, 
@@ -34,6 +35,7 @@ public class LevelCombiner
             true, false, 
             (float)Math.PI/2 + -0.58f + 0.6f,
             (float)Math.PI/2 + -0.58f + (float)Math.PI/1.90f));
+
         circlePlacer.PlaceCircle(new Vector2(200, 200));
     }
 
