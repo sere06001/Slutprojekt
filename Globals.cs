@@ -2,9 +2,9 @@ namespace Slutprojekt;
 public static class Globals
 {
     public const int upperBoundForBricksNCircles = 101;
-    public const int chanceForRed = 30;
-    public const int chanceForPurple = 31;
-    public const int chanceForGreen = 36;
+    public const int chanceForRed = 25;
+    public const int chanceForPurple = chanceForRed+1;
+    public const int chanceForGreen = chanceForPurple+5;
     public const int maxGreenObjects = 2;
     public static int placedGreenObjects { get; set; } = 0;
     public const int maxRedObjects = 25;
