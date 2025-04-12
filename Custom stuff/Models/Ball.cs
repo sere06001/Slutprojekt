@@ -55,12 +55,11 @@ public class Ball
 
     private void HandleCollision()
     {
-        if (Position.X < Origin.X || Position.X > Globals.Bounds.X - Origin.X
-            || Position.X < Globals.LeftWall+Globals.BallTexture.Width || Position.X > Globals.RightWall-Globals.BallTexture.Width)
+        if (Position.X < Globals.LeftWall+Origin.X || Position.X > Globals.RightWall-Origin.X)
         {
             Velocity = new(-Velocity.X * Restitution, Velocity.Y);
             Position = new(
-                MathHelper.Clamp(Position.X, Origin.X, Globals.Bounds.X - Origin.X),
+                MathHelper.Clamp(Position.X, Globals.LeftWall + Origin.X, Globals.RightWall - Origin.X),
                 Position.Y
             );
             UpdateDirection();
