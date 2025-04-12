@@ -15,9 +15,9 @@ public class Ball
     public Vector2 Direction { get; set; }
     public Vector2 Velocity { get; set; }
     public HorizontalDirection CurrentDirection { get; private set; }
-    public static int Speed { get; private set; } = 400;
+    public static int Speed { get; private set; } = 100;
     public Color Color { get; set; } = Color.White;
-    public float Restitution = 0.8f;
+    public float Restitution = 0.2f;
     public bool IsDuplicate { get; private set; } = false;
     public bool IsOnFire { get; private set; } = false;
 

@@ -4,6 +4,9 @@ public class CirclePlacer
     public Player player;
     private List<BaseCircle> circles = new();
     private BallManager ballManager;
+    private float slowBallTimer = 0f;
+    private float minBallSpeed = 50f;
+    private float stuckTimeThreshold = 5f;
 
     public CirclePlacer(BallManager ballManager, Player plyr)
     {
@@ -50,6 +53,38 @@ public class CirclePlacer
         foreach (var circle in circles)
         {
             circle.Update();
+        }
+
+        bool areAllBallsStuck = ballManager.balls.Count > 0;
+
+        foreach (Ball ball in ballManager.balls)
+        {
+            if (ball.Velocity.Length() >= minBallSpeed)
+            {
+                areAllBallsStuck = false;
+                slowBallTimer = 0f;
+                break;
+            }
+        }
+
+        if (areAllBallsStuck)
+        {
+            slowBallTimer += Globals.TotalSeconds;
+            if (slowBallTimer >= stuckTimeThreshold)
+            {
+                circles.RemoveAll(circle =>
+                {
+                    bool toRemove = circle.Hit;
+                    if (toRemove)
+                    {
+                        if (circle is GreenCircle) Globals.placedGreenObjects--;
+                        if (circle is PurpleCircle) Globals.placedPurpleObjects--;
+                        if (circle is RedCircle) Globals.placedRedObjects--;
+                    }
+                    return toRemove;
+                });
+                slowBallTimer = 0f;
+            }
         }
 
         circles.RemoveAll(circle =>

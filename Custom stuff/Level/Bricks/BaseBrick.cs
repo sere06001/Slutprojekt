@@ -10,7 +10,7 @@ public abstract class BaseBrick
     protected float ScoreDisplayDurationSeconds = 2.5f;
     protected bool showScore = false;
     protected bool hasShownScore = false;
-    protected float secondsBeforeRemovalTimer = 1.5f;
+    protected float secondsBeforeRemovalTimer = 0.5f;
     protected float secondsBeforeRemoval = 10f;
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;

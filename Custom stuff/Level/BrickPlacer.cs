@@ -9,6 +9,10 @@ public class BrickPlacer
     private static int totalGreenObjects = 0;
     private static int totalPurpleObjects = 0;
 
+    private float slowBallTimer = 0f;
+    private float minBallSpeed = 50f;
+    private float stuckTimeThreshold = 5f;
+
     public BrickPlacer(BallManager ballManager, Player plyr)
     {
         this.ballManager = ballManager;
@@ -54,6 +58,37 @@ public class BrickPlacer
         foreach (var brick in bricks)
         {
             brick.Update();
+        }
+        
+        bool areAllBallsStuck = ballManager.balls.Count > 0;
+        foreach (Ball ball in ballManager.balls)
+        {
+            if (ball.Velocity.Length() >= minBallSpeed)
+            {
+                areAllBallsStuck = false;
+                slowBallTimer = 0f;
+                break;
+            }
+        }
+
+        if (areAllBallsStuck)
+        {
+            slowBallTimer += Globals.TotalSeconds;
+            if (slowBallTimer >= stuckTimeThreshold)
+            {
+                bricks.RemoveAll(brick =>
+                {
+                    bool toRemove = brick.Hit;
+                    if (toRemove)
+                    {
+                        if (brick is GreenBrick) totalGreenObjects--;
+                        if (brick is PurpleBrick) totalPurpleObjects--;
+                        if (brick is RedBrick) Globals.placedRedObjects--;
+                    }
+                    return toRemove;
+                });
+                slowBallTimer = 0f;
+            }
         }
 
         bricks.RemoveAll(brick =>

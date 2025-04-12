@@ -7,7 +7,7 @@ public abstract class BaseCircle
     private string scoreToDisplay = "0";
     private bool getScoreToDisplay = true;
     protected float scoreDisplayTimer = 0f;
-    protected float ScoreDisplayDurationSeconds = 1.5f;
+    protected float ScoreDisplayDurationSeconds = 0.5f;
     protected bool showScore = false;
     protected bool hasShownScore = false;
     protected float secondsBeforeRemovalTimer = 0f;

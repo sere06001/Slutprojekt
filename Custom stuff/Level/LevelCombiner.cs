@@ -55,7 +55,7 @@ public class LevelCombiner
     public void Init()
     {
         Reset();
-        FirstLevel();
+        SecondLevel();
     }
 
     public void Update()
