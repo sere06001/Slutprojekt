@@ -6,9 +6,6 @@ public class BrickPlacer
     private List<BaseBrick> bricks = new();
     private BallManager ballManager;
 
-    private static int totalGreenObjects = 0;
-    private static int totalPurpleObjects = 0;
-
     private float slowBallTimer = 0f;
     private float minBallSpeed = 50f;
     private float stuckTimeThreshold = 5f;
@@ -37,8 +34,8 @@ public class BrickPlacer
             _ => "blue"
         };
 
-        if (color == "green") totalGreenObjects++;
-        if (color == "purple") totalPurpleObjects++;
+        if (color == "green") Globals.placedGreenObjects++;
+        if (color == "purple") Globals.placedPurpleObjects++;
         if (color == "red") Globals.placedRedObjects++;
 
         BaseBrick brick = color switch
@@ -81,8 +78,8 @@ public class BrickPlacer
                     bool toRemove = brick.Hit;
                     if (toRemove)
                     {
-                        if (brick is GreenBrick) totalGreenObjects--;
-                        if (brick is PurpleBrick) totalPurpleObjects--;
+                        if (brick is GreenBrick) Globals.placedGreenObjects--;
+                        if (brick is PurpleBrick) Globals.placedPurpleObjects--;
                         if (brick is RedBrick) Globals.placedRedObjects--;
                     }
                     return toRemove;
@@ -96,8 +93,8 @@ public class BrickPlacer
             bool toRemove = brick.IsMarkedForRemoval;
             if (toRemove)
             {
-                if (brick is GreenBrick) totalGreenObjects--;
-                if (brick is PurpleBrick) totalPurpleObjects--;
+                if (brick is GreenBrick) Globals.placedGreenObjects--;
+                if (brick is PurpleBrick) Globals.placedPurpleObjects--;
                 if (brick is RedBrick) Globals.placedRedObjects--;
             }
             return toRemove;
