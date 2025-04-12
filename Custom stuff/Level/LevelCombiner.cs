@@ -46,7 +46,7 @@ public class LevelCombiner
             int varyingOffset = (i % 2 == 0) ? 10 : -10;
 
             levels.Add(new LevelGrid(ballManager, player, 1, 12, 
-                Globals.BallBlue.Width * 1.5f + 4, 
+                Globals.BallBlue.Width * 2f + 4, 
                 Globals.Bounds.X / 2 + varyingOffset, 
                 Globals.Bounds.Y * 0.3f + 40*i, false, false));
         }
@@ -55,7 +55,7 @@ public class LevelCombiner
     public void Init()
     {
         Reset();
-        SecondLevel();
+        FirstLevel();
     }
 
     public void Update()
