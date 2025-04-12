@@ -12,6 +12,7 @@ public class Cannon
     private float spawnOffset = 50f;
     private List<Vector2> trajectoryPoints = new();
     private Vector2 spawnPosition;
+    private int trajectoryWidthPixels = 5;
 
     public Cannon(BallManager ballManager, LevelCombiner levelCombiner)
     {
@@ -160,10 +161,10 @@ public class Cannon
                 float rotation = (float)Math.Atan2(end.Y - start.Y, end.X - start.X);
 
                 Rectangle destRect = new Rectangle(
-                    (int)start.X +2,
+                    (int)start.X+trajectoryWidthPixels/2,
                     (int)start.Y,
                     (int)distance,
-                    4); //width of trajectory line
+                    trajectoryWidthPixels); //width of trajectory line
 
                 Globals.SpriteBatch.Draw(
                     Globals.Pixel,
