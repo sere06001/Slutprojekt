@@ -11,7 +11,7 @@ public abstract class BaseBrick
     protected bool showScore = false;
     protected bool hasShownScore = false;
     protected float secondsBeforeRemovalTimer = 0.5f;
-    protected float secondsBeforeRemoval = 200f;
+    protected float secondsBeforeRemoval = 30f;
     public int Width => TextureCurrent.Width;
     public int Height => TextureCurrent.Height;
     protected Texture2D TextureCurrent { get; set; }
