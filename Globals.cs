@@ -38,9 +38,9 @@ public static class Globals
     public static Point Bounds { get; set; }
     public static Random Random = new();
     public static float Gravity = 5f * 100;
-    public static int LeftWall = 100;
-    public static int RightWall = 700;
-    public static float RestrictionCoordsLower = 500;
+    public static int LeftWall = 75;
+    public static int RightWall = 725;
+    public static float RestrictionCoordsLower = 595;
 
     public static void LoadContent()
     {

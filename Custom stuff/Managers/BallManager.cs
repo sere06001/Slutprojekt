@@ -132,6 +132,6 @@ public class BallManager
         {
             ball.Draw();
         }
-        DebugUI();
+        //DebugUI();
     }
 }

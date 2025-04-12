@@ -9,7 +9,7 @@ public class Cannon
     private readonly Texture2D texture;
     private int predictionSteps = 25;
     private float time = 1f / 60f;
-    private float spawnOffset = 75f;
+    private float spawnOffset = 50f;
     private List<Vector2> trajectoryPoints = new();
     private Vector2 spawnPosition;
 
