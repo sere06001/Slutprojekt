@@ -7,8 +7,6 @@ public class BrickPlacer
     private BallManager ballManager;
 
     private float slowBallTimer = 0f;
-    private float minBallSpeed = 50f;
-    private float stuckTimeThreshold = 5f;
 
     public BrickPlacer(BallManager ballManager, Player plyr)
     {
@@ -60,7 +58,7 @@ public class BrickPlacer
         bool areAllBallsStuck = ballManager.balls.Count > 0;
         foreach (Ball ball in ballManager.balls)
         {
-            if (ball.Velocity.Length() >= minBallSpeed)
+            if (ball.Velocity.Length() >= Globals.minBallSpeed)
             {
                 areAllBallsStuck = false;
                 slowBallTimer = 0f;
@@ -71,7 +69,7 @@ public class BrickPlacer
         if (areAllBallsStuck)
         {
             slowBallTimer += Globals.TotalSeconds;
-            if (slowBallTimer >= stuckTimeThreshold)
+            if (slowBallTimer >= Globals.stuckTimeThreshold)
             {
                 bricks.RemoveAll(brick =>
                 {

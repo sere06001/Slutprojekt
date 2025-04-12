@@ -11,6 +11,8 @@ public static class Globals
     public static int placedRedObjects { get; set; } = 0;
     public const int maxPurpleObjects = 3;
     public static int placedPurpleObjects { get; set; } = 0;
+    public const float minBallSpeed = 100f;
+    public const float stuckTimeThreshold = 2f;
 
     public static Texture2D BallRed { get; private set; }
     public static Texture2D BallRedHit { get; private set; }
