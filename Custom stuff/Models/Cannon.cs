@@ -160,7 +160,7 @@ public class Cannon
                 float rotation = (float)Math.Atan2(end.Y - start.Y, end.X - start.X);
 
                 Rectangle destRect = new Rectangle(
-                    (int)start.X,
+                    (int)start.X +2,
                     (int)start.Y,
                     (int)distance,
                     4); //width of trajectory line
