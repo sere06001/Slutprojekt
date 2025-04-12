@@ -4,12 +4,16 @@ public class LevelCombiner
     public Player player;
     public BallManager ballManager;
     public List<LevelBase> levels = new List<LevelBase>();
+    public CirclePlacer circlePlacer;
+    public BrickPlacer brickPlacer;
     private TeleporterManager teleporterManager;
     public LevelCombiner(BallManager ballmngr, Player plyr)
     {
         ballManager = ballmngr;
         player = plyr;
         teleporterManager = new TeleporterManager(ballManager);
+        circlePlacer = new CirclePlacer(ballManager, player);
+        brickPlacer = new BrickPlacer(ballManager, player);
     }
     public void Reset()
     {
@@ -30,6 +34,7 @@ public class LevelCombiner
             true, false, 
             (float)Math.PI/2 + -0.58f + 0.6f,
             (float)Math.PI/2 + -0.58f + (float)Math.PI/1.90f));
+        circlePlacer.PlaceCircle(new Vector2(200, 200));
     }
 
     public void FirstLevel()
@@ -57,6 +62,8 @@ public class LevelCombiner
         {
             level.Update();
         }
+        circlePlacer.Update();
+        brickPlacer.Update();
         teleporterManager.Update();
 
     }
@@ -67,6 +74,8 @@ public class LevelCombiner
         {
             level.Draw();
         }
+        circlePlacer.Draw();
+        brickPlacer.Draw();
         teleporterManager.Draw();
 
     }
