@@ -19,14 +19,14 @@ public class LevelCombiner
     public void SecondLevel()
     {
         levels.Add(new LevelCircle(ballManager, player, 
-            250, 11, 
+            250, 10, 
             Globals.LeftWall + 5, 
-            Globals.Bounds.Y / 2, 
+            200, 
             true, false, 0.4f, (float)Math.PI/1.90f));
         levels.Add(new LevelCircle(ballManager, player, 
-            250, 11, 
-            Globals.RightWall - 11, 
-            Globals.Bounds.Y / 2, 
+            250, 10, 
+            Globals.RightWall - 9, 
+            200, 
             true, false, 
             (float)Math.PI/2 + -0.5f + (float)Math.PI/1.90f,
             (float)Math.PI/2 + -0.5f + 0.4f));
