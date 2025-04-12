@@ -37,10 +37,12 @@ public class BreakRedsPowerup : BasePowerup
             }
         }
 
-        int convertPercent = 100/percentOfTotalRedsToBreak;
-        int objectsToBreak = redObjects.Count / convertPercent;
+        //Round up instead of down
+        int objectsToBreak = (int)Math.Ceiling(redObjects.Count * (percentOfTotalRedsToBreak / 100f));
         if (objectsToBreak == 0 && redObjects.Count > 0)
+        {
             objectsToBreak = 1;
+        }
 
         //Break closest reds
         redObjects.Sort((a, b) => a.distance.CompareTo(b.distance));
