@@ -20,26 +20,20 @@ public class LevelCombiner
     {
         levels.Add(new LevelCircle(ballManager, player, 
             250, 11, 
-            Globals.Bounds.X / 4-15, 
+            Globals.LeftWall + 5, 
             Globals.Bounds.Y / 2, 
             true, false, 0.4f, (float)Math.PI/1.90f));
         levels.Add(new LevelCircle(ballManager, player, 
             250, 11, 
-            Globals.Bounds.X / 4*3-15, 
+            Globals.RightWall - 11, 
             Globals.Bounds.Y / 2, 
             true, false, 
-            (float)Math.PI/2 + 0.4f,
-            (float)Math.PI/2 + (float)Math.PI/1.90f));
+            (float)Math.PI/2 + -0.5f + (float)Math.PI/1.90f,
+            (float)Math.PI/2 + -0.5f + 0.4f));
     }
 
     public void FirstLevel()
     {
-
-        teleporterManager.AddTeleporterPair(
-            new Vector2(Globals.LeftWall + 50, 200),
-            new Vector2(Globals.RightWall - 50, 200)
-        );
-
         for (int i = 0; i < 8; i++)
         {
             int varyingOffset = (i % 2 == 0) ? 10 : -10;
