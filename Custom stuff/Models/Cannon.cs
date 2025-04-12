@@ -24,9 +24,9 @@ public class Cannon
 
     private bool CheckCollisionWithObjects(Vector2 position)
     {
-        foreach (var grid in levelCombiner.levels)
+        foreach (var level in levelCombiner.levels)
         {
-            foreach (var circle in grid.circlePlacer.GetCircles())
+            foreach (var circle in level.circlePlacer.GetCircles())
             {
                 if (!circle.IsMarkedForRemoval)
                 {
@@ -35,7 +35,7 @@ public class Cannon
                 }
             }
 
-            foreach (var brick in grid.brickPlacer.GetBricks())
+            foreach (var brick in level.brickPlacer.GetBricks())
             {
                 if (!brick.IsMarkedForRemoval)
                 {
@@ -49,6 +49,29 @@ public class Cannon
                     if (brickBounds.Contains((int)position.X, (int)position.Y))
                         return true;
                 }
+            }
+        }
+        foreach (var circle in levelCombiner.circlePlacer.GetCircles())
+        {
+            if (!circle.IsMarkedForRemoval)
+            {
+                if ((position - (circle.Position + circle.Origin)).Length() < circle.Radius+2)
+                    return true;
+            }
+        }
+        foreach (var brick in levelCombiner.brickPlacer.GetBricks())
+        {
+            if (!brick.IsMarkedForRemoval)
+            {
+                Rectangle brickBounds = new Rectangle(
+                    (int)(brick.Position.X - brick.Width / 2),
+                    (int)(brick.Position.Y - brick.Height / 2),
+                    brick.Width,
+                    brick.Height
+                );
+
+                if (brickBounds.Contains((int)position.X, (int)position.Y))
+                    return true;
             }
         }
         return false;

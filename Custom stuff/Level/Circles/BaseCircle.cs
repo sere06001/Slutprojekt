@@ -11,7 +11,7 @@ public abstract class BaseCircle
     protected bool showScore = false;
     protected bool hasShownScore = false;
     protected float secondsBeforeRemovalTimer = 0f;
-    protected float secondsBeforeRemoval = 200f;
+    protected float secondsBeforeRemoval = 30f;
     public float Radius => TextureCurrent.Width / 2;
     protected Texture2D TextureCurrent { get; set; }
     protected Texture2D TextureHit { get; set; }
