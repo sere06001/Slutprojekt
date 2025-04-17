@@ -57,7 +57,17 @@ public class LevelCombiner
         Reset();
         SecondLevel();
     }
-
+    public void DebugUI()
+    {
+        int totalObjectCount;
+        totalObjectCount = brickPlacer.GetBricks().Count + circlePlacer.GetCircles().Count;
+        foreach (var level in levels)
+        {
+            totalObjectCount += level.brickPlacer.GetBricks().Count;
+            totalObjectCount += level.circlePlacer.GetCircles().Count;
+        }
+        Globals.SpriteBatch.DrawString(Globals.Font, $"Placed object count: {totalObjectCount}", new(100, 125), Color.White);
+    }
     public void Update()
     {
         foreach (var level in levels)
@@ -79,6 +89,6 @@ public class LevelCombiner
         circlePlacer.Draw();
         brickPlacer.Draw();
         teleporterManager.Draw();
-
+        DebugUI();
     }
 }
