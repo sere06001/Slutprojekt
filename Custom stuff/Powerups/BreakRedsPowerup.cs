@@ -10,7 +10,8 @@ public class BreakRedsPowerup : BasePowerup
 
     public override string Description()
     {
-        string description = "";
+        int denominator = 100/percentOfTotalRedsToBreak;
+        string description = $"Breaks 1/{denominator} of all active red bricks and circles rounded up.";
         return description;
     }
 

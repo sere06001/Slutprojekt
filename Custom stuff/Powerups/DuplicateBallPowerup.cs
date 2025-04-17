@@ -7,7 +7,7 @@ public class DuplicateBallPowerup : BasePowerup
     }
     public override string Description()
     {
-        string description = "";
+        string description = "Duplicates a ball.";
         return description;
     }
     public override void PowerupAbility(Ball ball)
