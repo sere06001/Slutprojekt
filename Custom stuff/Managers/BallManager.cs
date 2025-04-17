@@ -13,7 +13,7 @@ public class BallManager
         for (int i = 0; i < balls.Count; i++)
         {
             pos = new (100,25*i+175);
-            Globals.SpriteBatch.DrawString(Globals.Font, $"{balls[i].Position}", pos, Color.White);
+            Globals.SpriteBatch.DrawString(Globals.Font, $"{new Vector2((int)balls[i].Position.X, (int)balls[i].Position.Y)}", pos, Color.White);
         }
     }
     private void DrawKillZone()
