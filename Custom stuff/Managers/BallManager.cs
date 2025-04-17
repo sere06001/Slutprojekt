@@ -6,10 +6,15 @@ public class BallManager
     public List<Ball> balls = []; //Currently active balls
     private void DebugUI()
     {
-        Vector2 pos = new(200, 25);
+        Vector2 pos = new(100, 25);
         Globals.SpriteBatch.DrawString(Globals.Font, $"Active balls: {balls.Count}", pos, Color.White);
-        pos = new(200, 75);
+        pos = new(100, 75);
         Globals.SpriteBatch.DrawString(Globals.Font, $"Starting balls: {BallsLeft}", pos, Color.White);
+        for (int i = 0; i < balls.Count; i++)
+        {
+            pos = new (100,25*i+100);
+            Globals.SpriteBatch.DrawString(Globals.Font, $"{balls[i].Position}", pos, Color.White);
+        }
     }
     private void DrawKillZone()
     {
@@ -98,7 +103,7 @@ public class BallManager
         Ball newBall = new Ball(position, false)
         {
             Direction = direction,
-            Velocity = direction * Ball.Speed // Increased initial velocity for cannon shot
+            Velocity = direction * Ball.Speed
         };
         balls.Add(newBall);
         BallsLeft--;
@@ -132,6 +137,6 @@ public class BallManager
         {
             ball.Draw();
         }
-        //DebugUI();
+        DebugUI();
     }
 }
