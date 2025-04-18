@@ -92,19 +92,34 @@ public abstract class BaseBrick
     private Vector2 CalculateCollisionNormal(Ball ball)
     {
         Vector2 rotatedBallPos = RotatePoint(ball.Position, Position, -Rotation);
+        Vector2 halfSize = new Vector2(Width / 2f, Height / 2f);
 
-        Rectangle brickBounds = new Rectangle(
-            (int)(Position.X - Width / 2),
-            (int)(Position.Y - Height / 2),
-            Width,
-            Height
-        );
-
-        float closestX = MathHelper.Clamp(rotatedBallPos.X, brickBounds.Left, brickBounds.Right);
-        float closestY = MathHelper.Clamp(rotatedBallPos.Y, brickBounds.Top, brickBounds.Bottom);
+        Vector2 localBallPos = rotatedBallPos - Position;
+        
+        float closestX = MathHelper.Clamp(localBallPos.X, -halfSize.X, halfSize.X);
+        float closestY = MathHelper.Clamp(localBallPos.Y, -halfSize.Y, halfSize.Y);
 
         Vector2 closestPoint = new Vector2(closestX, closestY);
-        Vector2 normal = Vector2.Normalize(rotatedBallPos - closestPoint);
+        Vector2 normal = localBallPos - closestPoint;
+
+        if (normal.LengthSquared() < 0.0001f)
+        {
+            float leftDist = MathF.Abs(localBallPos.X + halfSize.X);
+            float rightDist = MathF.Abs(localBallPos.X - halfSize.X);
+            float topDist = MathF.Abs(localBallPos.Y + halfSize.Y);
+            float bottomDist = MathF.Abs(localBallPos.Y - halfSize.Y);
+
+            float minDist = MathF.Min(MathF.Min(leftDist, rightDist), MathF.Min(topDist, bottomDist));
+
+            if (minDist == leftDist) normal = new Vector2(-1, 0);
+            else if (minDist == rightDist) normal = new Vector2(1, 0);
+            else if (minDist == topDist) normal = new Vector2(0, -1);
+            else normal = new Vector2(0, 1);
+        }
+        else
+        {
+            normal = Vector2.Normalize(normal);
+        }
 
         return RotateVector(normal, Rotation);
     }
@@ -119,12 +134,25 @@ public abstract class BaseBrick
 
         float newNormalVelocity = -normalVelocity * ball.Restitution;
 
-        ball.Velocity = (normal * newNormalVelocity) + (tangent * tangentVelocity);
-        ball.Direction = Vector2.Normalize(ball.Velocity);
+        Vector2 newVelocity = (normal * newNormalVelocity) + (tangent * tangentVelocity);
+        
+        if (!float.IsNaN(newVelocity.X) && !float.IsNaN(newVelocity.Y))
+        {
+            ball.Velocity = newVelocity;
+            ball.Direction = Vector2.Normalize(ball.Velocity);
+        }
 
         Vector2 closestPoint = GetClosestPointOnBrick(ball);
         float overlap = ball.Origin.X - Vector2.Distance(ball.Position, closestPoint);
-        ball.Position += normal * overlap;
+        
+        if (overlap > 0 && !float.IsNaN(normal.X) && !float.IsNaN(normal.Y))
+        {
+            Vector2 adjustment = normal * overlap;
+            if (!float.IsNaN(adjustment.X) && !float.IsNaN(adjustment.Y))
+            {
+                ball.Position += adjustment;
+            }
+        }
     }
 
     private Vector2 GetClosestPointOnBrick(Ball ball)
