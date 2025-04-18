@@ -102,7 +102,7 @@ public abstract class BaseBrick
         Vector2 closestPoint = new Vector2(closestX, closestY);
         Vector2 normal = localBallPos - closestPoint;
 
-        if (normal.LengthSquared() < 0.0001f)
+        if (normal.LengthSquared() < 0.0001f) //This is to prevent ball from disappearing when hitting a corner
         {
             float leftDist = MathF.Abs(localBallPos.X + halfSize.X);
             float rightDist = MathF.Abs(localBallPos.X - halfSize.X);
