@@ -4,6 +4,8 @@ public class BallManager
     public const int startingBallCount = 10;
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
+    private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
+
     private void DebugUI()
     {
         Vector2 pos = new(100, 25);
@@ -94,6 +96,36 @@ public class BallManager
         Vector2 separation = overlap * 0.5f * normal;
         b1.Position -= separation;
         b2.Position += separation;
+
+        AddCollisionNormal(b1, normal);
+        AddCollisionNormal(b2, -normal);
+    }
+
+    public void AddCollisionNormal(Ball ball, Vector2 normal)
+    {
+        if (!simultaneousCollisions.ContainsKey(ball))
+        {
+            simultaneousCollisions[ball] = new List<Vector2>();
+        }
+        simultaneousCollisions[ball].Add(normal);
+    }
+
+    public Vector2 GetAveragedNormal(Ball ball)
+    {
+        if (!simultaneousCollisions.ContainsKey(ball) || simultaneousCollisions[ball].Count == 0)
+            return Vector2.Zero;
+
+        Vector2 averaged = Vector2.Zero;
+        foreach (var normal in simultaneousCollisions[ball])
+        {
+            averaged += normal;
+        }
+        return Vector2.Normalize(averaged);
+    }
+
+    public void ClearCollisions()
+    {
+        simultaneousCollisions.Clear();
     }
 
     public void ShootBall(Vector2 position, Vector2 direction)
@@ -116,6 +148,7 @@ public class BallManager
 
     public void Update(Player player)
     {
+        ClearCollisions();
         RemoveBallAtBottom();
         foreach (Ball ball in balls)
         {

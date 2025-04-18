@@ -127,14 +127,17 @@ public abstract class BaseBrick
     protected void ResolveBallCollision(Ball ball)
     {
         Vector2 normal = CalculateCollisionNormal(ball);
-        Vector2 tangent = new Vector2(-normal.Y, normal.X);
-
-        float normalVelocity = Vector2.Dot(ball.Velocity, normal);
+        ballManager.AddCollisionNormal(ball, normal);
+        
+        Vector2 finalNormal = ballManager.GetAveragedNormal(ball);
+        if (finalNormal == Vector2.Zero) finalNormal = normal;
+        
+        Vector2 tangent = new Vector2(-finalNormal.Y, finalNormal.X);
+        float normalVelocity = Vector2.Dot(ball.Velocity, finalNormal);
         float tangentVelocity = Vector2.Dot(ball.Velocity, tangent);
-
         float newNormalVelocity = -normalVelocity * ball.Restitution;
 
-        Vector2 newVelocity = (normal * newNormalVelocity) + (tangent * tangentVelocity);
+        Vector2 newVelocity = (finalNormal * newNormalVelocity) + (tangent * tangentVelocity);
         
         if (!float.IsNaN(newVelocity.X) && !float.IsNaN(newVelocity.Y))
         {
@@ -145,9 +148,9 @@ public abstract class BaseBrick
         Vector2 closestPoint = GetClosestPointOnBrick(ball);
         float overlap = ball.Origin.X - Vector2.Distance(ball.Position, closestPoint);
         
-        if (overlap > 0 && !float.IsNaN(normal.X) && !float.IsNaN(normal.Y))
+        if (overlap > 0 && !float.IsNaN(finalNormal.X) && !float.IsNaN(finalNormal.Y))
         {
-            Vector2 adjustment = normal * overlap;
+            Vector2 adjustment = finalNormal * overlap;
             if (!float.IsNaN(adjustment.X) && !float.IsNaN(adjustment.Y))
             {
                 ball.Position += adjustment;
