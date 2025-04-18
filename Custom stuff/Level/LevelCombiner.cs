@@ -42,6 +42,8 @@ public class LevelCombiner
             34.4f, 
             95f));
 
+
+
         levels.Add(new LevelCircle(ballManager, player, 
             250, 9, 
             Globals.RightWall - 9, 
@@ -50,6 +52,8 @@ public class LevelCombiner
             91.4f,
             152f));
 
+
+
         levels.Add(new LevelCircle(ballManager, player, 
             250, 4, 
             Globals.RightWall - 9, 
@@ -57,6 +61,34 @@ public class LevelCombiner
             true, false,
             248.4f,
             275.4f));
+            
+        levels.Add(new LevelCircle(ballManager, player, 
+            250, 4, 
+            Globals.RightWall - 212, 
+            202, 
+            true, false,
+            70.6f,
+            97.6f));
+
+
+
+        levels.Add(new LevelCircle(ballManager, player, 
+            250, 4, 
+            Globals.LeftWall + 14, 
+            660, 
+            true, false,
+            270.4f,
+            297.4f));
+
+        levels.Add(new LevelCircle(ballManager, player, 
+            250, 4, 
+            Globals.LeftWall + 209, 
+            199, 
+            true, false,
+            88.4f,
+            115.4f));
+
+
 
         circlePlacer.PlaceCircle(new Vector2(250, 200));
     }
