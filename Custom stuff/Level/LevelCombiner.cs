@@ -39,24 +39,24 @@ public class LevelCombiner
             Globals.LeftWall + 5, 
             100, 
             true, false, 
-            0.6f, 
-            (float)Math.PI/1.90f));
+            34.4f, 
+            95f));
 
         levels.Add(new LevelCircle(ballManager, player, 
             250, 9, 
             Globals.RightWall - 9, 
             100, 
             true, false, 
-            (float)Math.PI/2 + -0.58f + 0.6f,
-            (float)Math.PI/2 + -0.58f + (float)Math.PI/1.90f));
+            91.4f,
+            152f));
 
         levels.Add(new LevelCircle(ballManager, player, 
             250, 4, 
             Globals.RightWall - 9, 
             660, 
             true, false,
-            1.38f*(float)Math.PI,
-            1.53f*(float)Math.PI));
+            248.4f,
+            275.4f));
 
         circlePlacer.PlaceCircle(new Vector2(250, 200));
     }

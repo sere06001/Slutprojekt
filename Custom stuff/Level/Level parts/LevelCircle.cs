@@ -9,13 +9,13 @@ public class LevelCircle : LevelBase
 
     public LevelCircle(BallManager ballmanager, Player plyr, float radius, int circleCount, 
         float centerX, float centerY, bool useBricks, bool move, 
-        float startAngle = 0f, float endAngle = MathHelper.TwoPi) 
+        float startAngle = 0f, float endAngle = 360f) 
         : base(ballmanager, plyr, centerX, centerY, useBricks, move)
     {
         this.radius = radius;
         this.circleCount = circleCount;
-        this.startAngle = startAngle;
-        this.endAngle = endAngle;
+        this.startAngle = startAngle * ((float)Math.PI / 180f);
+        this.endAngle = endAngle * ((float)Math.PI / 180f);
         CreateCirclePattern(useBricks);
     }
 
