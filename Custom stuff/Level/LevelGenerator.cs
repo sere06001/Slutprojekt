@@ -12,7 +12,7 @@ public class LevelGenerator
     }
     public void Init()
     {
-        levelCombiner.Init();
+        levelCombiner.Reset();
     }
     public void Update()
     {

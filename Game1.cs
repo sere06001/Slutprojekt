@@ -16,13 +16,13 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        _graphics.PreferredBackBufferWidth = 800;
-        _graphics.PreferredBackBufferHeight = 600;
-        _graphics.IsFullScreen = false;
+        _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+        _graphics.IsFullScreen = true;
         _graphics.ApplyChanges();
 
         //Globals.Bounds = new(1280, 720);
-        Globals.Bounds = new(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+        Globals.Bounds = new(800, 600);
         Globals.Content = Content;
         Globals.LoadContent();
 

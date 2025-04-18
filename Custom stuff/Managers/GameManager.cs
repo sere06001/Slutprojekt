@@ -8,9 +8,12 @@ public class GameManager
     public LevelGenerator levelGenerator;
     public LevelCombiner levelCombiner;
     private Cannon cannon;
+    private GameStateManager gameStateManager;
+    private LevelSelectScreen levelSelectScreen;
 
     public GameManager()
     {
+        gameStateManager = new GameStateManager();
         player = new(ballManager);
         levelCombiner = new(ballManager, player);
         levelGenerator = new(ballManager, player, levelCombiner);
@@ -23,6 +26,7 @@ public class GameManager
         
         cannon = new Cannon(ballManager, levelCombiner);
         UI = new();
+        levelSelectScreen = new LevelSelectScreen(levelCombiner, gameStateManager);
     }
     public void Init()
     {
@@ -32,21 +36,37 @@ public class GameManager
 
     public void Update()
     {
-        player.Update();
-        ballManager.Update(player);
-        levelGenerator.Update();
-        cannon.Update();
+        switch (gameStateManager.CurrentState)
+        {
+            case GameState.LevelSelect:
+                levelSelectScreen.Update();
+                break;
+            case GameState.Playing:
+                player.Update();
+                ballManager.Update(player);
+                cannon.Update();
+                levelGenerator.Update();
+                break;
+        }
     }
 
     public void Draw()
     {
-        levelGenerator.Draw();
-        cannon.Draw();
-        
-        
-        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.LeftWall, Globals.Bounds.Y), Color.Blue);
-        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(Globals.RightWall, 0, Globals.Bounds.X-Globals.RightWall, Globals.Bounds.Y), Color.Pink);
-        ballManager.Draw();
-        UI.Draw();
+        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.Bounds.X, Globals.Bounds.Y), Color.Black);
+
+        switch (gameStateManager.CurrentState)
+        {
+            case GameState.LevelSelect:
+                levelSelectScreen.Draw();
+                break;
+            case GameState.Playing:
+                levelGenerator.Draw();
+                cannon.Draw();
+                Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.LeftWall, Globals.Bounds.Y), Color.Blue);
+                Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(Globals.RightWall, 0, Globals.Bounds.X-Globals.RightWall, Globals.Bounds.Y), Color.Pink);
+                ballManager.Draw();
+                UI.Draw();
+                break;
+        }
     }
 }

@@ -60,11 +60,6 @@ public class LevelCombiner
             
     }
 
-    public void Init()
-    {
-        Reset();
-        SecondLevel();
-    }
     public void DebugUI()
     {
         int totalObjectCount;
