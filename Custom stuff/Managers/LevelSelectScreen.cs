@@ -11,7 +11,7 @@ public class LevelSelectScreen
     private int buttonSpacing = 20;
     private float scrollOffset = 0f;
     private float scrollSpeed = 400f;
-    private float maxVisibleButtons = 5;
+    private float maxVisibleButtons = 4;
 
     public LevelSelectScreen(LevelCombiner combiner, GameStateManager manager)
     {
