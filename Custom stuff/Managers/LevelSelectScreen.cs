@@ -12,6 +12,7 @@ public class LevelSelectScreen
     private float scrollOffset = 0f;
     private float scrollSpeed = 400f;
     private float maxVisibleButtons = 4;
+    private MouseState previousMouseState;
 
     public LevelSelectScreen(LevelCombiner combiner, GameStateManager manager)
     {
@@ -36,7 +37,7 @@ public class LevelSelectScreen
 
     public void Update()
     {
-        var mouseState = Mouse.GetState();
+        var currentMouseState = Mouse.GetState();
         var keyboardState = Keyboard.GetState();
         
         if (keyboardState.IsKeyDown(Keys.Down))
@@ -47,7 +48,7 @@ public class LevelSelectScreen
         float maxScroll = Math.Max(0, (levelButtons.Count - maxVisibleButtons) * (buttonHeight + buttonSpacing));
         scrollOffset = Math.Clamp(scrollOffset, 0, maxScroll);
 
-        var mousePos = new Point(mouseState.X, mouseState.Y);
+        var mousePos = new Point(currentMouseState.X, currentMouseState.Y);
         for (int i = 0; i < levelButtons.Count; i++)
         {
             var adjustedButton = new Rectangle(
@@ -57,11 +58,16 @@ public class LevelSelectScreen
                 levelButtons[i].Height
             );
 
-            if (adjustedButton.Contains(mousePos) && mouseState.LeftButton == ButtonState.Pressed)
+            if (adjustedButton.Contains(mousePos) && 
+                currentMouseState.LeftButton == ButtonState.Pressed && 
+                previousMouseState.LeftButton == ButtonState.Released)
             {
                 SelectLevel(i);
+                break;
             }
         }
+
+        previousMouseState = currentMouseState;
     }
 
     private void SelectLevel(int index)

@@ -11,6 +11,7 @@ public class CharacterSelectScreen
     private int BUTTON_WIDTH = 150;
     private int BUTTON_HEIGHT = 40;
     private int BUTTON_SPACING = 15;
+    private bool isFirstUpdate = true;
 
     public CharacterSelectScreen(BallManager ballManager, LevelCombiner levelCombiner, 
         GameStateManager gameStateManager, Player player)
@@ -28,7 +29,7 @@ public class CharacterSelectScreen
             new RespawnBallCharacter(ballManager),
             new FireballCharacter(ballManager)
         };
-        
+
         InitializeButtons();
         
     }
@@ -49,20 +50,29 @@ public class CharacterSelectScreen
 
     public void Update()
     {
-        var mouseState = Mouse.GetState();
-        var mousePos = new Point(mouseState.X, mouseState.Y);
-        var prevMouseState = Mouse.GetState();
+        var currentMouseState = Mouse.GetState();
+
+        if (isFirstUpdate)
+        {
+            previousMouseState = currentMouseState;
+            isFirstUpdate = false;
+            return;
+        }
+
+        var mousePos = new Point(currentMouseState.X, currentMouseState.Y);
 
         for (int i = 0; i < characterButtons.Count; i++)
         {
             if (characterButtons[i].Contains(mousePos) && 
-                mouseState.LeftButton == ButtonState.Pressed && 
-                prevMouseState.LeftButton == ButtonState.Released)
+                currentMouseState.LeftButton == ButtonState.Pressed && 
+                previousMouseState.LeftButton == ButtonState.Released)
             {
                 SelectCharacter(i);
                 break;
             }
         }
+
+        previousMouseState = currentMouseState;
     }
 
     private void SelectCharacter(int index)
