@@ -3,7 +3,7 @@ public class ExplodePowerup : BasePowerup
 {
     private readonly LevelCombiner levelCombiner;
     private float explosionRadius = 100f;
-    private HashSet<Vector2> processedExplosions = new();
+    private List<Vector2> processedExplosions = new();
 
     public ExplodePowerup(BallManager ballManager, LevelCombiner levelCombiner) : base(ballManager)
     {
@@ -55,6 +55,39 @@ public class ExplodePowerup : BasePowerup
                         {
                             TriggerExplosion(brick.Position, ball);
                         }
+                    }
+                }
+            }
+        }
+        foreach (var circle in levelCombiner.circlePlacer.GetCircles())
+        {
+            if (!circle.Hit && !circle.IsMarkedForRemoval)
+            {
+                float dist = Vector2.Distance(center, circle.Position + circle.Origin);
+                if (dist <= explosionRadius)
+                {
+                    circle.SetHit();
+                    ball.HasHit();
+                    if (circle is GreenCircle)
+                    {
+                        TriggerExplosion(circle.Position + circle.Origin, ball);
+                    }
+                }
+            }
+        }
+
+        foreach (var brick in levelCombiner.brickPlacer.GetBricks())
+        {
+            if (!brick.Hit && !brick.IsMarkedForRemoval)
+            {
+                float dist = Vector2.Distance(center, brick.Position);
+                if (dist <= explosionRadius)
+                {
+                    brick.SetHit();
+                    ball.HasHit();
+                    if (brick is GreenBrick)
+                    {
+                        TriggerExplosion(brick.Position, ball);
                     }
                 }
             }
