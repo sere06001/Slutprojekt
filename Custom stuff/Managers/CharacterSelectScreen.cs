@@ -8,9 +8,9 @@ public class CharacterSelectScreen
     private readonly GameStateManager gameStateManager;
     private readonly Player player;
     private MouseState previousMouseState;
-    private int BUTTON_WIDTH = 150;
-    private int BUTTON_HEIGHT = 40;
-    private int BUTTON_SPACING = 15;
+    private int buttonWidth = (int)Globals.Font.MeasureString("Random character").X+20; //This is just because random character button is the longest and button length should stay consistent
+    private int buttonHeight = 40;
+    private int buttonSpacing = 15;
     private bool isFirstUpdate = true;
 
     public CharacterSelectScreen(BallManager ballManager, LevelCombiner levelCombiner, 
@@ -37,14 +37,14 @@ public class CharacterSelectScreen
 
     private void InitializeButtons()
     {
-        int startY = (Globals.Bounds.Y - (characters.Count * (BUTTON_HEIGHT + BUTTON_SPACING))) / 2;
+        int startY = (Globals.Bounds.Y - (characters.Count * (buttonHeight + buttonSpacing))) / 2;
         for (int i = 0; i < characters.Count; i++)
         {
             characterButtons.Add(new Rectangle(
-                (Globals.Bounds.X - BUTTON_WIDTH) / 2,
-                startY + (BUTTON_HEIGHT + BUTTON_SPACING) * i,
-                BUTTON_WIDTH,
-                BUTTON_HEIGHT
+                (Globals.Bounds.X - buttonWidth) / 2,
+                startY + (buttonHeight + buttonSpacing) * i,
+                buttonWidth,
+                buttonHeight
             ));
         }
     }
