@@ -8,7 +8,7 @@ public class FireballCharacter : BaseCharacter
     }
     public override string Description()
     {
-        return "";
+        return $"{Powerup.Description()}";
     }
 
     public override void Draw()
