@@ -4,6 +4,7 @@ public class DuplicateBallCharacter : BaseCharacter
     public DuplicateBallCharacter(BallManager ballmanager) : base(ballmanager)
     {
         Powerup = new DuplicateBallPowerup(ballmanager);
+        Name = "Duplicate Ball";
     }
     public override string Description()
     {

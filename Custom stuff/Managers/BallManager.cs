@@ -5,6 +5,8 @@ public class BallManager
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
+    private float shootDelayTimer = 2f;
+    private bool canShoot = false;
 
     private void DebugUI()
     {
@@ -18,6 +20,11 @@ public class BallManager
             Globals.SpriteBatch.DrawString(Globals.Font, $"{new Vector2((int)balls[i].Position.X, (int)balls[i].Position.Y)}", pos, Color.White);
         }
     }
+    public void StartShootDelay()
+    {
+        shootDelayTimer = 2f;
+        canShoot = false;
+    }
     private void DrawKillZone()
     {
         Rectangle killBox = new Rectangle(
@@ -26,7 +33,7 @@ public class BallManager
             Globals.Bounds.X,
             (int)(Globals.Bounds.Y - Globals.RestrictionCoordsLower)
         );
-        Color killZoneColor = new Color(Color.Red, 0.3f);
+        Color killZoneColor = new Color(Color.Red, 0.5f);
         Globals.SpriteBatch.Draw(Globals.Pixel, killBox, killZoneColor);
     }
     public void AddBall5050()
@@ -130,7 +137,7 @@ public class BallManager
 
     public void ShootBall(Vector2 position, Vector2 direction)
     {
-        if (BallsLeft <= 0 || balls.Count > 0) return;
+        if (!canShoot || BallsLeft <= 0 || balls.Count > 0) return;
 
         Ball newBall = new Ball(position, false)
         {
@@ -148,6 +155,15 @@ public class BallManager
 
     public void Update(Player player)
     {
+        if (!canShoot)
+        {
+            shootDelayTimer -= Globals.TotalSeconds;
+            if (shootDelayTimer <= 0)
+            {
+                canShoot = true;
+            }
+        }
+
         ClearCollisions();
         RemoveBallAtBottom();
         foreach (Ball ball in balls)

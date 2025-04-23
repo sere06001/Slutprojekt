@@ -94,7 +94,7 @@ public class LevelSelectScreen
                 //levelCombiner.EighthLevel();
                 break;
         }
-        gameStateManager.ChangeState(GameState.Playing);
+        gameStateManager.ChangeState(GameState.CharacterSelect);
     }
 
     public void Draw()

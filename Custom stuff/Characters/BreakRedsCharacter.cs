@@ -4,7 +4,10 @@ public class BreakRedsCharacter : BaseCharacter
     public BreakRedsCharacter(BallManager ballmanager, LevelCombiner levelCombiner) : base(ballmanager)
     {
         Powerup = new BreakRedsPowerup(ballmanager, levelCombiner);
+        Name = "Break Reds";
     }
+
+
     public override string Description()
     {
         return "";
