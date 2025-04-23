@@ -12,7 +12,7 @@ public class ExplodePowerup : BasePowerup
 
     public override string Description()
     {
-        string description = $"Explodes all bricks and \ncircles within a {explosionRadius} pixel \nradius.";
+        string description = $"Explodes all bricks and \ncircles within a {explosionRadius} pixel \nradius of the ball.";
         return description;
     }
 
