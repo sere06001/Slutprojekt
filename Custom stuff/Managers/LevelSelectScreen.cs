@@ -122,6 +122,8 @@ public class LevelSelectScreen
             Globals.SpriteBatch.DrawString(Globals.Font, "▼", new Vector2(Globals.Bounds.X / 2 - 10, viewport.Bottom + 50), Color.White);
         }
 
+        var mousePos = Mouse.GetState().Position;
+
         for (int i = 0; i < levelButtons.Count; i++)
         {
             var adjustedButton = new Rectangle(
@@ -133,7 +135,9 @@ public class LevelSelectScreen
 
             if (adjustedButton.Bottom >= viewport.Top && adjustedButton.Top <= viewport.Bottom)
             {
-                Globals.SpriteBatch.Draw(Globals.Pixel, adjustedButton, Color.DarkGray);
+                Color buttonColor = adjustedButton.Contains(mousePos) ? Color.Gray : Color.DarkGray;
+                Globals.SpriteBatch.Draw(Globals.Pixel, adjustedButton, buttonColor);
+                
                 Vector2 textSize = Globals.Font.MeasureString(levelNames[i]);
                 Vector2 textPos = new(
                     adjustedButton.Center.X - textSize.X / 2,

@@ -105,8 +105,7 @@ public class CharacterSelectScreen
     }
     public void Draw()
     {
-        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.Bounds.X, Globals.Bounds.Y), 
-            new Color(0, 0, 0, 180));
+        Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.Bounds.X, Globals.Bounds.Y), new Color(0, 0, 0, 180));
 
         string title = "Select Character";
         Vector2 titleSize = Globals.Font.MeasureString(title);
