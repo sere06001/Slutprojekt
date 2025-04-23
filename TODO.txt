@@ -1,7 +1,4 @@
-moving levels
+moving levels if have time
 
-Powerups:
-FireballPowerup - Implemented but make it so that the next ball shot gets set on fire instead of active ball
-
-1. Character select screen after level screen but before level starts
-2. Add level winning conditions LevelCombiner.cs
+1. Add level winning conditions
+2. Save system, save highscore for each level
