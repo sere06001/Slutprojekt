@@ -8,7 +8,7 @@ public class CharacterSelectScreen
     private readonly GameStateManager gameStateManager;
     private readonly Player player;
     private MouseState previousMouseState;
-    private int buttonWidth = (int)Globals.Font.MeasureString("Random character").X+20; //This is just because random character button is the longest and button length should stay consistent
+    private int buttonWidth = (int)Globals.Font.MeasureString("Sunflower").X+20; //This is just because Sunflower is the longest name and all buttons should be the same size
     private int buttonHeight = 40;
     private int buttonSpacing = 15;
     private bool isFirstUpdate = true;
@@ -125,7 +125,7 @@ public class CharacterSelectScreen
             Color buttonColor = characterButtons[i].Contains(mousePos) ? Color.Gray : Color.DarkGray;
             Globals.SpriteBatch.Draw(Globals.Pixel, characterButtons[i], buttonColor);
 
-            string buttonText = (i == characterButtons.Count - 1) ? "Random character" : characters[i].Name;
+            string buttonText = (i == characterButtons.Count - 1) ? "Random" : characters[i].Name;
             Vector2 textSize = Globals.Font.MeasureString(buttonText);
             Vector2 textPos = new(
                 characterButtons[i].Center.X - textSize.X / 2,
