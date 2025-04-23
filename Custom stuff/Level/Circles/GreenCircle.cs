@@ -28,6 +28,10 @@ public class GreenCircle : BaseCircle
                 ball.HasHit();
                 if (!Hit)
                 {
+                    if (player.Character is RandomPowerupCharacter)
+                    {
+                        player.Powerup = player.Character.SetRandomPowerup(ball);
+                    }
                     SetHit();
                     ballPosList.Add(ball);
                     PowerupHandler(ball);

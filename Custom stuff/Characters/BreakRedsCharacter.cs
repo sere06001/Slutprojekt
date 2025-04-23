@@ -6,16 +6,8 @@ public class BreakRedsCharacter : BaseCharacter
         Powerup = new BreakRedsPowerup(ballmanager, levelCombiner);
         Name = "Sunflower";
     }
-
-
     public override string Description()
     {
         return $"{Powerup.Description()}";
-    }
-
-    public override void Draw()
-    {
-        // Draw the character texture at the specified position
-        //Globals.SpriteBatch.Draw(Texture, Position, Color.White);
     }
 }

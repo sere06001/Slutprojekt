@@ -2,7 +2,7 @@ namespace Slutprojekt;
 public class ExplodePowerup : BasePowerup
 {
     private readonly LevelCombiner levelCombiner;
-    private float explosionRadius = 100f;
+    private float explosionRadius = 75f;
     private List<Vector2> processedExplosions = new();
 
     public ExplodePowerup(BallManager ballManager, LevelCombiner levelCombiner) : base(ballManager)

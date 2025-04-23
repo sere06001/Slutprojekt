@@ -1,19 +1,32 @@
 namespace Slutprojekt;
 public class RandomPowerupCharacter : BaseCharacter
 {
+    private LevelCombiner levelCombiner;
+
     public RandomPowerupCharacter(BallManager ballmanager, LevelCombiner levelCombiner) : base(ballmanager)
     {
-        Powerup = new ExplodePowerup(ballmanager, levelCombiner); //Placeholder
+        this.levelCombiner = levelCombiner;
+        Powerup = new ExplodePowerup(ballmanager, levelCombiner);
         Name = "Shark";
     }
+
     public override string Description()
     {
-        return $"Gets a new random powerup on hit.";
+        return $"Gets a new random \npowerup on hit.";
     }
 
-    public override void Draw()
+    public override BasePowerup SetRandomPowerup(Ball ball)
     {
-        // Draw the character texture at the specified position
-        //Globals.SpriteBatch.Draw(Texture, Position, Color.White);
+        List<BasePowerup> powerups = new List<BasePowerup>
+        {
+            new FireballPowerup(ballManager),
+            new RespawnBallPowerup(ballManager),
+            new ExplodePowerup(ballManager, levelCombiner),
+            new BreakRedsPowerup(ballManager, levelCombiner),
+            new DuplicateBallPowerup(ballManager)
+        };
+        int randomPowerup = Globals.Random.Next(0, powerups.Count);
+        Powerup = powerups[randomPowerup];
+        return Powerup;
     }
 }

@@ -11,8 +11,8 @@ public abstract class BaseCharacter
         ballManager = ballmanager;
     }
     public abstract string Description();
-    public virtual void Draw()
+    public virtual BasePowerup SetRandomPowerup(Ball ball)
     {
-
+        return Powerup;  // Default implementation returns current powerup
     }
 }

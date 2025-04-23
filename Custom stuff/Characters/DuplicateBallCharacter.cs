@@ -10,10 +10,4 @@ public class DuplicateBallCharacter : BaseCharacter
     {
         return $"{Powerup.Description()}";
     }
-
-    public override void Draw()
-    {
-        // Draw the character texture at the specified position
-        //Globals.SpriteBatch.Draw(Texture, Position, Color.White);
-    }
 }

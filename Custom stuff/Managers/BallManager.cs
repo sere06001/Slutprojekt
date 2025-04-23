@@ -5,7 +5,7 @@ public class BallManager
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
-    private float shootDelayTimer = 1.5f;
+    private float shootDelayTimer = 1f;
     private bool canShoot = false;
 
     private void DebugUI()

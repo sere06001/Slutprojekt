@@ -31,6 +31,7 @@ public class CharacterSelectScreen
             new DuplicateBallCharacter(ballManager),
             new RespawnBallCharacter(ballManager),
             new FireballCharacter(ballManager),
+            new RandomPowerupCharacter(ballManager, levelCombiner), //This character gets a random powerup each hit, character under only uses 1 powerup
             new ExplodeCharacter(ballManager, levelCombiner) //This is a placeholder for random character
         };
 
@@ -95,6 +96,7 @@ public class CharacterSelectScreen
             2 => new DuplicateBallCharacter(ballManager),
             3 => new RespawnBallCharacter(ballManager),
             4 => new FireballCharacter(ballManager),
+            5 => new RandomPowerupCharacter(ballManager, levelCombiner),
             _ => new ExplodeCharacter(ballManager, levelCombiner)
         };
         player.SetCharacter(character);
