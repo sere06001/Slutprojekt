@@ -4,7 +4,7 @@ public class FireballCharacter : BaseCharacter
     public FireballCharacter(BallManager ballmanager) : base(ballmanager)
     {
         Powerup = new FireballPowerup(ballmanager);
-        Name = "Fireball";
+        Name = "Dragon";
     }
     public override string Description()
     {

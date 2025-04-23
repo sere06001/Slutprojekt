@@ -15,7 +15,6 @@ public class CharacterSelectScreen
 
     private readonly int descriptionX;
     private readonly int buttonX;
-    private const int DESCRIPTION_PADDING = 20;
 
     public CharacterSelectScreen(BallManager ballManager, LevelCombiner levelCombiner, 
         GameStateManager gameStateManager, Player player)
@@ -36,7 +35,7 @@ public class CharacterSelectScreen
         };
 
         buttonX = Globals.Bounds.X / 3;
-        descriptionX = Globals.Bounds.X / 3 * 2;
+        descriptionX = Globals.Bounds.X / 4 * 2 + 20;
 
         InitializeButtons();
         
@@ -137,7 +136,7 @@ public class CharacterSelectScreen
             if (characterButtons[i].Contains(mousePos))
             {
                 hoveredIndex = i;
-                currentDescription = (i < characters.Count - 1) ? characters[i].Description() : "Select a random character";
+                currentDescription = (i < characters.Count - 1) ? characters[i].Description() : "Select a random character.";
             }
         }
 
