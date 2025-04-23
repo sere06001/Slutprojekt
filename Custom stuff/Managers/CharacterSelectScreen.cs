@@ -27,7 +27,8 @@ public class CharacterSelectScreen
             new BreakRedsCharacter(ballManager, levelCombiner),
             new DuplicateBallCharacter(ballManager),
             new RespawnBallCharacter(ballManager),
-            new FireballCharacter(ballManager)
+            new FireballCharacter(ballManager),
+            new ExplodeCharacter(ballManager, levelCombiner) //This is a placeholder for random character
         };
 
         InitializeButtons();
@@ -77,6 +78,10 @@ public class CharacterSelectScreen
 
     private void SelectCharacter(int index)
     {
+        if (index == characterButtons.Count-1)
+        {
+            index = Globals.Random.Next(0, characters.Count);
+        }
         BaseCharacter character = index switch
         {
             0 => new ExplodeCharacter(ballManager, levelCombiner),
@@ -104,7 +109,7 @@ public class CharacterSelectScreen
         );
         Globals.SpriteBatch.DrawString(Globals.Font, title, titlePos, Color.White);
 
-        for (int i = 0; i < characterButtons.Count; i++)
+        for (int i = 0; i < characterButtons.Count; i++) //+1 to account for random char button
         {
             var mouseState = Mouse.GetState();
             var mousePos = new Point(mouseState.X, mouseState.Y);
@@ -112,12 +117,26 @@ public class CharacterSelectScreen
             
             Globals.SpriteBatch.Draw(Globals.Pixel, characterButtons[i], buttonColor);
             
-            Vector2 textSize = Globals.Font.MeasureString(characters[i].Name);
-            Vector2 textPos = new(
-                characterButtons[i].Center.X - textSize.X / 2,
-                characterButtons[i].Center.Y - textSize.Y / 2
-            );
-            Globals.SpriteBatch.DrawString(Globals.Font, characters[i].Name, textPos, Color.White);
+            
+
+            if (i == characterButtons.Count-1)
+            {
+                Vector2 textSize = Globals.Font.MeasureString("Random character");
+                Vector2 textPos = new(
+                    characterButtons[i].Center.X - textSize.X / 2,
+                    characterButtons[i].Center.Y - textSize.Y / 2
+                );
+                Globals.SpriteBatch.DrawString(Globals.Font, "Random character", textPos, Color.White);
+            }
+            else
+            {
+                Vector2 textSize = Globals.Font.MeasureString(characters[i].Name);
+                Vector2 textPos = new(
+                    characterButtons[i].Center.X - textSize.X / 2,
+                    characterButtons[i].Center.Y - textSize.Y / 2
+                );
+                Globals.SpriteBatch.DrawString(Globals.Font, characters[i].Name, textPos, Color.White);
+            }
         }
     }
 }
