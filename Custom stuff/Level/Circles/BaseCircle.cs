@@ -23,7 +23,7 @@ public abstract class BaseCircle
     protected BallManager ballManager { get; set; }
     protected bool hasContributedToPowerup = false;
 
-    public bool IsMarkedForRemoval { get; private set; } = false;
+    public bool IsMarkedForRemoval { get; protected set; } = false;
 
     public BaseCircle(BallManager ballmngr, Player plyr)
     {

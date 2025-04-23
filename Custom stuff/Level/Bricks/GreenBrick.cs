@@ -25,20 +25,23 @@ public class GreenBrick : BaseBrick
         {
             if (CheckBallCollision(ball))
             {
-                ResolveBallCollision(ball);
+                ball.HasHit();
                 if (!Hit)
                 {
+                    SetHit();
                     ballPosList.Add(ball);
                     PowerupHandler(ball);
                     ball.IncreaseHitCount(player);
-                    player.AddCircleAndBricksHitCount();
-                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
-                    Hit = true;
-                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
-                    showScore = true;
-                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
-                ball.HasHit();
+
+                if (ball.IsOnFire)
+                {
+                    IsMarkedForRemoval = true;
+                }
+                else
+                {
+                    ResolveBallCollision(ball);
+                }
             }
         }
         if (player.Powerup is DuplicateBallPowerup)

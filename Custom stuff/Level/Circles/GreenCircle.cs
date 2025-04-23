@@ -25,20 +25,23 @@ public class GreenCircle : BaseCircle
         {
             if ((ball.Position - (Position + Origin)).Length() < (ball.Origin.X + Radius))
             {
-                ResolveBallCollision(ball);
+                ball.HasHit();
                 if (!Hit)
                 {
+                    SetHit();
                     ballPosList.Add(ball);
                     PowerupHandler(ball);
-                    Hit = true;
                     ball.IncreaseHitCount(player);
-                    player.AddCircleAndBricksHitCount();
-                    player.AddScore(ScoreOnHit * player.ScoreMultiplier);
-                    secondsBeforeRemovalTimer = secondsBeforeRemoval;
-                    showScore = true;
-                    scoreDisplayTimer = ScoreDisplayDurationSeconds;
                 }
-                ball.HasHit();
+
+                if (ball.IsOnFire)
+                {
+                    IsMarkedForRemoval = true;
+                }
+                else
+                {
+                    ResolveBallCollision(ball);
+                }
             }
         }
         if (player.Powerup is DuplicateBallPowerup)

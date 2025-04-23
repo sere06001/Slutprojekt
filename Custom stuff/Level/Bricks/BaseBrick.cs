@@ -22,7 +22,7 @@ public abstract class BaseBrick
     public virtual float Rotation { get; set; }
     protected BallManager ballManager { get; set; }
 
-    public bool IsMarkedForRemoval { get; private set; } = false;
+    public bool IsMarkedForRemoval { get; protected set; } = false;
     protected bool hasContributedToPowerup = false;
 
     public BaseBrick(BallManager ballmngr, Player plyr, float rotation)
