@@ -2,3 +2,4 @@ moving levels if have time
 
 1. Add level winning conditions
 2. Save system, save highscore for each level
+3. Make immovable but hittable objects for some levels
