@@ -5,7 +5,7 @@ public class BallManager
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
-    private const float shootDelay = 1f;
+    private const float shootDelay = 0.25f;
     private float shootDelayTimer = shootDelay;
     private bool canShoot = false;
 
@@ -25,8 +25,6 @@ public class BallManager
     {
         balls.Clear();
         BallsLeft = startingBallCount;
-        canShoot = false;
-        shootDelayTimer = shootDelay;
     }
     public void StartShootDelay()
     {
@@ -144,7 +142,7 @@ public class BallManager
     }
 
     public void ShootBall(Vector2 position, Vector2 direction)
-    {
+    {        
         if (!canShoot || BallsLeft <= 0 || balls.Count > 0) return;
         
         Ball newBall = new Ball(position, false)
@@ -154,6 +152,7 @@ public class BallManager
         };
         balls.Add(newBall);
         BallsLeft--;
+        StartShootDelay();
     }
 
     public void AddBallsLeft()
@@ -163,7 +162,7 @@ public class BallManager
 
     public void Update(Player player)
     {
-        if (!canShoot)
+        if (!canShoot && balls.Count ==0)
         {
             shootDelayTimer -= Globals.TotalSeconds;
             if (shootDelayTimer <= 0)
