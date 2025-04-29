@@ -31,6 +31,10 @@ public class GameManager
 
     public void Update()
     {
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        {
+            gameStateManager.ChangeState(GameState.LevelSelect);
+        }
         switch (gameStateManager.CurrentState)
         {
             case GameState.LevelSelect:

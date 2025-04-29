@@ -5,7 +5,8 @@ public class BallManager
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
-    private float shootDelayTimer = 1f;
+    private const float shootDelay = 1f;
+    private float shootDelayTimer = shootDelay;
     private bool canShoot = false;
 
     private void DebugUI()
@@ -22,7 +23,7 @@ public class BallManager
     }
     public void StartShootDelay()
     {
-        shootDelayTimer = 2f;
+        shootDelayTimer = shootDelay;
         canShoot = false;
     }
     private void DrawKillZone()
@@ -138,7 +139,7 @@ public class BallManager
     public void ShootBall(Vector2 position, Vector2 direction)
     {
         if (!canShoot || BallsLeft <= 0 || balls.Count > 0) return;
-
+        
         Ball newBall = new Ball(position, false)
         {
             Direction = direction,
