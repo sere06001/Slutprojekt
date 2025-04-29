@@ -47,7 +47,12 @@ public static class Globals
     public static int LeftWall = 75;
     public static int RightWall = 725;
     public static float RestrictionCoordsLower = 595;
-
+    public static void ResetColouredObjects()
+    {
+        placedRedObjects = 0;
+        placedGreenObjects = 0;
+        placedPurpleObjects = 0;
+    }
     public static void LoadContent()
     {
         BallRed = Content.Load<Texture2D>("ballred");

@@ -21,6 +21,13 @@ public class BallManager
             Globals.SpriteBatch.DrawString(Globals.Font, $"{new Vector2((int)balls[i].Position.X, (int)balls[i].Position.Y)}", pos, Color.White);
         }
     }
+    public void Reset()
+    {
+        balls.Clear();
+        BallsLeft = startingBallCount;
+        canShoot = false;
+        shootDelayTimer = shootDelay;
+    }
     public void StartShootDelay()
     {
         shootDelayTimer = shootDelay;

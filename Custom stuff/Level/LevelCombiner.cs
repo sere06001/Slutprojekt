@@ -18,6 +18,7 @@ public class LevelCombiner
     public void Reset()
     {
         levels.Clear();
+        Globals.ResetColouredObjects();
         teleporterManager = new TeleporterManager(ballManager);
     }
     public void FirstLevel()

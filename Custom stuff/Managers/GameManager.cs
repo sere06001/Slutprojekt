@@ -34,6 +34,8 @@ public class GameManager
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
         {
             gameStateManager.ChangeState(GameState.LevelSelect);
+            ballManager.Reset();
+            levelCombiner.Reset();
         }
         switch (gameStateManager.CurrentState)
         {
