@@ -20,8 +20,15 @@ public class UI
         Vector2 redHits = new(Globals.Bounds.X-400, 75);
         Globals.SpriteBatch.DrawString(Globals.Font, "RedHits: "+player.RedsHit.ToString(), redHits, Color.White);
     }
+    public void DrawLevelScore(int level)
+    {
+        int highScore = ScoreManager.GetHighScore(level);
+        Vector2 pos = new(Globals.LeftWall+10, 10);
+        Globals.SpriteBatch.DrawString(Globals.Font, $"High Score: {highScore}", pos, Color.White);
+    }
     public void Draw()
     {
-        DebugUI();
+        //DebugUI();
+        DrawLevelScore(player.currentLevel);
     }
 }

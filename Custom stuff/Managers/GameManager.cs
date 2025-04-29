@@ -21,6 +21,7 @@ public class GameManager
         UI = new();
         levelSelectScreen = new LevelSelectScreen(levelCombiner, gameStateManager);
         characterSelectScreen = new CharacterSelectScreen(ballManager, levelCombiner, gameStateManager, player);
+        ScoreManager.Initialize();
     }
     public void Init()
     {

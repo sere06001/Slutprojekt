@@ -11,6 +11,7 @@ public class Player
     public int ScoreMultiplier { get; private set; } = 1;
     public bool HasIncreasedMultFromPurple { get; private set; } = false;
     public int RedsHit { get; private set; } = 0;
+    public int currentLevel { get; set; }
     public Player(BallManager bllmng)
     {
         ballManager = bllmng;

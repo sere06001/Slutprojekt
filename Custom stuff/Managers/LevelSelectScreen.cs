@@ -73,6 +73,8 @@ public class LevelSelectScreen
     private void SelectLevel(int index)
     {
         levelCombiner.Reset();
+        levelCombiner.player.currentLevel = index;
+        
         switch (index)
         {
             case 0:

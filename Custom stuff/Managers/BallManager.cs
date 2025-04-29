@@ -5,8 +5,7 @@ public class BallManager
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
-    private float shootDelay = 0.25f;
-    private float shootDelayTimer;
+    private float shootDelayTimer = 1f;
     private bool canShoot = false;
 
     private void DebugUI()
@@ -23,7 +22,7 @@ public class BallManager
     }
     public void StartShootDelay()
     {
-        shootDelayTimer = shootDelay;
+        shootDelayTimer = 2f;
         canShoot = false;
     }
     private void DrawKillZone()
@@ -172,8 +171,9 @@ public class BallManager
             ball.Update();
         }
         CheckCollisions();
-        if (balls.Count == 0)
+        if (BallsLeft == 0)
         {
+            ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
             player.UpdateFinalScore();
             player.ResetScore();
             player.ResetCircleAndBricksHitCount();
@@ -187,6 +187,6 @@ public class BallManager
         {
             ball.Draw();
         }
-        DebugUI();
+        //DebugUI();
     }
 }
