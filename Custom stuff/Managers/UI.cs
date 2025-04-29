@@ -2,9 +2,11 @@ namespace Slutprojekt;
 public class UI
 {
     public Player player;
+    public BallManager ballManager;
     public void Init(Player plyr)
     {
         player = plyr;
+        ballManager = player.ballManager;
     }
     public void DebugUI()
     {
@@ -14,21 +16,32 @@ public class UI
         Vector2 FinalscorePos = new(Globals.Bounds.X-400, 25);
         Globals.SpriteBatch.DrawString(Globals.Font, "Score level: "+player.ScoreLevel.ToString(), FinalscorePos, Color.White);
 
-        Vector2 scoreMultPos = new(Globals.Bounds.X-400, 50);
-        Globals.SpriteBatch.DrawString(Globals.Font, "Score mult: "+player.ScoreMultiplier.ToString(), scoreMultPos, Color.White);
-
-        Vector2 redHits = new(Globals.Bounds.X-400, 75);
-        Globals.SpriteBatch.DrawString(Globals.Font, "RedHits: "+player.RedsHit.ToString(), redHits, Color.White);
+        
     }
     public void DrawLevelScore(int level)
     {
         int highScore = ScoreManager.GetHighScore(level);
         Vector2 pos = new(Globals.LeftWall+10, 10);
         Globals.SpriteBatch.DrawString(Globals.Font, $"High Score: {highScore}", pos, Color.White);
+
+
+        string scoreText = $"Score multiplier: "+player.ScoreMultiplier.ToString();
+        Vector2 scoreMultPos = new(Globals.RightWall-Globals.Font.MeasureString(scoreText).X-5, 10);
+        Globals.SpriteBatch.DrawString(Globals.Font, scoreText, scoreMultPos, Color.White);
+
+        string redHitsText = $"Red hits: "+player.RedsHit.ToString();
+        Vector2 redHits = new(Globals.RightWall-Globals.Font.MeasureString(redHitsText).X-5, 50);
+        Globals.SpriteBatch.DrawString(Globals.Font, redHitsText, redHits, Color.White);
+    }
+    public void DrawBallCount()
+    {
+        Vector2 pos = new(Globals.LeftWall+10, 50);
+        Globals.SpriteBatch.DrawString(Globals.Font, $"Balls left: {ballManager.BallsLeft}", pos, Color.White);
     }
     public void Draw()
     {
         //DebugUI();
         DrawLevelScore(player.currentLevel);
+        DrawBallCount();
     }
 }
