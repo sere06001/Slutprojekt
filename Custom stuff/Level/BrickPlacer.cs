@@ -15,7 +15,11 @@ public class BrickPlacer
     }
 
     public List<BaseBrick> GetBricks() => bricks;
-
+    public void Reset()
+    {
+        bricks.Clear();
+        slowBallTimer = 0f;
+    }
     public void PlaceBrick(Vector2 position, float rotation = 0)
     {
         int spacing = 50;

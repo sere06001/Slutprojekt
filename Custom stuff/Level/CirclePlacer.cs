@@ -2,7 +2,7 @@ namespace Slutprojekt;
 public class CirclePlacer
 {
     public Player player;
-    private List<BaseCircle> circles = new();
+    public List<BaseCircle> circles = new();
     private BallManager ballManager;
     private float slowBallTimer = 0f;
 
@@ -13,6 +13,11 @@ public class CirclePlacer
     }
 
     public List<BaseCircle> GetCircles() => circles;
+    public void Reset()
+    {
+        circles.Clear();
+        slowBallTimer = 0f;
+    }
 
     public void PlaceCircle(Vector2 position)
     {

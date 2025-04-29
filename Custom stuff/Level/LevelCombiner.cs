@@ -18,6 +18,8 @@ public class LevelCombiner
     public void Reset()
     {
         levels.Clear();
+        circlePlacer.Reset();
+        brickPlacer.Reset();
         Globals.ResetColouredObjects();
         teleporterManager = new TeleporterManager(ballManager);
     }
