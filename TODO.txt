@@ -4,4 +4,3 @@ Hittable objects that bounce ball back
 
 1. Add level winning conditions
 2. Make it so user can't hold down left click to spam shoot and avoid removing hit bricks/circles
-3. Reset ballmanager stuff when changing levels
