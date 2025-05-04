@@ -2,4 +2,5 @@ IF HAVE TIME LEFT OVER:
 Moving levels
 Hittable objects that bounce ball back
 
-1. Add level winning conditions
+1. Add level winning/losing conditions, should win when all 25 red objects have been hit but do not project win screen until ballmanager.balls is empty (no active balls), 
+ONLY save score if level is won instead of when ballmanager.balls is empty (that was just for testing)
