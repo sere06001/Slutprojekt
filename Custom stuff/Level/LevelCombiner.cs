@@ -79,14 +79,14 @@ public class LevelCombiner
         {
             levels.Add(new LevelGrid(ballManager, player, 1, 4 - i, 
                 Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 100 - i * 25, 
-                190+i*40, false, false, 30));
+                180+i*40, false, false, 30));
         }
 
         for (int i = 0; i < 4; i++)
         {
             levels.Add(new LevelGrid(ballManager, player, 1, 4-i, 
                 Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 110 + i * 25, 
-                190+i*40, false, false, -30));
+                180+i*40, false, false, -30));
         }
 
 
