@@ -61,24 +61,14 @@ public class WinScreen
         {
             case 0:
                 gameStateManager.ChangeState(GameState.LevelSelect);
+                player.ResetEverything();
                 break;
             case 1:
-                int currentLevel = player.currentLevel;
-                
                 ballManager.Reset();
                 levelCombiner.Reset();
                 player.ResetEverything();
-                switch (currentLevel)
-                {
-                    case 0:
-                        levelCombiner.FirstLevel();
-                        break;
-                    case 1:
-                        levelCombiner.SecondLevel();
-                        break;
-                }
+                levelCombiner.GetLevel(player.currentLevel);
                 
-                player.currentLevel = currentLevel;
                 gameStateManager.ChangeState(GameState.CharacterSelect);
                 break;
         }

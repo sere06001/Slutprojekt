@@ -15,6 +15,20 @@ public class LevelCombiner
         circlePlacer = new CirclePlacer(ballManager, player);
         brickPlacer = new BrickPlacer(ballManager, player);
     }
+    public void GetLevel(int levelID)
+    {
+        switch (levelID)
+        {
+            case 0:
+                FirstLevel();
+                break;
+            case 1:
+                SecondLevel();
+                break;
+            default:
+                break;
+        }
+    }
     public void Reset()
     {
         levels.Clear();
