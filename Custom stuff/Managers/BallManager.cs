@@ -190,18 +190,16 @@ public class BallManager
             player.UpdateFinalScore();
             player.ResetScore();
             player.ResetCircleAndBricksHitCount();
-            if (Globals.placedRedObjects <= 0 || BallsLeft <= 0)
+            if (Globals.placedRedObjects <= 0)
             {
-                if (BallsLeft <= 0)
-                {
-                    player.DidWin = false;
-                }
-                else
-                {
-                    player.DidWin = true;
-                }
+                player.DidWin = true;
+
                 ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
                 gameStateManager.ChangeState(GameState.Win);
+            }
+            else if (BallsLeft <= 0)
+            {
+                player.DidWin = false;
             }
         }
     }
