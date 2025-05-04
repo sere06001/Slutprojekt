@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class BallManager
 {
-    public const int startingBallCount = 100;
+    public const int startingBallCount = 1;
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
@@ -190,8 +190,16 @@ public class BallManager
             player.UpdateFinalScore();
             player.ResetScore();
             player.ResetCircleAndBricksHitCount();
-            if (Globals.placedRedObjects == 0)
+            if (Globals.placedRedObjects <= 0 || BallsLeft <= 0)
             {
+                if (BallsLeft <= 0)
+                {
+                    player.DidWin = false;
+                }
+                else
+                {
+                    player.DidWin = true;
+                }
                 ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
                 gameStateManager.ChangeState(GameState.Win);
             }

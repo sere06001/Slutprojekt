@@ -78,12 +78,11 @@ public class WinScreen
     {
         Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(0, 0, Globals.Bounds.X, Globals.Bounds.Y), new Color(0, 0, 0, 200));
 
-        string title = "Level Completed";
+        string title = player.DidWin ? "Level Completed" : "Level Failed";
         Vector2 titleSize = Globals.Font.MeasureString(title);
         Vector2 titlePos = new(Globals.Bounds.X / 2 - titleSize.X / 2, Globals.Bounds.Y * 0.15f);
         Globals.SpriteBatch.DrawString(Globals.Font, title, titlePos, Color.White);
 
-        // Draw stats
         float statsY = Globals.Bounds.Y * 0.3f;
         float statsX = Globals.Bounds.X / 2;
         
