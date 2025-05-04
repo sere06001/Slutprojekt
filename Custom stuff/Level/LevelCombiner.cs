@@ -74,32 +74,24 @@ public class LevelCombiner
         levels.Add(new LevelCircle(ballManager, player, 250, 4, Globals.LeftWall + 209, 199, 
             true, false, 88.4f, 115.4f));
 
-        levels.Add(new LevelGrid(ballManager, player, 1, 4, 
-                Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 100, 
-                190, false, false, 30));
-        levels.Add(new LevelGrid(ballManager, player, 1, 3, 
-                Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 75, 
-                230, false, false, 30));
-        levels.Add(new LevelGrid(ballManager, player, 1, 2, 
-                Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 50, 
-                270, false, false, 30));
-        levels.Add(new LevelGrid(ballManager, player, 1, 1, 
-                Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 25, 
-                310, false, false, 30));
+
+        for (int i = 0; i < 4; i++)
+        {
+            levels.Add(new LevelGrid(ballManager, player, 1, 4 - i, 
+                Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 100 - i * 25, 
+                190+i*40, false, false, 30));
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            levels.Add(new LevelGrid(ballManager, player, 1, 4-i, 
+                Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 110 + i * 25, 
+                190+i*40, false, false, -30));
+        }
 
 
-        levels.Add(new LevelGrid(ballManager, player, 1, 4, 
-                Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 110, 
-                190, false, false, -30));
-        levels.Add(new LevelGrid(ballManager, player, 1, 3, 
-                Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 85, 
-                230, false, false, -30));
-        levels.Add(new LevelGrid(ballManager, player, 1, 2, 
-                Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 60, 
-                270, false, false, -30));
-        levels.Add(new LevelGrid(ballManager, player, 1, 1, 
-                Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 35, 
-                310, false, false, -30));
+        
+
     }
 
     public void DebugUI()
