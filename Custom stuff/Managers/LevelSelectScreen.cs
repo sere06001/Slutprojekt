@@ -3,7 +3,7 @@ namespace Slutprojekt;
 public class LevelSelectScreen
 {
     private List<Rectangle> levelButtons = new();
-    private List<string> levelNames = new() { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8" };
+    private List<string> levelNames = new() { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" };
     private LevelCombiner levelCombiner;
     private GameStateManager gameStateManager;
     private int buttonWidth = 200;
@@ -91,15 +91,6 @@ public class LevelSelectScreen
                 break;
             case 4:
                 //levelCombiner.FifthLevel();
-                break;
-            case 5:
-                //levelCombiner.SixthLevel();
-                break;
-            case 6:
-                //levelCombiner.SeventhLevel();
-                break;
-            case 7:
-                //levelCombiner.EighthLevel();
                 break;
         }
         gameStateManager.ChangeState(GameState.CharacterSelect);
