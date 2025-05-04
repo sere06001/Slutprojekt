@@ -3,7 +3,7 @@ namespace Slutprojekt;
 public class LevelSelectScreen
 {
     private List<Rectangle> levelButtons = new();
-    private List<string> levelNames = new() { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" };
+    private List<string> levelNames = new() { "Level 1", "Level 2", "Coming soon", "Coming soon", "Coming soon", "Coming soon", "Coming soon", "Coming soon", };
     private LevelCombiner levelCombiner;
     private GameStateManager gameStateManager;
     private int buttonWidth = 200;
