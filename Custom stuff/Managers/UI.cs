@@ -32,7 +32,7 @@ public class UI
         Vector2 scoreMultPos = new(Globals.RightWall-Globals.Font.MeasureString(scoreText).X-5, 50);
         Globals.SpriteBatch.DrawString(Globals.Font, scoreText, scoreMultPos, Color.White);
 
-        string redHitsText = $"Red hits: {player.RedsHit}/{Globals.maxRedObjects}";
+        string redHitsText = $"Reds hit: {player.RedsHit}/{Globals.maxRedObjects}";
         Vector2 redHits = new(Globals.RightWall-Globals.Font.MeasureString(redHitsText).X-5, 90);
         Globals.SpriteBatch.DrawString(Globals.Font, redHitsText, redHits, Color.White);
     }

@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class BallManager
 {
-    public const int startingBallCount = 1;
+    public const int startingBallCount = 10;
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();

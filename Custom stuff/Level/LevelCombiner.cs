@@ -90,7 +90,37 @@ public class LevelCombiner
         }
 
 
+        for (int i = 0; i < 4; i++)
+        {
+            levels.Add(new LevelGrid(ballManager, player, 1, i+3, 
+                Globals.BallBlue.Width * 2.5f + 5*i, Globals.Bounds.X / 2 - 5, 
+                260+i*40, false, false));
+        }
+
+
         
+        levels.Add(new LevelGrid(ballManager, player, 1, 7, 
+            Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 150, 
+            475, false, false, 7));
+        levels.Add(new LevelGrid(ballManager, player, 1, 7, 
+            Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 160, 
+            475, false, false, -7));
+        circlePlacer.PlaceCircle(new (Globals.Bounds.X / 2-5, 485));
+
+
+
+        levels.Add(new LevelGrid(ballManager, player, 1, 3, 
+            Globals.BallBlue.Width * 2f + 15, Globals.Bounds.X / 2 - 5, 
+            440, false, false));
+
+
+        levels.Add(new LevelGrid(ballManager, player, 1, 2, 
+            Globals.BallBlue.Width * 2f + 4, Globals.LeftWall + 90, 
+            370, false, false, -7));
+
+        levels.Add(new LevelGrid(ballManager, player, 1, 2, 
+            Globals.BallBlue.Width * 2f + 4, Globals.RightWall - 95, 
+            370, false, false, 7));
 
     }
 
