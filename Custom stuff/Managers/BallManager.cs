@@ -200,6 +200,7 @@ public class BallManager
             else if (BallsLeft <= 0)
             {
                 player.DidWin = false;
+                gameStateManager.ChangeState(GameState.Win);
             }
         }
     }
