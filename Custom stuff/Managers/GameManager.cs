@@ -11,15 +11,17 @@ public class GameManager
     private LevelSelectScreen levelSelectScreen;
     private CharacterSelectScreen characterSelectScreen;
     private WinScreen winScreen;
+    Game1 game;
 
-    public GameManager()
+    public GameManager(Game1 game)
     {
+        this.game = game;
         gameStateManager = new GameStateManager();
         ballManager = new BallManager(gameStateManager);
         player = new(ballManager);
         levelCombiner = new(ballManager, player);
         
-        cannon = new Cannon(ballManager, levelCombiner);
+        cannon = new Cannon(ballManager, levelCombiner, game);
         UI = new();
         levelSelectScreen = new LevelSelectScreen(levelCombiner, gameStateManager);
         characterSelectScreen = new CharacterSelectScreen(ballManager, levelCombiner, gameStateManager, player);

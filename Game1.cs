@@ -26,7 +26,7 @@ public class Game1 : Game
         Globals.Content = Content;
         Globals.LoadContent();
 
-        gameManager = new();
+        gameManager = new(this);
         gameManager.Init();
 
         base.Initialize();

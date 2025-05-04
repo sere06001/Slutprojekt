@@ -13,9 +13,11 @@ public class Cannon
     private List<Vector2> trajectoryPoints = new();
     private Vector2 spawnPosition;
     private int trajectoryWidthPixels = 5;
+    private Game1 game;
 
-    public Cannon(BallManager ballManager, LevelCombiner levelCombiner)
+    public Cannon(BallManager ballManager, LevelCombiner levelCombiner, Game1 game1)
     {
+        game = game1;
         this.ballManager = ballManager;
         this.levelCombiner = levelCombiner;
         texture = Globals.BallTexture; //Change later
@@ -160,7 +162,7 @@ public class Cannon
             UpdateTrajectoryPrediction();
         }
 
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed && ballManager.BallsLeft > 0)
+        if (Mouse.GetState().LeftButton == ButtonState.Pressed && ballManager.BallsLeft > 0 && game.IsActive)
         {
             ShootBall();
         }

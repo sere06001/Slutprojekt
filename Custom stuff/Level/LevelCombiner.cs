@@ -156,6 +156,6 @@ public class LevelCombiner
         circlePlacer.Draw();
         brickPlacer.Draw();
         teleporterManager.Draw();
-        DebugUI();
+        //DebugUI();
     }
 }
