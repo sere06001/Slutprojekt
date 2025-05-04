@@ -24,7 +24,7 @@ public class UI
         Vector2 pos = new(Globals.LeftWall+10, 10);
         Globals.SpriteBatch.DrawString(Globals.Font, $"High Score: {highScore}", pos, Color.White);
 
-        string levelscoreText = $"Score: {player.ScoreFromHits}";
+        string levelscoreText = $"Score: {player.ScoreFromHits*player.CircleAndBricksHitCount/2}";
         Vector2 scoreLevelPos = new(Globals.RightWall-Globals.Font.MeasureString(levelscoreText).X-5, 10);
         Globals.SpriteBatch.DrawString(Globals.Font, levelscoreText, scoreLevelPos, Color.White);
 

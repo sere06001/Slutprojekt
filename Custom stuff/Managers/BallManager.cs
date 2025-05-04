@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class BallManager
 {
-    public const int startingBallCount = 10;
+    public const int startingBallCount = 100;
     public int BallsLeft { get; private set; } = startingBallCount;
     public List<Ball> balls = []; //Currently active balls
     private Dictionary<Ball, List<Vector2>> simultaneousCollisions = new();
@@ -178,12 +178,16 @@ public class BallManager
             ball.Update();
         }
         CheckCollisions();
-        if (BallsLeft == 0)
+        if (balls.Count == 0)
         {
-            ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
-            player.UpdateFinalScore();
-            player.ResetScore();
-            player.ResetCircleAndBricksHitCount();
+            if (Globals.placedRedObjects == 0)
+            {
+                player.UpdateFinalScore();
+                ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
+                player.ResetScore(); //Instead go to win screen, in winscreen when clicking restart level, select character or level select THEN it will reset score and circle hit count
+                player.ResetCircleAndBricksHitCount();
+            }
+            
         }
     }
 
