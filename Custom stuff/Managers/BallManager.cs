@@ -180,12 +180,12 @@ public class BallManager
         CheckCollisions();
         if (balls.Count == 0)
         {
+            player.UpdateFinalScore();
+            player.ResetScore(); //Instead go to win screen, in winscreen when clicking restart level, select character or level select THEN it will reset score and circle hit count
+            player.ResetCircleAndBricksHitCount();
             if (Globals.placedRedObjects == 0)
             {
-                player.UpdateFinalScore();
                 ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
-                player.ResetScore(); //Instead go to win screen, in winscreen when clicking restart level, select character or level select THEN it will reset score and circle hit count
-                player.ResetCircleAndBricksHitCount();
             }
             
         }
