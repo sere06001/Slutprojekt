@@ -24,13 +24,16 @@ public class UI
         Vector2 pos = new(Globals.LeftWall+10, 10);
         Globals.SpriteBatch.DrawString(Globals.Font, $"High Score: {highScore}", pos, Color.White);
 
+        string levelscoreText = $"Score: {player.ScoreFromHits}";
+        Vector2 scoreLevelPos = new(Globals.RightWall-Globals.Font.MeasureString(levelscoreText).X-5, 10);
+        Globals.SpriteBatch.DrawString(Globals.Font, levelscoreText, scoreLevelPos, Color.White);
 
         string scoreText = $"Score multiplier: "+player.ScoreMultiplier.ToString();
-        Vector2 scoreMultPos = new(Globals.RightWall-Globals.Font.MeasureString(scoreText).X-5, 10);
+        Vector2 scoreMultPos = new(Globals.RightWall-Globals.Font.MeasureString(scoreText).X-5, 50);
         Globals.SpriteBatch.DrawString(Globals.Font, scoreText, scoreMultPos, Color.White);
 
-        string redHitsText = $"Red hits: "+player.RedsHit.ToString();
-        Vector2 redHits = new(Globals.RightWall-Globals.Font.MeasureString(redHitsText).X-5, 50);
+        string redHitsText = $"Red hits: {player.RedsHit}/{Globals.maxRedObjects}";
+        Vector2 redHits = new(Globals.RightWall-Globals.Font.MeasureString(redHitsText).X-5, 90);
         Globals.SpriteBatch.DrawString(Globals.Font, redHitsText, redHits, Color.White);
     }
     public void DrawBallCount()
