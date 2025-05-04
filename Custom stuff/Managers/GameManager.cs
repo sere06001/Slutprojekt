@@ -1,7 +1,7 @@
 namespace Slutprojekt;
 public class GameManager
 {
-    public BallManager ballManager = new();
+    public BallManager ballManager;
     public Player player;
     public BaseCharacter character;
     public UI UI;
@@ -10,10 +10,12 @@ public class GameManager
     private GameStateManager gameStateManager;
     private LevelSelectScreen levelSelectScreen;
     private CharacterSelectScreen characterSelectScreen;
+    private WinScreen winScreen;
 
     public GameManager()
     {
         gameStateManager = new GameStateManager();
+        ballManager = new BallManager(gameStateManager);
         player = new(ballManager);
         levelCombiner = new(ballManager, player);
         
@@ -21,6 +23,7 @@ public class GameManager
         UI = new();
         levelSelectScreen = new LevelSelectScreen(levelCombiner, gameStateManager);
         characterSelectScreen = new CharacterSelectScreen(ballManager, levelCombiner, gameStateManager, player);
+        winScreen = new WinScreen(levelCombiner, gameStateManager, player, ballManager);
         ScoreManager.Initialize();
     }
     public void Init()
@@ -52,6 +55,9 @@ public class GameManager
                 cannon.Update();
                 levelCombiner.Update();
                 break;
+            case GameState.Win:
+                winScreen.Update();
+                break;
         }
     }
 
@@ -75,6 +81,10 @@ public class GameManager
                 Globals.SpriteBatch.Draw(Globals.Pixel, new Rectangle(Globals.RightWall, 0, Globals.Bounds.X-Globals.RightWall, Globals.Bounds.Y), Color.Pink);
                 ballManager.Draw();
                 UI.Draw();
+                break;
+            case GameState.Win:
+                levelCombiner.Draw();
+                winScreen.Draw();
                 break;
         }
     }

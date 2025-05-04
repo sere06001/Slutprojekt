@@ -2,9 +2,12 @@ namespace Slutprojekt;
 
 public enum GameState
 {
+    MainMenu,
     LevelSelect,
     CharacterSelect,
-    Playing
+    Playing,
+    Win,
+    Paused
 }
 
 public class GameStateManager

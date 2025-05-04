@@ -8,6 +8,12 @@ public class BallManager
     private const float shootDelay = 0.25f;
     private float shootDelayTimer = shootDelay;
     private bool canShoot = false;
+    private GameStateManager gameStateManager;
+
+    public BallManager(GameStateManager gameStateManager)
+    {
+        this.gameStateManager = gameStateManager;
+    }
 
     private void DebugUI()
     {
@@ -25,6 +31,7 @@ public class BallManager
     {
         balls.Clear();
         BallsLeft = startingBallCount;
+        StartShootDelay();
     }
     public void StartShootDelay()
     {
@@ -181,13 +188,13 @@ public class BallManager
         if (balls.Count == 0)
         {
             player.UpdateFinalScore();
-            player.ResetScore(); //Instead go to win screen, in winscreen when clicking restart level, select character or level select THEN it will reset score and circle hit count
+            player.ResetScore();
             player.ResetCircleAndBricksHitCount();
             if (Globals.placedRedObjects == 0)
             {
                 ScoreManager.SaveScore(player.currentLevel, player.ScoreLevel);
+                gameStateManager.ChangeState(GameState.Win);
             }
-            
         }
     }
 
