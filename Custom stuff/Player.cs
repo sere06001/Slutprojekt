@@ -10,7 +10,7 @@ public class Player
     public int ScoreLevel { get; private set; }
     public int ScoreMultiplier { get; private set; } = 1;
     public bool HasIncreasedMultFromPurple { get; private set; } = false;
-    public int RedsHit { get; private set; } = 0;
+    public int RedsHit { get; set; } = 0;
     public int currentLevel { get; set; }
     public bool DidWin { get; set; }
     public Player(BallManager bllmng)

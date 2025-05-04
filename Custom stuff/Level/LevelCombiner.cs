@@ -34,6 +34,10 @@ public class LevelCombiner
         levels.Clear();
         circlePlacer.Reset();
         brickPlacer.Reset();
+        Globals.placedGreenObjects = 0;
+        Globals.placedRedObjects = 0;
+        Globals.placedPurpleObjects = 0;
+        player.ResetEverything();
         Globals.ResetColouredObjects();
         teleporterManager = new TeleporterManager(ballManager);
     }
@@ -46,6 +50,7 @@ public class LevelCombiner
             levels.Add(new LevelGrid(ballManager, player, 1, 12, 
                 Globals.BallBlue.Width * 2f + 4, Globals.Bounds.X / 2 + varyingOffset, 
                 Globals.Bounds.Y * 0.3f + 40*i, false, false));
+
         }
     }
     public void SecondLevel()
