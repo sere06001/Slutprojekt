@@ -16,6 +16,16 @@ public class Player
     {
         ballManager = bllmng;
     }
+    public void ResetEverything()
+    {
+        CircleAndBricksHitCount = 0;
+        ScoreFromHits = 0;
+        ScoreLevel = 0;
+        ScoreForBall = 0;
+        ScoreMultiplier = 1;
+        RedsHit = 0;
+        HasIncreasedMultFromPurple = false;
+    }
     public void SetCharacter(BaseCharacter character)
     {
         Character = character;

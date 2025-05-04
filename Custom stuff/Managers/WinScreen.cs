@@ -3,7 +3,7 @@ namespace Slutprojekt;
 public class WinScreen
 {
     private List<Rectangle> buttons = new();
-    private List<string> buttonTexts = new() { "Level Select", "Change Character", "Restart Level" };
+    private List<string> buttonTexts = new() { "Level Select", "Restart Level" };
     private LevelCombiner levelCombiner;
     private GameStateManager gameStateManager;
     private Player player;
@@ -63,12 +63,22 @@ public class WinScreen
                 gameStateManager.ChangeState(GameState.LevelSelect);
                 break;
             case 1:
-                gameStateManager.ChangeState(GameState.CharacterSelect);
-                break;
-            case 2:
+                int currentLevel = player.currentLevel;
+                
                 ballManager.Reset();
                 levelCombiner.Reset();
-                levelCombiner.player.currentLevel = player.currentLevel;
+                player.ResetEverything();
+                switch (currentLevel)
+                {
+                    case 0:
+                        levelCombiner.FirstLevel();
+                        break;
+                    case 1:
+                        levelCombiner.SecondLevel();
+                        break;
+                }
+                
+                player.currentLevel = currentLevel;
                 gameStateManager.ChangeState(GameState.CharacterSelect);
                 break;
         }
